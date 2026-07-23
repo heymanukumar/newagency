@@ -4,12 +4,12 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-*{
+* {
   font-family: "Manrope", sans-serif;
   font-weight: 500;
   cursor: none;
 }
 
 @theme {
-  --color-primary: #5044E5;
+  --color-primary: #0040c1;
 }
