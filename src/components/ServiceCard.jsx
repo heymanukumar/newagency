@@ -29,8 +29,9 @@ const ServiceCard = ({ service, index }) => {
             onMouseMove={handleMouseMove}
         >
             <div
-                className={`pointer-events-none blur-2xl rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 w-[300px] h-[300px] absolute z-0 transition-opacity duration-500 mix-blend-lighten ${visible ? 'opacity-70' : 'opacity-0'
-                    }`}
+                className={`pointer-events-none blur-2xl rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 w-[300px] h-[300px] absolute z-0 transition-opacity duration-500 mix-blend-lighten ${
+                    visible ? 'opacity-70' : 'opacity-0'
+                }`}
                 style={{
                     top: position.y - 150,
                     left: position.x - 150,
@@ -41,7 +42,7 @@ const ServiceCard = ({ service, index }) => {
                 <div className="bg-gray-100 dark:bg-gray-700 rounded-full">
                     <img
                         src={service.icon}
-                        alt=""
+                        alt={service.title}
                         className="max-w-24 bg-white dark:bg-gray-900 rounded-full m-2"
                     />
                 </div>
@@ -54,17 +55,15 @@ const ServiceCard = ({ service, index }) => {
         </motion.div>
     )
 
-    return service.link ? (
+    return (
         <a
-            href={service.link}
-            target="_blank"
+            href={service.link || "/"}
+            target={service.link ? "_blank" : "_self"}
             rel="noopener noreferrer"
             className="block"
         >
             {CardContent}
         </a>
-    ) : (
-        CardContent
     )
 }
 
