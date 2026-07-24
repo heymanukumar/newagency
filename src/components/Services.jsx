@@ -8,54 +8,53 @@ const Services = () => {
 
   const servicesData = [
     {
-      title: 'AI Solutions',
-      description: 'Transform your business with AI-powered automation, AI agents, intelligent workflows, chatbots, and custom AI solutions.',
-      icon: assets.content_icon,
-      link: '/services/ai-solutions',
-    },
-    {
       title: 'Website Development',
-      description: 'Build fast, responsive, SEO-friendly, and scalable websites using React, Next.js, WordPress, and modern technologies.',
+      description: 'Create fast, responsive, and SEO-optimized websites tailored to your business goals. We build modern web experiences that engage visitors and drive measurable growth.',
       icon: assets.marketing_icon,
       link: '/services/website-development',
     },
     {
       title: 'E-Commerce Development',
-      description: 'Launch secure and scalable online stores with payment gateways, inventory management, and seamless shopping experiences.',
+      description: 'Launch secure, high-performing online stores with seamless shopping experiences. From product management to payment integration, we help you sell with confidence.',
       icon: assets.ecommerce_icon,
       link: '/services/ecommerce-development',
     },
     {
       title: 'Mobile App Development',
-      description: 'Develop high-performance Android, iOS, and cross-platform mobile applications with modern UI and scalable architecture.',
+      description: 'Build powerful Android and iOS applications with intuitive design and scalable technology. Deliver seamless mobile experiences that keep your users engaged.',
       icon: assets.mobile_icon,
       link: '/services/mobile-app-development',
     },
     {
+      title: 'AI Solutions',
+      description: 'Automate business processes with custom AI solutions, intelligent workflows, and AI agents. Improve productivity, reduce manual work, and accelerate business growth.',
+      icon: assets.content_icon,
+      link: '/services/ai-solutions',
+    },
+    {
       title: 'Digital Marketing',
-      description: 'Grow your business with SEO, Google Ads, Meta Ads, content marketing, and data-driven digital marketing strategies.',
+      description: 'Increase your online visibility with SEO, Google Ads, social media marketing, and performance campaigns. Generate quality leads and grow your brand faster.',
       icon: assets.digital_marketing_icon,
       link: '/services/digital-marketing',
     },
     {
-      title: 'Influencer Marketing',
-      description: 'Partner with trusted creators and influencers to increase brand awareness, engagement, and conversions.',
-      icon: assets.ads_icon,
-      link: '/services/influencer-marketing',
-    },
-    {
       title: 'Social Media Management (Slour)',
-      description: 'Manage, schedule, and automate your social media with AI-powered content creation, analytics, and publishing.',
+      description: 'Plan, schedule, and automate social media with AI-powered content creation and analytics. Manage multiple platforms efficiently and grow your online presence.',
       icon: assets.social_icon,
       link: 'https://slour.in/',
     },
     {
+      title: 'Influencer Marketing',
+      description: 'Collaborate with trusted influencers to expand your reach and build authentic brand awareness. Create impactful campaigns that connect with your target audience.',
+      icon: assets.ads_icon,
+      link: '/services/influencer-marketing',
+    },
+    {
       title: 'Hosting & Maintenance',
-      description: 'Keep your website secure, fast, and always online with managed hosting, backups, SSL, updates, and ongoing maintenance.',
+      description: 'Keep your website secure, fast, and always online with reliable hosting and proactive maintenance. We handle updates, backups, and performance optimization for you.',
       icon: assets.hosting_icon,
       link: '/services/hosting-maintenance',
     },
-
   ]
 
   return (
