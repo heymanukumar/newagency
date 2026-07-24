@@ -10,31 +10,31 @@ const Services = () => {
     {
       title: 'Website Development',
       description: 'Create fast, responsive, and SEO-optimized websites tailored to your business goals. We build modern web experiences that engage visitors and drive measurable growth.',
-      icon: assets.marketing_icon,
+      icon: assets.social_icon,
       link: '/services/website-development',
     },
     {
       title: 'E-Commerce Development',
       description: 'Launch secure, high-performing online stores with seamless shopping experiences. From product management to payment integration, we help you sell with confidence.',
-      icon: assets.ecommerce_icon,
+      icon: assets.social_icon,
       link: '/services/ecommerce-development',
     },
     {
       title: 'Mobile App Development',
       description: 'Build powerful Android and iOS applications with intuitive design and scalable technology. Deliver seamless mobile experiences that keep your users engaged.',
-      icon: assets.mobile_icon,
+      icon: assets.social_icon,
       link: '/services/mobile-app-development',
     },
     {
       title: 'AI Solutions',
       description: 'Automate business processes with custom AI solutions, intelligent workflows, and AI agents. Improve productivity, reduce manual work, and accelerate business growth.',
-      icon: assets.content_icon,
+      icon: assets.social_icon,
       link: '/services/ai-solutions',
     },
     {
       title: 'Digital Marketing',
       description: 'Increase your online visibility with SEO, Google Ads, social media marketing, and performance campaigns. Generate quality leads and grow your brand faster.',
-      icon: assets.digital_marketing_icon,
+      icon: assets.social_icon,
       link: '/services/digital-marketing',
     },
     {
@@ -46,13 +46,13 @@ const Services = () => {
     {
       title: 'Influencer Marketing',
       description: 'Collaborate with trusted influencers to expand your reach and build authentic brand awareness. Create impactful campaigns that connect with your target audience.',
-      icon: assets.ads_icon,
+      icon: assets.social_icon,
       link: '/services/influencer-marketing',
     },
     {
       title: 'Hosting & Maintenance',
       description: 'Keep your website secure, fast, and always online with reliable hosting and proactive maintenance. We handle updates, backups, and performance optimization for you.',
-      icon: assets.hosting_icon,
+      icon: assets.social_icon,
       link: '/services/hosting-maintenance',
     },
   ]
