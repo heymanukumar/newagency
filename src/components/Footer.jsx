@@ -55,7 +55,7 @@ const Footer = ({ theme }) => {
         <p>Copyright 2026 © Amazonis IT Services Pvt. Ltd. All Rights Reserved.</p>
         <div className='flex items-center justify-between gap-4'>
           <a
-            href="https://www.linkedin.com/company/your-company"
+            href="https://www.linkedin.com/company/amazonis-official"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -67,7 +67,7 @@ const Footer = ({ theme }) => {
           </a>
 
           <a
-            href="https://x.com/yourusername"
+            href="https://x.com/Amazonisindia"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -79,7 +79,7 @@ const Footer = ({ theme }) => {
           </a>
 
           <a
-            href="https://www.instagram.com/yourusername"
+            href="https://www.instagram.com/amazonis.in"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -91,7 +91,7 @@ const Footer = ({ theme }) => {
           </a>
 
           <a
-            href="https://www.facebook.com/yourpage"
+            href="https://www.facebook.com/amazonisofficial"
             target="_blank"
             rel="noopener noreferrer"
           >
