@@ -7,27 +7,55 @@ import { motion } from 'motion/react'
 const Services = () => {
 
   const servicesData = [
-    {
-      title: 'Website Development',
-      description: 'Build fast, responsive websites that enhance user experience and help your business grow.',
-      icon: assets.marketing_icon
-    },
-    {
-      title: 'AI Solutions',
-      description: 'Automate workflows with AI-powered solutions that improve efficiency and productivity.',
-      icon: assets.content_icon
-    },
-    {
-      title: 'Influencer Marketing',
-      description: 'Partner with trusted creators to boost brand awareness and reach the right audience.',
-      icon: assets.ads_icon,
-    },
-    {
-      title: 'Social Media Management (Slour)',
-      description: 'Plan, schedule, and grow your social media with AI-powered content and automation.',
-      icon: assets.social_icon,
-      link: 'https://slour.in/',
-    },
+  {
+    title: 'AI Solutions',
+    description: 'Transform your business with AI-powered automation, AI agents, intelligent workflows, chatbots, and custom AI solutions.',
+    icon: assets.content_icon,
+    link: '/services/ai-solutions',
+  },
+  {
+    title: 'Website Development',
+    description: 'Build fast, responsive, SEO-friendly, and scalable websites using React, Next.js, WordPress, and modern technologies.',
+    icon: assets.marketing_icon,
+    link: '/services/website-development',
+  },
+  {
+    title: 'E-Commerce Development',
+    description: 'Launch secure and scalable online stores with payment gateways, inventory management, and seamless shopping experiences.',
+    icon: assets.ecommerce_icon,
+    link: '/services/ecommerce-development',
+  },
+  {
+    title: 'Mobile App Development',
+    description: 'Develop high-performance Android, iOS, and cross-platform mobile applications with modern UI and scalable architecture.',
+    icon: assets.mobile_icon,
+    link: '/services/mobile-app-development',
+  },
+  {
+    title: 'Digital Marketing',
+    description: 'Grow your business with SEO, Google Ads, Meta Ads, content marketing, and data-driven digital marketing strategies.',
+    icon: assets.digital_marketing_icon,
+    link: '/services/digital-marketing',
+  },
+  {
+    title: 'Influencer Marketing',
+    description: 'Partner with trusted creators and influencers to increase brand awareness, engagement, and conversions.',
+    icon: assets.ads_icon,
+    link: '/services/influencer-marketing',
+  },
+  {
+    title: 'Social Media Management (Slour)',
+    description: 'Manage, schedule, and automate your social media with AI-powered content creation, analytics, and publishing.',
+    icon: assets.social_icon,
+    link: 'https://slour.in/',
+  },
+  {
+    title: 'Hosting & Maintenance',
+    description: 'Keep your website secure, fast, and always online with managed hosting, backups, SSL, updates, and ongoing maintenance.',
+    icon: assets.hosting_icon,
+    link: '/services/hosting-maintenance',
+  },
+
   ]
 
   return (
