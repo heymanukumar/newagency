@@ -10,7 +10,7 @@ const Services = () => {
     {
       title: 'Website Development',
       description: 'Build fast, responsive websites that enhance user experience and help your business grow.',
-      icon: assets.website_icon
+      icon: assets.marketing_icon
     },
     {
       title: 'AI Solutions',
