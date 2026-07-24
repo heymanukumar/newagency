@@ -25,7 +25,8 @@ const Services = () => {
     {
       title: 'Social Media Management (Slour)',
       description: 'Plan, schedule, and grow your social media with AI-powered content and automation.',
-      icon: assets.social_icon
+      icon: assets.social_icon,
+      link: 'https://slour.in/'
     },
   ]
 
