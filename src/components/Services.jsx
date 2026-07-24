@@ -15,12 +15,12 @@ const Services = () => {
     {
       title: 'AI Solutions',
       description: 'Automate workflows with AI-powered solutions that improve efficiency and productivity.',
-      icon: assets.ai_icon
+      icon: assets.content_icon
     },
     {
       title: 'Influencer Marketing',
       description: 'Partner with trusted creators to boost brand awareness and reach the right audience.',
-      icon: assets.influencer_icon
+      icon: assets.ads_icon,
     },
     {
       title: 'Social Media Management (Slour)',
