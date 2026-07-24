@@ -13,7 +13,7 @@ const Hero = () => {
         viewport={{ once: true }}
         className='inline-flex items-center gap-2 border border-gray-300 p-1.5 pr-4 rounded-full'>
             <img className='w-20' src={assets.group_profile} alt="" />
-            <p className='text-xs font-medium'>Trusted by 50+ Business</p>
+            <p className='text-xs font-medium'> Business Trusted by 50+ Growing Businesses Worldwide</p>
         </motion.div>
 
         <motion.h1
@@ -28,7 +28,7 @@ const Hero = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1 }}
           viewport={{ once: true }}
-        className='text-sm sm:text-lg font-medium text-gray-500 dark:text-white/75 max-w-4/5 sm:max-w-lg pb-3'>We build websites, eCommerce stores, AI-powered applications, branding, digital marketing, and custom software that help businesses grow faster.</motion.p>
+        className='text-sm sm:text-lg font-medium text-gray-500 dark:text-white/75 max-w-4/5 sm:max-w-lg pb-3'>We build websites, AI solutions, digital marketing, branding, and software that help businesses grow.</motion.p>
 
         <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
