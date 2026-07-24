@@ -30,6 +30,10 @@ import menu_icon_dark from './menu_icon_dark.svg'
 import sun_icon from './sun_icon.svg'
 import moon_icon from './moon_icon.svg'
 import moon_icon from './hosting_icon'
+import moon_icon from './ai_icon.svg'
+import moon_icon from './mobile_icon.svg'
+
+
 
 
 export const company_logos = [
