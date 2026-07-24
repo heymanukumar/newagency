@@ -29,7 +29,7 @@ import google_logo from './google_logo.svg'
 import menu_icon_dark from './menu_icon_dark.svg'
 import sun_icon from './sun_icon.svg'
 import moon_icon from './moon_icon.svg'
-import hosting_icon from './hosting_icon'
+import hosting_icon from './hosting_icon.svg'
 import ai_icon from './ai_icon.svg'
 import mobile_icon from './mobile_icon.svg'
 
