@@ -11,31 +11,31 @@ const Services = () => {
       title: 'Website Development',
       description: 'Build fast, SEO-friendly websites that engage visitors and grow your business.',
       icon: assets.marketing_icon,
-      link: '/services/website-development',
+      // link: '/services/website-development',
     },
     {
       title: 'E-Commerce Development',
       description: 'Launch secure online stores with seamless shopping and integrated payments.',
       icon: assets.ecommerce_icon,
-      link: '/services/ecommerce-development',
+      // link: '/services/ecommerce-development',
     },
     {
       title: 'Mobile App Development',
       description: 'Create modern Android and iOS apps with scalable performance and intuitive design.',
       icon: assets.mobile.svg,
-      link: '/services/mobile-app-development',
+      // link: '/services/mobile-app-development',
     },
     {
       title: 'AI Solutions',
       description: 'Automate workflows with AI agents and intelligent solutions that boost productivity.',
       icon: assets.ai_icon,
-      link: '/services/ai-solutions',
+      // link: '/services/ai-solutions',
     },
     {
       title: 'Digital Marketing',
       description: 'Grow your brand with SEO, Google Ads, social media, and performance marketing.',
       icon: assets.digital_marketing_icon,
-      link: '/services/digital-marketing',
+      // link: '/services/digital-marketing',
     },
     {
       title: 'Social Media Management (Slour)',
@@ -48,13 +48,13 @@ const Services = () => {
       title: 'Influencer Marketing',
       description: 'Partner with trusted creators to boost brand awareness and customer engagement.',
       icon: assets.ads_icon,
-      link: '/services/influencer-marketing',
+      // link: '/services/influencer-marketing',
     },
     {
       title: 'Hosting & Maintenance',
       description: 'Reliable hosting, security, backups, and maintenance to keep your website online.',
       icon: assets.hosting_icon,
-      link: '/services/hosting-maintenance',
+      // link: '/services/hosting-maintenance',
     },
   ]
 
