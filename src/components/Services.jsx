@@ -9,22 +9,22 @@ const Services = () => {
   const servicesData = [
     {
       title: 'Website Development',
-      description: 'Build fast, responsive, and scalable websites that deliver exceptional user experiences and drive business growth.',
+      description: 'Build fast, responsive websites that enhance user experience and help your business grow.',
       icon: assets.website_icon
     },
     {
       title: 'AI Solutions',
-      description: 'Leverage AI-powered automation, AI agents, and intelligent workflows to streamline operations and boost productivity.',
+      description: 'Automate workflows with AI-powered solutions that improve efficiency and productivity.',
       icon: assets.ai_icon
     },
     {
       title: 'Influencer Marketing',
-      description: 'Connect your brand with the right creators to increase reach, build trust, and drive authentic customer engagement.',
+      description: 'Partner with trusted creators to boost brand awareness and reach the right audience.',
       icon: assets.influencer_icon
     },
     {
       title: 'Social Media Management (Slour)',
-      description: 'Manage, schedule, and grow your social media presence with creative content and performance-focused campaigns.',
+      description: 'Plan, schedule, and grow your social media with AI-powered content and automation.',
       icon: assets.social_icon
     },
   ]
