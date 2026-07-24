@@ -22,13 +22,13 @@ const Services = () => {
     {
       title: 'Mobile App Development',
       description: 'Create modern Android and iOS apps with scalable performance and intuitive design.',
-      icon: assets.mobile_icon,
+      icon: assets.mobile.svg,
       link: '/services/mobile-app-development',
     },
     {
       title: 'AI Solutions',
       description: 'Automate workflows with AI agents and intelligent solutions that boost productivity.',
-      icon: assets.content_icon,
+      icon: assets.ai_icon,
       link: '/services/ai-solutions',
     },
     {
