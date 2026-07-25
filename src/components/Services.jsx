@@ -28,7 +28,7 @@ const Services = () => {
     {
       title: 'AI Solutions',
       description: 'Automate workflows with AI agents and intelligent solutions that boost productivity.',
-      icon: assets.social_icon,
+      icon: assets.Ai_Icon,
       // link: '/services/ai-solutions',
     },
     {
