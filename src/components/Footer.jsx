@@ -13,7 +13,11 @@ const footerMenuLinks = [
 
 const legalLinks = [
   { label: 'Privacy Policy', href: '/privacy-policy' },
-  { label: 'Sitemap', href: '/sitemap.xml' },
+  { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+  { label: 'Cookie Policy', href: '/cookie-policy' },
+  { label: 'Refund & Cancellation Policy', href: '/refund-and-cancellation-policy' },
+  { label: 'Disclaimer', href: '/disclaimer' },
+  { label: 'Sitemap', href: '/sitemap' },
 ]
 
 const Footer = ({ theme }) => {

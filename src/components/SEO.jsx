@@ -76,6 +76,40 @@ const pageMeta = {
       },
     },
   },
+  '/terms-and-conditions': {
+    title: 'Terms & Conditions | Amazonis IT Services Pvt. Ltd.',
+    description:
+      'Read the Terms & Conditions for using amazonis.in and working with Amazonis IT Services Pvt. Ltd.',
+    path: '/terms-and-conditions',
+    type: 'article',
+  },
+  '/cookie-policy': {
+    title: 'Cookie Policy | Amazonis IT Services Pvt. Ltd.',
+    description:
+      'Learn how Amazonis IT Services Pvt. Ltd. may use cookies and similar technologies on amazonis.in.',
+    path: '/cookie-policy',
+    type: 'article',
+  },
+  '/refund-and-cancellation-policy': {
+    title: 'Refund & Cancellation Policy | Amazonis IT Services Pvt. Ltd.',
+    description:
+      'Review how Amazonis IT Services Pvt. Ltd. generally handles service cancellations and refund requests.',
+    path: '/refund-and-cancellation-policy',
+    type: 'article',
+  },
+  '/disclaimer': {
+    title: 'Disclaimer | Amazonis IT Services Pvt. Ltd.',
+    description:
+      'Read important disclaimers about Amazonis website information, service outcomes, and third-party platforms.',
+    path: '/disclaimer',
+    type: 'article',
+  },
+  '/sitemap': {
+    title: 'Sitemap | Amazonis IT Services',
+    description: 'Browse all public pages, legal policies, and sitemap resources from Amazonis.',
+    path: '/sitemap',
+    type: 'website',
+  },
 }
 
 const upsertMeta = (selector, attributes) => {

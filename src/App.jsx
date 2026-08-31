@@ -11,6 +11,19 @@ import { Toaster } from 'react-hot-toast'
 import Footer from './components/Footer'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import SEO from './components/SEO'
+import LegalPage from './components/LegalPage'
+import SitemapPage from './components/SitemapPage'
+
+const appRoutes = [
+  '/',
+  '/about',
+  '/privacy-policy',
+  '/terms-and-conditions',
+  '/cookie-policy',
+  '/refund-and-cancellation-policy',
+  '/disclaimer',
+  '/sitemap',
+]
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -27,10 +40,17 @@ const App = () => {
   const isHomePage = normalizedPath === '/'
   const isAboutPage = normalizedPath === '/about'
   const isPrivacyPolicyPage = normalizedPath === '/privacy-policy'
-  const isNotFoundPage = !isHomePage && !isAboutPage && !isPrivacyPolicyPage
+  const isLegalPage = [
+    '/terms-and-conditions',
+    '/cookie-policy',
+    '/refund-and-cancellation-policy',
+    '/disclaimer',
+  ].includes(normalizedPath)
+  const isSitemapPage = normalizedPath === '/sitemap'
+  const isNotFoundPage = !appRoutes.includes(normalizedPath)
 
   useEffect(() => {
-    const routes = new Set(['/', '/about', '/privacy-policy'])
+    const routes = new Set(appRoutes)
     const normalizeRoute = (path) => path.replace(/\/$/, '') || '/'
 
     const updatePath = () => {
@@ -123,6 +143,8 @@ const App = () => {
 
       {isAboutPage && <About />}
       {isPrivacyPolicyPage && <PrivacyPolicy />}
+      {isLegalPage && <LegalPage path={normalizedPath} />}
+      {isSitemapPage && <SitemapPage />}
       {isNotFoundPage && <NotFound theme={theme} />}
 
       {!isNotFoundPage && <Footer theme={theme} />}
