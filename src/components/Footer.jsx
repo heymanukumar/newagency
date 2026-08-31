@@ -43,7 +43,8 @@ const Footer = ({ theme }) => {
 
           <nav aria-label='Footer navigation' className='mt-5'>
             <ul className='flex flex-wrap gap-x-8 gap-y-3'>
-              <li><a className='hover:text-primary transition-colors' href='/#hero'>Home</a></li>\n              <li><a className='hover:text-primary transition-colors' href='/about'>About Us</a></li>
+              <li><a className='hover:text-primary transition-colors' href='/#hero'>Home</a></li>
+              <li><a className='hover:text-primary transition-colors' href='/about'>About Us</a></li>
               <li><a className='hover:text-primary transition-colors' href='/#services'>Services</a></li>
               <li><a className='hover:text-primary transition-colors' href='/#our-work'>Our Work</a></li>
               <li><a className='hover:text-primary transition-colors' href='/#contact-us'>Contact Us</a></li>
