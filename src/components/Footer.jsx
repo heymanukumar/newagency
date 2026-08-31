@@ -2,6 +2,15 @@ import React from 'react'
 import assets from '../assets/assets'
 import { motion } from 'motion/react'
 
+// Change the name, link or order here to update the footer menu.
+const footerMenuLinks = [
+  { name: 'Home', href: '/#hero' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Work', href: '/#our-work' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/#contact-us' },
+]
+
 const legalLinks = [
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Terms & Conditions', href: '/terms-and-conditions' },
@@ -43,11 +52,16 @@ const Footer = ({ theme }) => {
 
           <nav aria-label='Footer navigation' className='mt-5'>
             <ul className='grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-3'>
-              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/#hero'>Home</a></li>
-              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/#services'>Services</a></li>
-              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/#our-work'>Work</a></li>
-              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/about'>About</a></li>
-              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/#contact-us'>Contact</a></li>
+              {footerMenuLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors'
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
         </motion.div>
