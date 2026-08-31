@@ -30,10 +30,10 @@ const Navbar = ({ theme, setTheme }) => {
         />
 
         <a onClick={() => setSidebarOpen(false)} href='/#hero' className='sm:hover:border-b'>Home</a>
-        <a onClick={() => setSidebarOpen(false)} href='/about' className='sm:hover:border-b'>About Us</a>
         <a onClick={() => setSidebarOpen(false)} href='/#services' className='sm:hover:border-b'>Services</a>
-        <a onClick={() => setSidebarOpen(false)} href='/#our-work' className='sm:hover:border-b'>Our Work</a>
-        <a onClick={() => setSidebarOpen(false)} href='/#contact-us' className='sm:hover:border-b'>Contact Us</a>
+        <a onClick={() => setSidebarOpen(false)} href='/#our-work' className='sm:hover:border-b'>Work</a>
+        <a onClick={() => setSidebarOpen(false)} href='/about' className='sm:hover:border-b'>About</a>
+        <a onClick={() => setSidebarOpen(false)} href='/#contact-us' className='sm:hover:border-b'>Contact</a>
       </div>
 
       <div className='flex items-center gap-2 sm:gap-4'>
