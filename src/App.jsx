@@ -31,6 +31,7 @@ const App = () => {
 
   useEffect(() => {
     const routes = new Set(['/', '/about', '/privacy-policy'])
+    const normalizeRoute = (path) => path.replace(/\/$/, '') || '/'
 
     const updatePath = () => {
       setCurrentPath(window.location.pathname)
@@ -45,15 +46,16 @@ const App = () => {
 
       const url = new URL(link.href, window.location.origin)
       const isSameOrigin = url.origin === window.location.origin
-      const isKnownRoute = routes.has(url.pathname)
+      const routePath = normalizeRoute(url.pathname)
+      const isKnownRoute = routes.has(routePath)
 
       if (!isSameOrigin || !isKnownRoute) {
         return
       }
 
       event.preventDefault()
-      window.history.pushState({}, '', `${url.pathname}${url.hash}`)
-      setCurrentPath(url.pathname)
+      window.history.pushState({}, '', `${routePath}${url.hash}`)
+      setCurrentPath(routePath)
 
       if (url.hash) {
         requestAnimationFrame(() => {
