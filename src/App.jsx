@@ -9,21 +9,69 @@ import About from './components/About'
 import NotFound from './components/NotFound'
 import { Toaster } from 'react-hot-toast'
 import Footer from './components/Footer'
+import PrivacyPolicy from './components/PrivacyPolicy'
+import SEO from './components/SEO'
 
 const App = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
   )
+  const [currentPath, setCurrentPath] = useState(window.location.pathname)
 
   const dotRef = useRef(null)
   const outlineRef = useRef(null)
   const mouse = useRef({ x: 0, y: 0 })
   const position = useRef({ x: 0, y: 0 })
 
-  const normalizedPath = window.location.pathname.replace(/\/$/, '') || '/'
+  const normalizedPath = currentPath.replace(/\/$/, '') || '/'
   const isHomePage = normalizedPath === '/'
   const isAboutPage = normalizedPath === '/about'
-  const isNotFoundPage = !isHomePage && !isAboutPage
+  const isPrivacyPolicyPage = normalizedPath === '/privacy-policy'
+  const isNotFoundPage = !isHomePage && !isAboutPage && !isPrivacyPolicyPage
+
+  useEffect(() => {
+    const routes = new Set(['/', '/about', '/privacy-policy'])
+
+    const updatePath = () => {
+      setCurrentPath(window.location.pathname)
+    }
+
+    const handleLinkClick = (event) => {
+      const link = event.target.closest('a')
+
+      if (!link || link.target || link.hasAttribute('download')) {
+        return
+      }
+
+      const url = new URL(link.href, window.location.origin)
+      const isSameOrigin = url.origin === window.location.origin
+      const isKnownRoute = routes.has(url.pathname)
+
+      if (!isSameOrigin || !isKnownRoute) {
+        return
+      }
+
+      event.preventDefault()
+      window.history.pushState({}, '', `${url.pathname}${url.hash}`)
+      setCurrentPath(url.pathname)
+
+      if (url.hash) {
+        requestAnimationFrame(() => {
+          document.querySelector(url.hash)?.scrollIntoView({ behavior: 'smooth' })
+        })
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    }
+
+    window.addEventListener('popstate', updatePath)
+    document.addEventListener('click', handleLinkClick)
+
+    return () => {
+      window.removeEventListener('popstate', updatePath)
+      document.removeEventListener('click', handleLinkClick)
+    }
+  }, [])
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -56,6 +104,7 @@ const App = () => {
 
   return (
     <div className='dark:bg-black relative min-h-screen'>
+      <SEO path={normalizedPath} />
       <Toaster />
 
       {!isNotFoundPage && <Navbar theme={theme} setTheme={setTheme} />}
@@ -71,6 +120,7 @@ const App = () => {
       )}
 
       {isAboutPage && <About />}
+      {isPrivacyPolicyPage && <PrivacyPolicy />}
       {isNotFoundPage && <NotFound theme={theme} />}
 
       {!isNotFoundPage && <Footer theme={theme} />}
