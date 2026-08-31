@@ -28,25 +28,25 @@ const Footer = ({ theme }) => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className='space-y-5 text-sm text-gray-700 dark:text-gray-400'
+          className='text-sm text-gray-700 dark:text-gray-400'
         >
-          <a href='#hero' aria-label='Amazonis home'>
+          <a href='/' aria-label='Amazonis home' className='inline-block'>
             <img
               src={theme === 'dark' ? assets.logo_dark : assets.logo}
               className='w-32 sm:w-44'
               alt='Amazonis'
             />
           </a>
-          <p className='max-w-md'>
+          <p className='max-w-md mt-3'>
             From strategy to execution, we craft digital solutions that move your business forward.
           </p>
 
-          <nav aria-label='Footer navigation'>
+          <nav aria-label='Footer navigation' className='mt-5'>
             <ul className='flex flex-wrap gap-x-8 gap-y-3'>
-              <li><a className='hover:text-primary transition-colors' href='#hero'>Home</a></li>
-              <li><a className='hover:text-primary transition-colors' href='#services'>Services</a></li>
-              <li><a className='hover:text-primary transition-colors' href='#our-work'>Our Work</a></li>
-              <li><a className='hover:text-primary transition-colors' href='#contact-us'>Contact Us</a></li>
+              <li><a className='hover:text-primary transition-colors' href='/#hero'>Home</a></li>\n              <li><a className='hover:text-primary transition-colors' href='/about'>About Us</a></li>
+              <li><a className='hover:text-primary transition-colors' href='/#services'>Services</a></li>
+              <li><a className='hover:text-primary transition-colors' href='/#our-work'>Our Work</a></li>
+              <li><a className='hover:text-primary transition-colors' href='/#contact-us'>Contact Us</a></li>
             </ul>
           </nav>
         </motion.div>
