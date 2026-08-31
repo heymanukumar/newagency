@@ -99,14 +99,13 @@ const About = () => {
 
       <section className='px-4 pb-20 sm:px-10 lg:px-24 xl:px-40'>
         <motion.div {...fadeUp} className='mx-auto max-w-4xl text-center'>
-          <h2 className='text-4xl font-extrabold sm:text-5xl'>About us</h2>
-          <p className='mx-auto mt-7 max-w-2xl text-sm leading-7 text-gray-600 dark:text-gray-300'>
+          <p className='mx-auto max-w-2xl text-sm leading-7 text-gray-600 dark:text-gray-300'>
             As a web development and digital services company, we are committed to building custom
             web solutions that drive business success.
           </p>
         </motion.div>
 
-        <div className='mx-auto mt-14 grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-14'>
+        <div className='mx-auto mt-12 grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-14'>
           <motion.div {...fadeUp}>
             <img
               src={assets.work_dashboard_management}
