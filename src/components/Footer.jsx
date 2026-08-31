@@ -42,12 +42,12 @@ const Footer = ({ theme }) => {
           </p>
 
           <nav aria-label='Footer navigation' className='mt-5'>
-            <ul className='flex flex-wrap gap-x-8 gap-y-3'>
-              <li><a className='hover:text-primary transition-colors' href='/#hero'>Home</a></li>
-              <li><a className='hover:text-primary transition-colors' href='/#services'>Services</a></li>
-              <li><a className='hover:text-primary transition-colors' href='/#our-work'>Work</a></li>
-              <li><a className='hover:text-primary transition-colors' href='/about'>About</a></li>
-              <li><a className='hover:text-primary transition-colors' href='/#contact-us'>Contact</a></li>
+            <ul className='grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-3'>
+              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/#hero'>Home</a></li>
+              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/#services'>Services</a></li>
+              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/#our-work'>Work</a></li>
+              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/about'>About</a></li>
+              <li><a className='inline-flex px-3 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-colors' href='/#contact-us'>Contact</a></li>
             </ul>
           </nav>
         </motion.div>
