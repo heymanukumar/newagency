@@ -14,8 +14,9 @@ const footerMenuLinks = [
 const legalLinks = [
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+  { label: 'Refund Policy', href: '/refund-policy' },
+  { label: 'Cancellation Policy', href: '/cancellation-policy' },
   { label: 'Cookie Policy', href: '/cookie-policy' },
-  { label: 'Refund & Cancellation Policy', href: '/refund-and-cancellation-policy' },
   { label: 'Disclaimer', href: '/disclaimer' },
   { label: 'Sitemap', href: '/sitemap' },
 ]

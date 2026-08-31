@@ -1,6 +1,8 @@
 Options -MultiViews
 RewriteEngine On
 
+Redirect 301 /refund-and-cancellation-policy /refund-policy
+
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]

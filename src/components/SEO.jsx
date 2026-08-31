@@ -90,11 +90,18 @@ const pageMeta = {
     path: '/cookie-policy',
     type: 'article',
   },
-  '/refund-and-cancellation-policy': {
-    title: 'Refund & Cancellation Policy | Amazonis IT Services Pvt. Ltd.',
+  '/refund-policy': {
+    title: 'Refund Policy | Amazonis IT Services Pvt. Ltd.',
     description:
-      'Review how Amazonis IT Services Pvt. Ltd. generally handles service cancellations and refund requests.',
-    path: '/refund-and-cancellation-policy',
+      'Review how Amazonis IT Services Pvt. Ltd. generally handles service refund requests.',
+    path: '/refund-policy',
+    type: 'article',
+  },
+  '/cancellation-policy': {
+    title: 'Cancellation Policy | Amazonis IT Services Pvt. Ltd.',
+    description:
+      'Review how Amazonis IT Services Pvt. Ltd. handles project and service cancellation requests.',
+    path: '/cancellation-policy',
     type: 'article',
   },
   '/disclaimer': {

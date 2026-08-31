@@ -19,9 +19,14 @@ const pages = [
     description: 'How cookies and similar technologies may be used.',
   },
   {
-    label: 'Refund & Cancellation Policy',
-    href: '/refund-and-cancellation-policy',
-    description: 'How service cancellations and refunds are handled.',
+    label: 'Refund Policy',
+    href: '/refund-policy',
+    description: 'How service refund requests are handled.',
+  },
+  {
+    label: 'Cancellation Policy',
+    href: '/cancellation-policy',
+    description: 'How project or service cancellation requests are handled.',
   },
   {
     label: 'Disclaimer',

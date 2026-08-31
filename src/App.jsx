@@ -20,7 +20,8 @@ const appRoutes = [
   '/privacy-policy',
   '/terms-and-conditions',
   '/cookie-policy',
-  '/refund-and-cancellation-policy',
+  '/refund-policy',
+  '/cancellation-policy',
   '/disclaimer',
   '/sitemap',
 ]
@@ -43,7 +44,8 @@ const App = () => {
   const isLegalPage = [
     '/terms-and-conditions',
     '/cookie-policy',
-    '/refund-and-cancellation-policy',
+    '/refund-policy',
+    '/cancellation-policy',
     '/disclaimer',
   ].includes(normalizedPath)
   const isSitemapPage = normalizedPath === '/sitemap'

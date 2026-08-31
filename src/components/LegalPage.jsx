@@ -115,12 +115,12 @@ const legalPages = {
       },
     ],
   },
-  '/refund-and-cancellation-policy': {
+  '/refund-policy': {
     eyebrow: 'Legal',
-    title: 'Refund & Cancellation Policy',
+    title: 'Refund Policy',
     effectiveDate: '31 August 2026',
     intro:
-      'This policy explains how cancellations and refunds are generally handled for Amazonis services.',
+      'This Refund Policy explains how refund requests are generally handled for Amazonis services.',
     sections: [
       {
         title: '1. Project-based services',
@@ -130,29 +130,64 @@ const legalPages = {
         ],
       },
       {
-        title: '2. Cancellations',
-        body: [
-          'A cancellation request should be sent in writing to contact@amazonis.in. Work may continue until the request is received and acknowledged.',
-          'If a project is cancelled after work has started, Amazonis may charge for completed work, committed resources, licenses, subscriptions, payment gateway charges, and other non-recoverable expenses.',
-        ],
-      },
-      {
-        title: '3. Refunds',
+        title: '2. Refunds',
         body: [
           'Approved refunds, if any, will be processed to the original payment method or another mutually agreed method, subject to payment provider timelines and deductions for applicable charges.',
           'Setup fees, consultation fees, strategy work, completed milestones, custom deliverables, third-party expenses, and used subscription periods are generally non-refundable unless agreed otherwise in writing.',
         ],
       },
       {
-        title: '4. Delays and dependencies',
+        title: '3. Delays and dependencies',
         body: [
           'Refunds are not generally issued for delays caused by missing client inputs, late approvals, platform restrictions, third-party outages, account access issues, or changes requested after approval.',
         ],
       },
       {
+        title: '4. Contact',
+        body: [
+          'For refund requests, email contact@amazonis.in with your invoice number, project name, and reason for the request.',
+        ],
+      },
+    ],
+  },
+  '/cancellation-policy': {
+    eyebrow: 'Legal',
+    title: 'Cancellation Policy',
+    effectiveDate: '31 August 2026',
+    intro:
+      'This Cancellation Policy explains how project or service cancellation requests are handled by Amazonis.',
+    sections: [
+      {
+        title: '1. Cancellation requests',
+        body: [
+          'A cancellation request should be sent in writing to contact@amazonis.in. Work may continue until the request is received and acknowledged.',
+          'Please include your invoice number, project name, reason for cancellation, and the requested cancellation date.',
+        ],
+      },
+      {
+        title: '2. Work already started',
+        body: [
+          'If a project is cancelled after work has started, Amazonis may charge for completed work, committed resources, licenses, subscriptions, payment gateway charges, and other non-recoverable expenses.',
+          'Completed milestones, approved deliverables, discovery work, strategy work, setup work, and reserved delivery capacity may remain payable.',
+        ],
+      },
+      {
+        title: '3. Subscriptions and ongoing services',
+        body: [
+          'For retainers, hosting, maintenance, marketing, support, or recurring services, cancellation terms may be described in the applicable proposal, invoice, or written agreement.',
+          'Access to ongoing services may continue until the end of the paid period unless otherwise agreed in writing.',
+        ],
+      },
+      {
+        title: '4. Client dependencies',
+        body: [
+          'Cancellation does not remove responsibility for charges caused by delayed approvals, missing inputs, third-party commitments, purchased assets, or services already delivered.',
+        ],
+      },
+      {
         title: '5. Contact',
         body: [
-          'For cancellation or refund requests, email contact@amazonis.in with your invoice number, project name, and reason for the request.',
+          'For cancellation requests, email contact@amazonis.in with the relevant project or invoice details.',
         ],
       },
     ],
