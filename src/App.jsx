@@ -6,6 +6,7 @@ import Services from './components/Services'
 import OurWork from './components/OurWork'
 import ContactUs from './components/ContactUs'
 import About from './components/About'
+import NotFound from './components/NotFound'
 import { Toaster } from 'react-hot-toast'
 import Footer from './components/Footer'
 
@@ -20,7 +21,9 @@ const App = () => {
   const position = useRef({ x: 0, y: 0 })
 
   const normalizedPath = window.location.pathname.replace(/\/$/, '') || '/'
+  const isHomePage = normalizedPath === '/'
   const isAboutPage = normalizedPath === '/about'
+  const isNotFoundPage = !isHomePage && !isAboutPage
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -54,11 +57,10 @@ const App = () => {
   return (
     <div className='dark:bg-black relative min-h-screen'>
       <Toaster />
-      <Navbar theme={theme} setTheme={setTheme} />
 
-      {isAboutPage ? (
-        <About />
-      ) : (
+      {!isNotFoundPage && <Navbar theme={theme} setTheme={setTheme} />}
+
+      {isHomePage && (
         <>
           <Hero />
           <TrustedBy />
@@ -68,7 +70,10 @@ const App = () => {
         </>
       )}
 
-      <Footer theme={theme} />
+      {isAboutPage && <About />}
+      {isNotFoundPage && <NotFound theme={theme} />}
+
+      {!isNotFoundPage && <Footer theme={theme} />}
 
       <div
         ref={outlineRef}
