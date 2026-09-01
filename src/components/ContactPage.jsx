@@ -246,27 +246,29 @@ const ContactPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15 }}
             viewport={{ once: true }}
-            className='relative mt-12 overflow-hidden rounded-xl border border-gray-200 bg-slate-100 shadow-2xl shadow-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/30'
+            className='relative mt-12 overflow-hidden rounded-xl border border-primary/20 bg-blue-50 shadow-2xl shadow-primary/10 dark:border-primary/30 dark:bg-gray-900 dark:shadow-black/30'
           >
-            <div className='absolute left-4 top-4 z-10 max-w-sm rounded-lg bg-white/95 p-4 shadow-xl backdrop-blur dark:bg-gray-950/90'>
-              <p className='text-xs font-extrabold uppercase tracking-[0.18em] text-primary'>
-                Visit Us
-              </p>
-              <p className='mt-2 text-sm font-bold leading-6 text-[#0b2148] dark:text-white'>
-                Amazonis IT Services Pvt. Ltd.
-              </p>
-              <p className='mt-1 text-sm leading-6 text-gray-600 dark:text-gray-300'>
-                {officeAddress}
-              </p>
-            </div>
             <iframe
               title='Amazonis office location map'
               src={mapUrl}
-              className='h-[320px] w-full border-0 grayscale sm:h-[420px]'
+              className='h-[320px] w-full border-0 opacity-90 [filter:grayscale(1)_contrast(1.08)_sepia(0.16)_hue-rotate(178deg)_saturate(1.45)] sm:h-[420px]'
               loading='lazy'
               referrerPolicy='no-referrer-when-downgrade'
               allowFullScreen
             />
+            <div
+              className='pointer-events-none absolute inset-0 bg-primary/10 mix-blend-multiply dark:bg-primary/20'
+              aria-hidden='true'
+            />
+            <div
+              className='pointer-events-none absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-full flex-col items-center'
+              aria-hidden='true'
+            >
+              <span className='grid h-11 w-11 place-items-center rounded-full bg-primary text-white shadow-[0_18px_40px_rgba(9,79,212,0.32)]'>
+                <span className='h-3 w-3 rounded-full bg-white' />
+              </span>
+              <span className='h-5 w-5 -translate-y-3 rotate-45 rounded-br-sm bg-primary' />
+            </div>
           </motion.div>
         </div>
       </section>
