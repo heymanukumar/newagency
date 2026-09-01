@@ -102,6 +102,7 @@ const OurProducts = () => {
       tagline: 'Social scheduling with AI',
       description: 'Plan, schedule and automate content across social platforms.',
       logo: assets.slour_logo,
+      hoverLogo: assets.slour_logo_hover,
       hoverColor: '#ef4444',
     },
     {
@@ -109,6 +110,7 @@ const OurProducts = () => {
       tagline: 'Infrastructure for digital growth',
       description: 'Reliable hosting, maintenance and systems for growing products.',
       logo: assets.inphra_logo,
+      hoverLogo: assets.inphra_logo_hover,
       hoverColor: '#0959ed',
     },
   ]

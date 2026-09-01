@@ -33,7 +33,9 @@ import hosting_icon from './hosting_icon.svg'
 import ai_icon from './Ai_Icon.svg'
 import mobile_icon from './mobile_icon.svg'
 import inphra_logo from './inphra_logo.svg'
+import inphra_logo_hover from './inphra_logo_hover.svg'
 import slour_logo from './slour_logo.svg'
+import slour_logo_hover from './slour_logo_hover.svg'
 import venuefy_logo from './venuefy_logo.svg'
 import venuefy_logo_hover from './venuefy_logo_hover.svg'
 
@@ -76,7 +78,9 @@ const assets = {
   sun_icon,
   moon_icon,
   inphra_logo,
+  inphra_logo_hover,
   slour_logo,
+  slour_logo_hover,
   venuefy_logo,
   venuefy_logo_hover
 }
