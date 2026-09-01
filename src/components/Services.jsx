@@ -105,7 +105,7 @@ const Services = () => {
 
       <Title title='How can we help?' desc='From strategy to execution, we craft digital solutions that move your business forward.' />
 
-      <div className='grid w-full max-w-6xl gap-8 sm:grid-cols-2'>
+      <div className='flex flex-col md:grid grid-cols-2'>
         {visibleServices.map((service, index) => (
           <ServiceCard key={index} service={service} index={index} />
         ))}
