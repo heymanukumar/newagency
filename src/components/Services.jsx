@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import assets from '../assets/assets'
 import Title from './Title'
 import ServiceCard from './ServiceCard'
 import { motion } from 'motion/react'
 
 const Services = () => {
+  const [showAllServices, setShowAllServices] = useState(false)
 
   const servicesData = [
     {
@@ -57,6 +58,7 @@ const Services = () => {
       // link: '/services/hosting-maintenance',
     },
   ]
+  const visibleServices = showAllServices ? servicesData : servicesData.slice(0, 4)
 
   return (
     <motion.div
@@ -72,10 +74,20 @@ const Services = () => {
       <Title title='How can we help?' desc='From strategy to execution, we craft digital solutions that move your business forward.' />
 
       <div className='flex flex-col md:grid grid-cols-2'>
-        {servicesData.map((service, index) => (
+        {visibleServices.map((service, index) => (
           <ServiceCard key={index} service={service} index={index} />
         ))}
       </div>
+
+      {!showAllServices && (
+        <button
+          type='button'
+          onClick={() => setShowAllServices(true)}
+          className='mt-2 rounded-full bg-primary px-7 py-3 text-sm font-medium text-white transition-transform hover:scale-105'
+        >
+          View All Services
+        </button>
+      )}
 
     </motion.div>
   )
