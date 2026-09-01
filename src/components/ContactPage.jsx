@@ -203,16 +203,6 @@ const ContactPage = () => {
               </label>
 
               <label className='mt-6 block text-sm font-semibold text-gray-900 dark:text-white'>
-                Company <span className='text-gray-400'>(optional)</span>
-                <input
-                  name='company'
-                  type='text'
-                  placeholder='Your company'
-                  className='mt-2 w-full rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
-                />
-              </label>
-
-              <label className='mt-6 block text-sm font-semibold text-gray-900 dark:text-white'>
                 Message
                 <textarea
                   name='message'
