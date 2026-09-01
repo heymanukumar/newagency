@@ -131,7 +131,7 @@ const App = () => {
       <SEO path={normalizedPath} />
       <Toaster />
 
-      {!isNotFoundPage && <Navbar theme={theme} setTheme={setTheme} />}
+      {!isNotFoundPage && <Navbar theme={theme} setTheme={setTheme} currentPath={currentPath} />}
 
       {isHomePage && (
         <>

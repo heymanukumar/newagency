@@ -22,9 +22,10 @@ const ProductCard = ({ product, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
       viewport={{ once: true }}
-      className='group relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-2xl shadow-gray-100 dark:shadow-white/10'
+      className='group relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 bg-white shadow-2xl shadow-gray-100 transition-all duration-300 dark:border-gray-700 dark:bg-gray-900 dark:shadow-white/10'
       style={{
         borderColor: visible ? product.hoverColor : undefined,
+        boxShadow: visible ? `0 24px 70px ${product.hoverColor}26` : undefined,
       }}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
@@ -42,11 +43,11 @@ const ProductCard = ({ product, index }) => {
       />
 
       <div
-        className='relative z-10 flex items-center gap-10 rounded-[10px] bg-white p-8 transition-all hover:m-0.5 hover:p-7.5 dark:bg-gray-900'
+        className='relative z-10 flex min-h-[220px] items-center gap-8 rounded-[10px] bg-white p-8 transition-all hover:m-0.5 hover:p-7.5 dark:bg-gray-900 max-sm:flex-col max-sm:text-center sm:gap-10'
         style={{ '--product-color': product.hoverColor }}
       >
         <div
-          className='relative grid h-24 w-24 shrink-0 place-items-center rounded-full bg-gray-100 p-4 transition-colors duration-300 dark:bg-gray-700'
+          className='relative grid h-28 w-28 shrink-0 place-items-center overflow-hidden rounded-full bg-gray-100 shadow-inner shadow-gray-200/70 transition-colors duration-300 dark:bg-gray-800 dark:shadow-black/30'
           style={{
             backgroundColor: visible ? `${product.hoverColor}14` : undefined,
           }}
@@ -54,7 +55,7 @@ const ProductCard = ({ product, index }) => {
           <img
             src={product.logo}
             alt={`${product.title} logo`}
-            className={`max-h-full max-w-full object-contain transition-opacity duration-300 ${
+            className={`h-full w-full object-contain p-5 transition-opacity duration-300 ${
               product.hoverLogo ? 'group-hover:opacity-0' : ''
             }`}
           />
@@ -62,7 +63,7 @@ const ProductCard = ({ product, index }) => {
             <img
               src={product.hoverLogo}
               alt=''
-              className='absolute max-h-16 max-w-16 object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100'
+              className='absolute inset-0 h-full w-full rounded-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100'
             />
           )}
         </div>
@@ -126,7 +127,7 @@ const OurProducts = () => {
     >
       <Title title='Our products' desc='Amazonis builds and operates digital products designed for real business growth.' />
 
-      <div className='flex flex-col md:grid grid-cols-2'>
+      <div className='grid w-full max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3'>
         {productData.map((product, index) => (
           <ProductCard key={product.title} product={product} index={index} />
         ))}

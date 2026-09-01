@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import assets from '../assets/assets'
 import ThemeToggleBtn from './ThemeToggleBtn'
@@ -12,12 +12,51 @@ const menuLinks = [
   { name: 'Contact', href: '/#contact-us' },
 ]
 
-const Navbar = ({ theme, setTheme }) => {
+const Navbar = ({ theme, setTheme, currentPath }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [activeHref, setActiveHref] = useState('/#hero')
 
   const closeSidebar = () => {
     setSidebarOpen(false)
   }
+
+  useEffect(() => {
+    const normalizedPath = currentPath.replace(/\/$/, '') || '/'
+
+    if (normalizedPath === '/about') {
+      setActiveHref('/about')
+      return
+    }
+
+    if (normalizedPath !== '/') {
+      setActiveHref('')
+      return
+    }
+
+    const sectionLinks = menuLinks.filter((link) => link.href.startsWith('/#'))
+
+    const updateActiveSection = () => {
+      const selectedLink = sectionLinks.reduce((activeLink, link) => {
+        const section = document.querySelector(link.href.slice(1))
+
+        if (!section) {
+          return activeLink
+        }
+
+        const rect = section.getBoundingClientRect()
+        return rect.top <= 120 ? link : activeLink
+      }, sectionLinks[0])
+
+      setActiveHref(selectedLink.href)
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+    }
+  }, [currentPath])
 
   return (
     <motion.header
@@ -51,16 +90,24 @@ const Navbar = ({ theme, setTheme }) => {
           <img src={assets.close_icon} alt='' className='w-5' />
         </button>
 
-        {menuLinks.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            onClick={closeSidebar}
-            className='sm:hover:border-b'
-          >
-            {link.name}
-          </a>
-        ))}
+        {menuLinks.map((link) => {
+          const isActive = activeHref === link.href
+
+          return (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={closeSidebar}
+              className={`border-b-2 pb-1 transition-colors ${
+                isActive
+                  ? 'border-primary text-primary'
+                  : 'border-transparent hover:border-gray-400 dark:hover:border-gray-300'
+              }`}
+            >
+              {link.name}
+            </a>
+          )
+        })}
       </nav>
 
       <div className='flex items-center gap-2 sm:gap-4'>
