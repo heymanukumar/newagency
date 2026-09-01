@@ -67,7 +67,7 @@ const legalPages = {
       {
         title: '9. Contact',
         body: [
-          'For questions about these terms, contact Amazonis IT Services Pvt. Ltd. at contact@amazonis.in.',
+          'For questions about these terms, contact Amazonis IT Services Pvt. Ltd. at info@amazonis.in.',
         ],
       },
     ],
@@ -145,7 +145,7 @@ const legalPages = {
       {
         title: '4. Contact',
         body: [
-          'For refund requests, email contact@amazonis.in with your invoice number, project name, and reason for the request.',
+          'For refund requests, email info@amazonis.in with your invoice number, project name, and reason for the request.',
         ],
       },
     ],
@@ -160,7 +160,7 @@ const legalPages = {
       {
         title: '1. Cancellation requests',
         body: [
-          'A cancellation request should be sent in writing to contact@amazonis.in. Work may continue until the request is received and acknowledged.',
+          'A cancellation request should be sent in writing to info@amazonis.in. Work may continue until the request is received and acknowledged.',
           'Please include your invoice number, project name, reason for cancellation, and the requested cancellation date.',
         ],
       },
@@ -187,7 +187,7 @@ const legalPages = {
       {
         title: '5. Contact',
         body: [
-          'For cancellation requests, email contact@amazonis.in with the relevant project or invoice details.',
+          'For cancellation requests, email info@amazonis.in with the relevant project or invoice details.',
         ],
       },
     ],
@@ -227,7 +227,7 @@ const legalPages = {
       },
       {
         title: '5. Contact',
-        body: ['For questions about this Disclaimer, contact Amazonis at contact@amazonis.in.'],
+        body: ['For questions about this Disclaimer, contact Amazonis at info@amazonis.in.'],
       },
     ],
   },

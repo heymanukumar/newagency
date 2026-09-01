@@ -3,6 +3,27 @@ import { motion } from 'motion/react'
 import toast from 'react-hot-toast'
 import assets from '../assets/assets'
 
+const contactDetails = [
+  {
+    label: 'Email',
+    value: 'info@amazonis.in',
+    href: 'mailto:info@amazonis.in',
+  },
+  {
+    label: 'Mobile',
+    value: '+91 9971228021',
+    href: 'tel:+919971228021',
+  },
+  {
+    label: 'Address',
+    value: 'Fl 19, C-001/A2, Sector 16B, Noida, Uttar Pradesh 201301',
+  },
+  {
+    label: 'Registered Office',
+    value: '11/48 DSIDC, Pocket-II, Mayur Vihar Phase-l, East Delhi, Delhi-110091',
+  },
+]
+
 const ContactPage = () => {
   const onSubmit = async (event) => {
     event.preventDefault()
@@ -84,6 +105,31 @@ const ContactPage = () => {
                   Before sending a message, add your project details, timeline and contact
                   information so our team can respond clearly.
                 </p>
+              </div>
+
+              <div className='mt-10 grid gap-4'>
+                {contactDetails.map((detail) => (
+                  <div
+                    key={detail.label}
+                    className='rounded-lg border border-gray-200 bg-white/75 p-5 shadow-sm backdrop-blur dark:border-gray-700 dark:bg-gray-900/75'
+                  >
+                    <p className='text-xs font-extrabold uppercase tracking-[0.18em] text-primary'>
+                      {detail.label}
+                    </p>
+                    {detail.href ? (
+                      <a
+                        href={detail.href}
+                        className='mt-2 block text-base font-semibold leading-7 text-[#0b2148] transition-colors hover:text-primary dark:text-white'
+                      >
+                        {detail.value}
+                      </a>
+                    ) : (
+                      <p className='mt-2 text-base font-semibold leading-7 text-[#0b2148] dark:text-white'>
+                        {detail.value}
+                      </p>
+                    )}
+                  </div>
+                ))}
               </div>
             </motion.div>
 

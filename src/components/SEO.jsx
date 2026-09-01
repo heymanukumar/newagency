@@ -20,7 +20,7 @@ const pageMeta = {
       logo: `${siteUrl}/web-app-manifest-512x512.png`,
       contactPoint: {
         '@type': 'ContactPoint',
-        email: 'contact@amazonis.in',
+        email: 'info@amazonis.in',
         contactType: 'customer support',
         areaServed: 'IN',
         availableLanguage: ['en', 'hi'],

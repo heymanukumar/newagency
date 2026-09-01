@@ -296,8 +296,8 @@ const sections = [
           <p>New Delhi, India</p>
           <p>
             Email:{' '}
-            <a className='underline underline-offset-4' href='mailto:contact@amazonis.in'>
-              contact@amazonis.in
+            <a className='underline underline-offset-4' href='mailto:info@amazonis.in'>
+              info@amazonis.in
             </a>
           </p>
           <p>
