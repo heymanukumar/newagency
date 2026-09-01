@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import TrustedBy from './components/TrustedBy'
 import Services from './components/Services'
+import OurWork from './components/OurWork'
+import OurProducts from './components/OurProducts'
 import ContactUs from './components/ContactUs'
 import About from './components/About'
 import NotFound from './components/NotFound'
@@ -137,6 +139,8 @@ const App = () => {
           <Hero />
           <TrustedBy />
           <Services />
+          <OurWork />
+          <OurProducts />
           <ContactUs />
         </>
       )}

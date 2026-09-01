@@ -7,7 +7,7 @@ import ThemeToggleBtn from './ThemeToggleBtn'
 const menuLinks = [
   { name: 'Home', href: '/#hero' },
   { name: 'Services', href: '/#services' },
-  { name: 'Work', href: '/about#our-work' },
+  { name: 'Work', href: '/#our-work' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/#contact-us' },
 ]
