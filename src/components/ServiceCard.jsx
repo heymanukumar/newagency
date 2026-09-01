@@ -1,70 +1,57 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import { motion } from 'motion/react'
 
 const ServiceCard = ({ service, index }) => {
+  const isExternalLink = service.link?.startsWith('http')
 
-    const [position, setPosition] = useState({ x: 0, y: 0 })
-    const [visible, setVisible] = useState(false)
+  return (
+    <motion.a
+      href={service.link || '#contact-us'}
+      target={isExternalLink ? '_blank' : '_self'}
+      rel={isExternalLink ? 'noopener noreferrer' : undefined}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.15 }}
+      viewport={{ once: true }}
+      className='group relative min-h-[360px] overflow-hidden rounded-[32px] bg-black p-7 text-white shadow-2xl shadow-black/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/20 sm:min-h-[390px] sm:p-8'
+    >
+      <div className={`absolute -top-24 -right-24 h-64 w-64 rounded-full blur-3xl ${service.glow}`} />
+      <div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.16),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.08),transparent_42%)]' />
 
-    const divRef = useRef(null)
+      <div className='absolute inset-x-7 top-7 flex items-center justify-between sm:inset-x-8 sm:top-8'>
+        <span className='text-xs font-semibold uppercase tracking-[0.22em] text-white/55'>
+          Amazonis service
+        </span>
+        <span className={`h-3 w-3 rounded-full bg-gradient-to-r ${service.accent}`} />
+      </div>
 
-    const handleMouseMove = (e) => {
-        const bounds = divRef.current.getBoundingClientRect()
-        setPosition({
-            x: e.clientX - bounds.left,
-            y: e.clientY - bounds.top
-        })
-    }
+      <div className='relative flex h-full min-h-[306px] flex-col justify-between sm:min-h-[326px]'>
+        <div className='pt-14'>
+          <div className={`mx-auto grid h-24 w-24 place-items-center rounded-[26px] bg-gradient-to-br ${service.accent} text-4xl font-black text-black shadow-2xl shadow-white/10 transition-transform duration-500 group-hover:scale-110 sm:h-28 sm:w-28 sm:rounded-[28px] sm:text-5xl`}>
+            {service.mark}
+          </div>
+          <h3 className='mx-auto mt-8 max-w-sm text-center text-3xl font-extrabold leading-tight sm:text-4xl'>
+            {service.title}
+          </h3>
+          <p className='mt-3 text-center text-base font-semibold text-white/80'>
+            {service.tagline}
+          </p>
+        </div>
 
-    const CardContent = (
-        <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            className="relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-2xl shadow-gray-100 dark:shadow-white/10"
-            onMouseEnter={() => setVisible(true)}
-            onMouseLeave={() => setVisible(false)}
-            ref={divRef}
-            onMouseMove={handleMouseMove}
-        >
-            <div
-                className={`pointer-events-none blur-2xl rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 w-[300px] h-[300px] absolute z-0 transition-opacity duration-500 mix-blend-lighten ${
-                    visible ? 'opacity-70' : 'opacity-0'
-                }`}
-                style={{
-                    top: position.y - 150,
-                    left: position.x - 150,
-                }}
-            />
-
-            <div className="flex items-center gap-10 p-8 hover:p-7.5 hover:m-0.5 transition-all rounded-[10px] bg-white dark:bg-gray-900 z-10 relative">
-                <div className="bg-gray-100 dark:bg-gray-700 rounded-full">
-                    <img
-                        src={service.icon}
-                        alt={service.title}
-                        className="max-w-24 bg-white dark:bg-gray-900 rounded-full m-2"
-                    />
-                </div>
-
-                <div className="flex-1">
-                    <h3 className="font-bold">{service.title}</h3>
-                    <p className="text-sm mt-2">{service.description}</p>
-                </div>
-            </div>
-        </motion.div>
-    )
-
-    return (
-        <a
-            href={service.link || "/"}
-            target={service.link ? "_blank" : "_self"}
-            rel="noopener noreferrer"
-            className="block"
-        >
-            {CardContent}
-        </a>
-    )
+        <div>
+          <p className='mx-auto max-w-sm text-center text-sm leading-7 text-white/60'>
+            {service.description}
+          </p>
+          <div className='mt-7 flex items-center justify-center gap-2 text-xl font-extrabold sm:text-2xl'>
+            <span className={`grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br ${service.accent} text-lg text-black`}>
+              {service.mark}
+            </span>
+            <span>{service.button || 'Learn More'}</span>
+          </div>
+        </div>
+      </div>
+    </motion.a>
+  )
 }
 
 export default ServiceCard
