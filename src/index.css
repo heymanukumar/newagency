@@ -113,9 +113,30 @@
   color: #ffffff;
 }
 
-.dark .privacy-policy-content .policy-contact-card,
-.dark .privacy-policy-content .policy-contact-card p,
-.dark .privacy-policy-content .policy-contact-card strong,
-.dark .privacy-policy-content .policy-contact-card a {
-  color: #111827;
+.privacy-policy-content .policy-contact-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(77, 140, 234, 0.34);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    radial-gradient(circle at 50% 48%, rgba(72, 140, 255, 0.18), transparent 34%),
+    linear-gradient(180deg, #03045f 0%, #092aa0 48%, #0063df 100%);
+  background-size: 96px 96px, 96px 96px, 100% 100%, 100% 100%;
+  box-shadow: 0 24px 70px rgba(0, 64, 193, 0.26);
+}
+
+.privacy-policy-content .policy-contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(1, 8, 60, 0.24), transparent 36%, rgba(0, 89, 220, 0.16)),
+    radial-gradient(circle at 50% 56%, rgba(255, 255, 255, 0.12), transparent 18%);
+  pointer-events: none;
+}
+
+.privacy-policy-content .policy-contact-card > * {
+  position: relative;
+  z-index: 1;
 }

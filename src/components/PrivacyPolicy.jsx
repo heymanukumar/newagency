@@ -562,7 +562,7 @@ const sections = [
     content: (
       <>
         <p>For privacy-related questions, access or correction requests, complaints, or grievances, contact:</p>
-        <div className='policy-contact-card mt-6 rounded-lg bg-gray-950 p-6 text-white dark:bg-white dark:text-gray-950'>
+        <div className='policy-contact-card mt-6 rounded-lg p-6 text-white'>
           <p><strong>Grievance Officer / Privacy Contact</strong></p>
           <p><strong>Amazonis IT Services Pvt. Ltd.</strong></p>
           <p className='mt-4'><strong>Registered Office:</strong></p>
