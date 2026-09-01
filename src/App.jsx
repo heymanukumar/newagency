@@ -25,6 +25,8 @@ const appRoutes = [
   '/refund-policy',
   '/cancellation-policy',
   '/disclaimer',
+  '/acceptable-use-policy',
+  '/service-delivery-fulfilment-policy',
   '/sitemap',
 ]
 
@@ -50,6 +52,8 @@ const App = () => {
     '/refund-policy',
     '/cancellation-policy',
     '/disclaimer',
+    '/acceptable-use-policy',
+    '/service-delivery-fulfilment-policy',
   ].includes(normalizedPath)
   const isSitemapPage = normalizedPath === '/sitemap'
   const isNotFoundPage = !appRoutes.includes(normalizedPath)

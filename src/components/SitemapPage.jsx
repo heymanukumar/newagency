@@ -34,6 +34,16 @@ const pages = [
     href: '/disclaimer',
     description: 'Important limitations about website information and service outcomes.',
   },
+  {
+    label: 'Acceptable Use Policy',
+    href: '/acceptable-use-policy',
+    description: 'Rules for using Amazonis websites, products and platforms.',
+  },
+  {
+    label: 'Service Delivery and Fulfilment Policy',
+    href: '/service-delivery-fulfilment-policy',
+    description: 'How Amazonis handles service delivery and fulfilment.',
+  },
 ]
 
 const SitemapPage = () => {

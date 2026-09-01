@@ -4,6 +4,8 @@ import refundPolicy from '../content/refund-policy.md?raw'
 import cookiePolicy from '../content/cookie-policy.md?raw'
 import cancellationPolicy from '../content/cancellation-policy.md?raw'
 import disclaimerPolicy from '../content/disclaimer.md?raw'
+import acceptableUsePolicy from '../content/acceptable-use-policy.md?raw'
+import serviceDeliveryFulfilmentPolicy from '../content/service-delivery-fulfilment-policy.md?raw'
 import PolicyTableOfContents from './PolicyTableOfContents'
 
 const getSectionId = (title) =>
@@ -171,6 +173,24 @@ const legalPages = {
     intro:
       'This Disclaimer explains important limitations about website information, service outcomes, and third-party dependencies.',
     markdown: disclaimerPolicy,
+  },
+  '/acceptable-use-policy': {
+    eyebrow: 'Legal',
+    title: 'Acceptable Use Policy',
+    effectiveDate: '1 September 2026',
+    lastUpdated: '1 September 2026',
+    intro:
+      'This Acceptable Use Policy explains the rules for using Amazonis websites, services, products, platforms and digital systems.',
+    markdown: acceptableUsePolicy,
+  },
+  '/service-delivery-fulfilment-policy': {
+    eyebrow: 'Legal',
+    title: 'Service Delivery and Fulfilment Policy',
+    effectiveDate: '1 September 2026',
+    lastUpdated: '1 September 2026',
+    intro:
+      'This Service Delivery and Fulfilment Policy explains how Amazonis handles delivery, timelines, fulfilment and service completion.',
+    markdown: serviceDeliveryFulfilmentPolicy,
   },
 }
 

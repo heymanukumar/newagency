@@ -177,6 +177,44 @@ const pageMeta = {
       },
     },
   },
+  '/acceptable-use-policy': {
+    title: 'Acceptable Use Policy | Amazonis IT Services Pvt. Ltd.',
+    description:
+      'Read the Acceptable Use Policy for Amazonis websites, services, products, platforms and digital systems.',
+    path: '/acceptable-use-policy',
+    type: 'article',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Acceptable Use Policy',
+      url: `${siteUrl}/acceptable-use-policy`,
+      dateModified: '2026-09-01',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: siteName,
+        url: siteUrl,
+      },
+    },
+  },
+  '/service-delivery-fulfilment-policy': {
+    title: 'Service Delivery and Fulfilment Policy | Amazonis IT Services Pvt. Ltd.',
+    description:
+      'Read how Amazonis handles service delivery, fulfilment, timelines, customer responsibilities and completion.',
+    path: '/service-delivery-fulfilment-policy',
+    type: 'article',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Service Delivery and Fulfilment Policy',
+      url: `${siteUrl}/service-delivery-fulfilment-policy`,
+      dateModified: '2026-09-01',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: siteName,
+        url: siteUrl,
+      },
+    },
+  },
   '/sitemap': {
     title: 'Sitemap | Amazonis IT Services',
     description: 'Browse all public pages, legal policies, and sitemap resources from Amazonis.',
