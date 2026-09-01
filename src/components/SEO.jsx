@@ -11,7 +11,7 @@ const pageMeta = {
       'Amazonis IT Services Pvt. Ltd. builds websites, AI solutions, mobile apps, e-commerce platforms, SEO campaigns and digital growth systems for modern businesses.',
     path: '/',
     type: 'website',
-    schema: {
+      schema: {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'Amazonis IT Services Pvt. Ltd.',
@@ -81,7 +81,7 @@ const pageMeta = {
       '@type': 'WebPage',
       name: 'Privacy Policy',
       url: `${siteUrl}/privacy-policy`,
-      dateModified: '2026-08-31',
+      dateModified: '2026-09-01',
       isPartOf: {
         '@type': 'WebSite',
         name: siteName,
