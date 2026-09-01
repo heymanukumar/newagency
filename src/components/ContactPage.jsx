@@ -24,6 +24,9 @@ const contactDetails = [
   },
 ]
 
+const officeAddress = 'Fl 19, C-001/A2, Sector 16B, Noida, Uttar Pradesh 201301'
+const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(officeAddress)}&output=embed`
+
 const ContactPage = () => {
   const onSubmit = async (event) => {
     event.preventDefault()
@@ -237,6 +240,34 @@ const ContactPage = () => {
               </button>
             </motion.form>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.15 }}
+            viewport={{ once: true }}
+            className='relative mt-12 overflow-hidden rounded-xl border border-gray-200 bg-slate-100 shadow-2xl shadow-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/30'
+          >
+            <div className='absolute left-4 top-4 z-10 max-w-sm rounded-lg bg-white/95 p-4 shadow-xl backdrop-blur dark:bg-gray-950/90'>
+              <p className='text-xs font-extrabold uppercase tracking-[0.18em] text-primary'>
+                Visit Us
+              </p>
+              <p className='mt-2 text-sm font-bold leading-6 text-[#0b2148] dark:text-white'>
+                Amazonis IT Services Pvt. Ltd.
+              </p>
+              <p className='mt-1 text-sm leading-6 text-gray-600 dark:text-gray-300'>
+                {officeAddress}
+              </p>
+            </div>
+            <iframe
+              title='Amazonis office location map'
+              src={mapUrl}
+              className='h-[320px] w-full border-0 grayscale sm:h-[420px]'
+              loading='lazy'
+              referrerPolicy='no-referrer-when-downgrade'
+              allowFullScreen
+            />
+          </motion.div>
         </div>
       </section>
     </main>
