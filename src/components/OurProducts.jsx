@@ -4,6 +4,8 @@ import Title from './Title'
 import { motion } from 'motion/react'
 
 const ProductCard = ({ product, index }) => {
+  const isComingSoon = product.status === 'coming-soon'
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -38,27 +40,39 @@ const ProductCard = ({ product, index }) => {
           )}
         </div>
 
-        <div className='mt-8 flex-1'>
-          <h3 className='text-3xl font-extrabold leading-tight text-[#0b2148] dark:text-white'>
-            {product.title}
-          </h3>
-          <p className='mt-5 inline-flex rounded-full bg-gray-100 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#0b2148] transition-colors duration-300 group-hover:bg-[var(--product-color)]/10 group-hover:text-[var(--product-color)] dark:bg-gray-800 dark:text-gray-200'>
-            {product.category}
-          </p>
-          <p className='mt-6 text-base leading-8 text-gray-600 dark:text-gray-400'>
-            {product.description}
-          </p>
-        </div>
+        <div className='relative mt-8 flex flex-1 flex-col'>
+          <div className={isComingSoon ? 'pointer-events-none select-none blur-[3px]' : ''}>
+            <div className='flex-1'>
+              <h3 className='text-3xl font-extrabold leading-tight text-[#0b2148] dark:text-white'>
+                {product.title}
+              </h3>
+              <p className='mt-5 inline-flex rounded-full bg-gray-100 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#0b2148] transition-colors duration-300 group-hover:bg-[var(--product-color)]/10 group-hover:text-[var(--product-color)] dark:bg-gray-800 dark:text-gray-200'>
+                {product.category}
+              </p>
+              <p className='mt-6 text-base leading-8 text-gray-600 dark:text-gray-400'>
+                {product.description}
+              </p>
+            </div>
 
-        <a
-          href={product.href}
-          target={product.href.startsWith('http') ? '_blank' : '_self'}
-          rel={product.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-          className='mt-8 inline-flex w-max items-center gap-3 border-b-2 border-[#0b2148] pb-2 text-sm font-extrabold text-[#0b2148] transition-colors duration-300 group-hover:border-[var(--product-color)] group-hover:text-[var(--product-color)] dark:border-white dark:text-white'
-        >
-          Explore product
-          <span aria-hidden='true'>→</span>
-        </a>
+            <a
+              href={product.href}
+              target={product.href.startsWith('http') ? '_blank' : '_self'}
+              rel={product.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className='mt-8 inline-flex w-max items-center gap-3 border-b-2 border-[#0b2148] pb-2 text-sm font-extrabold text-[#0b2148] transition-colors duration-300 group-hover:border-[var(--product-color)] group-hover:text-[var(--product-color)] dark:border-white dark:text-white'
+            >
+              Explore product
+              <span aria-hidden='true'>→</span>
+            </a>
+          </div>
+
+          {isComingSoon && (
+            <div className='absolute inset-0 z-20 grid place-items-center rounded-xl bg-white/45 backdrop-blur-[1px] dark:bg-gray-900/45'>
+              <span className='rounded-full bg-[var(--product-color)] px-5 py-2 text-sm font-extrabold uppercase tracking-[0.18em] text-white shadow-lg'>
+                Coming soon
+              </span>
+            </div>
+          )}
+        </div>
       </div>
     </motion.div>
   )
@@ -95,6 +109,7 @@ const OurProducts = () => {
       hoverLogo: assets.inphra_logo_hover,
       hoverColor: '#0959ed',
       href: 'https://inphra.in/',
+      status: 'coming-soon',
     },
   ]
 
