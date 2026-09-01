@@ -35,6 +35,7 @@ import mobile_icon from './mobile_icon.svg'
 import inphra_logo from './inphra_logo.svg'
 import slour_logo from './slour_logo.svg'
 import venuefy_logo from './venuefy_logo.svg'
+import venuefy_logo_hover from './venuefy_logo_hover.svg'
 
 
 
@@ -76,7 +77,8 @@ const assets = {
   moon_icon,
   inphra_logo,
   slour_logo,
-  venuefy_logo
+  venuefy_logo,
+  venuefy_logo_hover
 }
 
 export default assets

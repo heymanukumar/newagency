@@ -23,6 +23,9 @@ const ProductCard = ({ product, index }) => {
       transition={{ duration: 0.5, delay: index * 0.2 }}
       viewport={{ once: true }}
       className='group relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-2xl shadow-gray-100 dark:shadow-white/10'
+      style={{
+        borderColor: visible ? product.hoverColor : undefined,
+      }}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
       onMouseMove={handleMouseMove}
@@ -42,12 +45,26 @@ const ProductCard = ({ product, index }) => {
         className='relative z-10 flex items-center gap-10 rounded-[10px] bg-white p-8 transition-all hover:m-0.5 hover:p-7.5 dark:bg-gray-900'
         style={{ '--product-color': product.hoverColor }}
       >
-        <div className='grid h-24 w-24 shrink-0 place-items-center rounded-full bg-gray-100 p-4 transition-colors duration-300 group-hover:bg-[var(--product-color)] dark:bg-gray-700'>
+        <div
+          className='relative grid h-24 w-24 shrink-0 place-items-center rounded-full bg-gray-100 p-4 transition-colors duration-300 dark:bg-gray-700'
+          style={{
+            backgroundColor: visible ? `${product.hoverColor}14` : undefined,
+          }}
+        >
           <img
             src={product.logo}
             alt={`${product.title} logo`}
-            className='max-h-full max-w-full object-contain'
+            className={`max-h-full max-w-full object-contain transition-opacity duration-300 ${
+              product.hoverLogo ? 'group-hover:opacity-0' : ''
+            }`}
           />
+          {product.hoverLogo && (
+            <img
+              src={product.hoverLogo}
+              alt=''
+              className='absolute max-h-16 max-w-16 object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100'
+            />
+          )}
         </div>
 
         <div className='flex-1'>
@@ -77,6 +94,7 @@ const OurProducts = () => {
       tagline: 'Venue booking made simple',
       description: 'Discover, manage and book event venues with confidence.',
       logo: assets.venuefy_logo,
+      hoverLogo: assets.venuefy_logo_hover,
       hoverColor: '#162c53',
     },
     {
