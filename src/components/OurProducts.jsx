@@ -74,7 +74,7 @@ const OurProducts = () => {
       logo: assets.venuefy_logo,
       hoverLogo: assets.venuefy_logo_hover,
       hoverColor: '#162c53',
-      href: '#',
+      href: 'https://venuefy.in/',
     },
     {
       title: 'Slour',
@@ -94,7 +94,7 @@ const OurProducts = () => {
       logo: assets.inphra_logo,
       hoverLogo: assets.inphra_logo_hover,
       hoverColor: '#0959ed',
-      href: '#',
+      href: 'https://inphra.in/',
     },
   ]
 
