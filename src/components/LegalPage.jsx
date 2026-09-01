@@ -4,6 +4,26 @@ import refundPolicy from '../content/refund-policy.md?raw'
 import cookiePolicy from '../content/cookie-policy.md?raw'
 import cancellationPolicy from '../content/cancellation-policy.md?raw'
 import disclaimerPolicy from '../content/disclaimer.md?raw'
+import PolicyTableOfContents from './PolicyTableOfContents'
+
+const getSectionId = (title) =>
+  title
+    .replace(/^\d+\.\s*/, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+
+const getMarkdownSections = (markdown) =>
+  markdown
+    .split('\n')
+    .filter((line) => line.startsWith('## '))
+    .map((line) => {
+      const title = line.replace(/^##\s+/, '')
+      return {
+        id: getSectionId(title),
+        title,
+      }
+    })
 
 const renderInline = (text) => {
   const parts = []
@@ -55,7 +75,12 @@ const renderMarkdown = (markdown) => {
     }
 
     if (line.startsWith('## ')) {
-      blocks.push(<h2 key={`h2-${index}`}>{line.replace(/^##\s+/, '')}</h2>)
+      const title = line.replace(/^##\s+/, '')
+      blocks.push(
+        <h2 key={`h2-${index}`} id={getSectionId(title)} className='scroll-mt-28'>
+          {title}
+        </h2>
+      )
       index += 1
       continue
     }
@@ -156,6 +181,13 @@ const LegalPage = ({ path }) => {
     return null
   }
 
+  const tocSections = page.markdown
+    ? getMarkdownSections(page.markdown)
+    : page.sections.map((section) => ({
+        id: getSectionId(section.title),
+        title: section.title,
+      }))
+
   return (
     <main className='bg-white text-gray-950 dark:bg-black dark:text-white'>
       <section className='border-b border-gray-200 bg-gradient-to-b from-blue-50 to-white px-4 py-16 sm:px-10 sm:py-20 lg:px-24 xl:px-40 dark:border-gray-800 dark:from-gray-950 dark:to-black'>
@@ -174,28 +206,33 @@ const LegalPage = ({ path }) => {
         </p>
       </section>
 
-      <article className='privacy-policy-content mx-auto w-full max-w-4xl px-4 py-14 sm:px-10 lg:py-20'>
-        {page.markdown
-          ? renderMarkdown(page.markdown)
-          : page.sections.map((section) => (
-              <section
-                key={section.title}
-                className='border-gray-200 first:border-t-0 [&+section]:mt-12 [&+section]:border-t [&+section]:pt-12 dark:border-gray-800'
-              >
-                <h2>{section.title}</h2>
-                {section.body?.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-                {section.list && (
-                  <ul>
-                    {section.list.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                )}
-              </section>
-            ))}
-      </article>
+      <div className='mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-14 sm:px-10 lg:grid-cols-[260px_minmax(0,760px)] lg:justify-center lg:gap-16 lg:px-8 lg:py-20'>
+        <PolicyTableOfContents sections={tocSections} />
+
+        <article className='privacy-policy-content'>
+          {page.markdown
+            ? renderMarkdown(page.markdown)
+            : page.sections.map((section) => (
+                <section
+                  key={section.title}
+                  id={getSectionId(section.title)}
+                  className='scroll-mt-28 border-gray-200 first:border-t-0 [&+section]:mt-12 [&+section]:border-t [&+section]:pt-12 dark:border-gray-800'
+                >
+                  <h2>{section.title}</h2>
+                  {section.body?.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                  {section.list && (
+                    <ul>
+                      {section.list.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              ))}
+        </article>
+      </div>
     </main>
   )
 }

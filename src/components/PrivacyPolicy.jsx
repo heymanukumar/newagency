@@ -1,4 +1,5 @@
 import React from 'react'
+import PolicyTableOfContents from './PolicyTableOfContents'
 
 const contactEmail = 'info@amazonis.in'
 
@@ -610,20 +611,7 @@ const PrivacyPolicy = () => {
       </section>
 
       <div className='mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-14 sm:px-10 lg:grid-cols-[260px_minmax(0,760px)] lg:justify-center lg:gap-16 lg:px-8 lg:py-20'>
-        <aside className='h-fit rounded-lg border border-gray-200 bg-slate-50 p-6 lg:sticky lg:top-28 dark:border-gray-800 dark:bg-gray-900'>
-          <p className='mb-4 text-xs font-extrabold uppercase tracking-widest text-gray-950 dark:text-white'>
-            On this page
-          </p>
-          <ol className='space-y-2 pl-5 text-sm leading-6 text-gray-600 dark:text-gray-300'>
-            {sections.map((section) => (
-              <li key={section.id}>
-                <a className='hover:text-primary' href={`#${section.id}`}>
-                  {section.title.replace(/^\d+\.\s/, '')}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </aside>
+        <PolicyTableOfContents sections={sections} />
 
         <article className='privacy-policy-content'>
           {sections.map((section) => (
