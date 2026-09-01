@@ -20,8 +20,12 @@ const ProductCard = ({ product, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
       viewport={{ once: true }}
-      className='group relative flex min-h-[430px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-7 shadow-2xl shadow-gray-100 transition-all duration-300 hover:-translate-y-1 dark:border-gray-700 dark:bg-gray-900 dark:shadow-white/10'
-      style={{ '--product-color': product.hoverColor }}
+      className='group relative flex min-h-[430px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-7 shadow-[0_24px_80px_var(--product-glow)] transition-all duration-300 before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_50%_0%,var(--product-glow),transparent_54%)] before:opacity-70 before:transition-opacity before:duration-300 hover:-translate-y-1 hover:shadow-[0_30px_100px_var(--product-glow-strong)] hover:before:opacity-100 dark:border-gray-700 dark:bg-gray-900'
+      style={{
+        '--product-color': product.hoverColor,
+        '--product-glow': product.glowColor,
+        '--product-glow-strong': product.strongGlowColor,
+      }}
     >
       <span
         className='absolute inset-x-0 top-0 h-1.5 bg-[var(--product-color)]'
@@ -93,6 +97,8 @@ const OurProducts = () => {
       logo: assets.venuefy_logo,
       hoverLogo: assets.venuefy_logo_hover,
       hoverColor: '#162c53',
+      glowColor: 'rgba(22, 44, 83, 0.14)',
+      strongGlowColor: 'rgba(22, 44, 83, 0.24)',
       href: 'https://venuefy.in/',
     },
     {
@@ -103,6 +109,8 @@ const OurProducts = () => {
       logo: assets.slour_logo,
       hoverLogo: assets.slour_logo_hover,
       hoverColor: '#ef4444',
+      glowColor: 'rgba(239, 68, 68, 0.14)',
+      strongGlowColor: 'rgba(239, 68, 68, 0.24)',
       href: 'https://slour.in/',
     },
     {
@@ -113,6 +121,8 @@ const OurProducts = () => {
       logo: assets.inphra_logo,
       hoverLogo: assets.inphra_logo_hover,
       hoverColor: '#0959ed',
+      glowColor: 'rgba(9, 89, 237, 0.14)',
+      strongGlowColor: 'rgba(9, 89, 237, 0.24)',
       href: 'https://inphra.in/',
       status: 'coming-soon',
     },

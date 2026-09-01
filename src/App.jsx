@@ -13,10 +13,12 @@ import PrivacyPolicy from './components/PrivacyPolicy'
 import SEO from './components/SEO'
 import LegalPage from './components/LegalPage'
 import SitemapPage from './components/SitemapPage'
+import ContactPage from './components/ContactPage'
 
 const appRoutes = [
   '/',
   '/about',
+  '/contact',
   '/privacy-policy',
   '/terms-and-conditions',
   '/cookie-policy',
@@ -40,6 +42,7 @@ const App = () => {
   const normalizedPath = currentPath.replace(/\/$/, '') || '/'
   const isHomePage = normalizedPath === '/'
   const isAboutPage = normalizedPath === '/about'
+  const isContactPage = normalizedPath === '/contact'
   const isPrivacyPolicyPage = normalizedPath === '/privacy-policy'
   const isLegalPage = [
     '/terms-and-conditions',
@@ -144,6 +147,7 @@ const App = () => {
       )}
 
       {isAboutPage && <About />}
+      {isContactPage && <ContactPage />}
       {isPrivacyPolicyPage && <PrivacyPolicy />}
       {isLegalPage && <LegalPage path={normalizedPath} />}
       {isSitemapPage && <SitemapPage />}

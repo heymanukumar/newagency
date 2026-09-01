@@ -9,7 +9,7 @@ const menuLinks = [
   { name: 'Services', href: '/#services' },
   { name: 'Work', href: '/#our-work' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/#contact-us' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 const Navbar = ({ theme, setTheme, currentPath }) => {
@@ -25,6 +25,11 @@ const Navbar = ({ theme, setTheme, currentPath }) => {
 
     if (normalizedPath === '/about') {
       setActiveHref('/about')
+      return
+    }
+
+    if (normalizedPath === '/contact') {
+      setActiveHref('/contact')
       return
     }
 
@@ -127,7 +132,7 @@ const Navbar = ({ theme, setTheme, currentPath }) => {
         </button>
 
         <a
-          href='/#contact-us'
+          href='/contact'
           className='text-sm max-sm:hidden flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full hover:scale-103 transition-all'
         >
           Connect

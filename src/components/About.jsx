@@ -80,20 +80,20 @@ const About = () => {
             </motion.div>
           </div>
 
-          <div className='mt-14 pt-10 border-t border-gray-200 dark:border-gray-700 grid sm:grid-cols-3 gap-8'>
-            <div>
+          <div className='mt-14 pt-10 border-t border-gray-200 dark:border-gray-700 grid sm:grid-cols-3 gap-8 text-center'>
+            <div className='flex flex-col items-center'>
               <strong className='block text-3xl font-semibold text-primary'>3</strong>
               <span className='block mt-2 text-sm text-gray-600 dark:text-gray-400'>
                 Owned digital products
               </span>
             </div>
-            <div>
+            <div className='flex flex-col items-center'>
               <strong className='block text-3xl font-semibold text-primary'>End-to-end</strong>
               <span className='block mt-2 text-sm text-gray-600 dark:text-gray-400'>
                 Strategy to ongoing support
               </span>
             </div>
-            <div>
+            <div className='flex flex-col items-center'>
               <strong className='block text-3xl font-semibold text-primary'>India</strong>
               <span className='block mt-2 text-sm text-gray-600 dark:text-gray-400'>
                 Built locally, designed to scale

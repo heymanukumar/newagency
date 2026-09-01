@@ -51,6 +51,24 @@ const pageMeta = {
       },
     },
   },
+  '/contact': {
+    title: 'Contact Amazonis | Get in Touch',
+    description:
+      'Contact Amazonis IT Services Pvt. Ltd. for websites, apps, AI solutions, digital marketing, hosting, maintenance and technology support.',
+    path: '/contact',
+    type: 'website',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      name: 'Contact Amazonis',
+      url: `${siteUrl}/contact`,
+      isPartOf: {
+        '@type': 'WebSite',
+        name: siteName,
+        url: siteUrl,
+      },
+    },
+  },
   '/privacy-policy': {
     title: 'Privacy Policy | Amazonis IT Services Pvt. Ltd.',
     description:

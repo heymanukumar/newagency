@@ -3,6 +3,7 @@ import React from 'react'
 const pages = [
   { label: 'Home', href: '/', description: 'Amazonis services, work, clients and contact.' },
   { label: 'About', href: '/about', description: 'Company story, products and approach.' },
+  { label: 'Contact', href: '/contact', description: 'Contact Amazonis for projects and support.' },
   {
     label: 'Privacy Policy',
     href: '/privacy-policy',
