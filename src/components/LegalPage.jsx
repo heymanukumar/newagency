@@ -1,76 +1,111 @@
 import React from 'react'
+import termsAndConditions from '../content/terms-and-conditions.md?raw'
+
+const renderInline = (text) => {
+  const parts = []
+  const pattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g
+  let lastIndex = 0
+  let match
+
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index))
+    }
+
+    const value = match[0]
+
+    if (value.startsWith('**')) {
+      parts.push(<strong key={`${value}-${match.index}`}>{value.slice(2, -2)}</strong>)
+    } else {
+      const linkMatch = value.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+      parts.push(
+        <a key={`${value}-${match.index}`} href={linkMatch[2]}>
+          {linkMatch[1]}
+        </a>
+      )
+    }
+
+    lastIndex = match.index + value.length
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex))
+  }
+
+  return parts
+}
+
+const renderMarkdown = (markdown) => {
+  const lines = markdown
+    .split('\n')
+    .slice(markdown.split('\n').findIndex((line) => line.startsWith('## ')))
+  const blocks = []
+  let index = 0
+
+  while (index < lines.length) {
+    const line = lines[index].trim()
+
+    if (!line) {
+      index += 1
+      continue
+    }
+
+    if (line.startsWith('## ')) {
+      blocks.push(<h2 key={`h2-${index}`}>{line.replace(/^##\s+/, '')}</h2>)
+      index += 1
+      continue
+    }
+
+    if (line.startsWith('### ')) {
+      blocks.push(<h3 key={`h3-${index}`}>{line.replace(/^###\s+/, '')}</h3>)
+      index += 1
+      continue
+    }
+
+    if (line.startsWith('* ')) {
+      const items = []
+      while (index < lines.length && lines[index].trim().startsWith('* ')) {
+        const item = lines[index].trim().replace(/^\*\s+/, '')
+        items.push(<li key={`li-${index}`}>{renderInline(item)}</li>)
+        index += 1
+      }
+      blocks.push(<ul key={`ul-${index}`}>{items}</ul>)
+      continue
+    }
+
+    if (/^\d+\.\s/.test(line)) {
+      const items = []
+      while (index < lines.length && /^\d+\.\s/.test(lines[index].trim())) {
+        const item = lines[index].trim().replace(/^\d+\.\s+/, '')
+        items.push(<li key={`oli-${index}`}>{renderInline(item)}</li>)
+        index += 1
+      }
+      blocks.push(<ol key={`ol-${index}`}>{items}</ol>)
+      continue
+    }
+
+    if (line.startsWith('> ')) {
+      blocks.push(<blockquote key={`quote-${index}`}>{renderInline(line.replace(/^>\s+/, ''))}</blockquote>)
+      index += 1
+      continue
+    }
+
+    blocks.push(<p key={`p-${index}`}>{renderInline(line)}</p>)
+    index += 1
+  }
+
+  return blocks
+}
 
 const legalPages = {
   '/terms-and-conditions': {
     eyebrow: 'Legal',
     title: 'Terms & Conditions',
-    effectiveDate: '31 August 2026',
+    effectiveDate: '1 September 2026',
+    lastUpdated: '1 September 2026',
     intro:
       'These Terms & Conditions explain the basic rules for using amazonis.in and working with Amazonis IT Services Pvt. Ltd.',
-    sections: [
-      {
-        title: '1. Acceptance of terms',
-        body: [
-          'By accessing this website, contacting us, requesting a proposal, or using our services, you agree to these Terms & Conditions. If you do not agree, please do not use the website or services.',
-          'Additional written agreements, proposals, statements of work, invoices, or service-specific terms may also apply. If there is a conflict, the signed or expressly agreed project document will control for that project.',
-        ],
-      },
-      {
-        title: '2. Services',
-        body: [
-          'Amazonis provides technology, development, hosting, automation, digital marketing, branding, content, and related business services.',
-          'Project scope, timelines, deliverables, dependencies, fees, revisions, support, and ownership terms should be confirmed in writing before work begins.',
-        ],
-      },
-      {
-        title: '3. Client responsibilities',
-        body: [
-          'You agree to provide accurate information, timely approvals, required access, content, brand assets, and any permissions needed to complete the requested work.',
-          'You are responsible for reviewing deliverables, legal compliance of your business, and the accuracy of content or materials you provide.',
-        ],
-      },
-      {
-        title: '4. Payments and invoices',
-        body: [
-          'Fees, payment milestones, taxes, and due dates will be described in the relevant proposal, invoice, or written agreement.',
-          'Late payments may pause work, delay delivery, or affect access to ongoing services until outstanding amounts are cleared.',
-        ],
-      },
-      {
-        title: '5. Intellectual property',
-        body: [
-          'Unless otherwise agreed in writing, client-specific final deliverables are transferred after full payment, subject to any third-party licenses, open-source terms, platform rules, and pre-existing Amazonis tools or know-how.',
-          'Amazonis may retain ownership of reusable methods, templates, internal tools, workflows, and general knowledge developed before or during a project.',
-        ],
-      },
-      {
-        title: '6. Acceptable use',
-        body: [
-          'You must not use the website or services for unlawful activity, security abuse, spam, infringement, fraud, harassment, malware, or any activity that could damage systems, users, or third parties.',
-          'We may refuse, suspend, or terminate work that we reasonably believe violates law, platform rules, ethical standards, or these terms.',
-        ],
-      },
-      {
-        title: '7. Third-party services',
-        body: [
-          'Projects may rely on hosting providers, payment gateways, APIs, analytics tools, ad platforms, AI providers, or other third-party services. Their own terms, pricing, limits, and privacy practices apply.',
-          'Amazonis is not responsible for outages, policy changes, account suspensions, pricing changes, or decisions made by third-party platforms.',
-        ],
-      },
-      {
-        title: '8. Limitation of liability',
-        body: [
-          'To the maximum extent permitted by law, Amazonis will not be liable for indirect, incidental, special, consequential, punitive, or loss-of-profit damages arising from website use or services.',
-          'Our total liability for a project will be limited to the amount paid to Amazonis for the relevant service giving rise to the claim, unless a written agreement says otherwise.',
-        ],
-      },
-      {
-        title: '9. Contact',
-        body: [
-          'For questions about these terms, contact Amazonis IT Services Pvt. Ltd. at info@amazonis.in.',
-        ],
-      },
-    ],
+    markdown: termsAndConditions,
   },
   '/cookie-policy': {
     eyebrow: 'Privacy',
@@ -254,28 +289,31 @@ const LegalPage = ({ path }) => {
         </p>
         <p className='mt-7 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-600 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300'>
           Effective date: {page.effectiveDate}
+          {page.lastUpdated ? ` | Last updated: ${page.lastUpdated}` : ''}
         </p>
       </section>
 
       <article className='privacy-policy-content mx-auto w-full max-w-4xl px-4 py-14 sm:px-10 lg:py-20'>
-        {page.sections.map((section) => (
-          <section
-            key={section.title}
-            className='border-gray-200 first:border-t-0 [&+section]:mt-12 [&+section]:border-t [&+section]:pt-12 dark:border-gray-800'
-          >
-            <h2>{section.title}</h2>
-            {section.body?.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-            {section.list && (
-              <ul>
-                {section.list.map((item) => (
-                  <li key={item}>{item}</li>
+        {page.markdown
+          ? renderMarkdown(page.markdown)
+          : page.sections.map((section) => (
+              <section
+                key={section.title}
+                className='border-gray-200 first:border-t-0 [&+section]:mt-12 [&+section]:border-t [&+section]:pt-12 dark:border-gray-800'
+              >
+                <h2>{section.title}</h2>
+                {section.body?.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
                 ))}
-              </ul>
-            )}
-          </section>
-        ))}
+                {section.list && (
+                  <ul>
+                    {section.list.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            ))}
       </article>
     </main>
   )
