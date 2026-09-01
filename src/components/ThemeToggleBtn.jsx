@@ -6,7 +6,7 @@ const ThemeToggleBtn = ({theme, setTheme}) => {
     useEffect(()=>{
         const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches; 
         setTheme(theme || (prefersDarkMode ? 'dark' : 'light'))
-    },[])
+    },[setTheme, theme])
 
     useEffect(()=>{
         if(theme === 'dark'){

@@ -2,6 +2,7 @@ import React from 'react'
 
 const pages = [
   { label: 'Home', href: '/', description: 'Amazonis services, work, clients and contact.' },
+  { label: 'Services', href: '/services', description: 'All Amazonis service cards and offerings.' },
   { label: 'About', href: '/about', description: 'Company story, products and approach.' },
   { label: 'Contact', href: '/contact', description: 'Contact Amazonis for projects and support.' },
   {

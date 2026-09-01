@@ -14,10 +14,12 @@ import SEO from './components/SEO'
 import LegalPage from './components/LegalPage'
 import SitemapPage from './components/SitemapPage'
 import ContactPage from './components/ContactPage'
+import ServicesPage from './components/ServicesPage'
 
 const appRoutes = [
   '/',
   '/about',
+  '/services',
   '/contact',
   '/privacy-policy',
   '/terms-and-conditions',
@@ -44,6 +46,7 @@ const App = () => {
   const normalizedPath = currentPath.replace(/\/$/, '') || '/'
   const isHomePage = normalizedPath === '/'
   const isAboutPage = normalizedPath === '/about'
+  const isServicesPage = normalizedPath === '/services'
   const isContactPage = normalizedPath === '/contact'
   const isPrivacyPolicyPage = normalizedPath === '/privacy-policy'
   const isLegalPage = [
@@ -151,6 +154,7 @@ const App = () => {
       )}
 
       {isAboutPage && <About />}
+      {isServicesPage && <ServicesPage />}
       {isContactPage && <ContactPage />}
       {isPrivacyPolicyPage && <PrivacyPolicy />}
       {isLegalPage && <LegalPage path={normalizedPath} />}

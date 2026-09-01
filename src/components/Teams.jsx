@@ -1,11 +1,11 @@
 import React from 'react'
 import Title from './Title'
 import { teamData } from '../assets/assets'
-import {motion} from 'motion/react'
+import { motion as Motion } from 'motion/react'
 
 const Teams = () => {
   return (
-    <motion.div 
+    <Motion.div 
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true }}
@@ -14,7 +14,7 @@ const Teams = () => {
 
       <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
         {teamData.map((team, index)=>(
-            <motion.div
+            <Motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -25,10 +25,10 @@ const Teams = () => {
                     <h3 className='font-bold text-sm'>{team.name}</h3>
                     <p className='text-xs opacity-60'>{team.title}</p>
                 </div>
-            </motion.div>
+            </Motion.div>
         ))}
       </div>
-    </motion.div>
+    </Motion.div>
   )
 }
 

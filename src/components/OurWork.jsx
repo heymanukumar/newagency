@@ -1,7 +1,7 @@
 import React from 'react'
 import assets from '../assets/assets'
 import Title from './Title'
-import { motion } from 'motion/react'
+import { motion as Motion } from 'motion/react'
 
 const OurWork = () => {
   const workData = [
@@ -26,7 +26,7 @@ const OurWork = () => {
   ]
 
   return (
-    <motion.div
+    <Motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -38,7 +38,7 @@ const OurWork = () => {
 
       <div className='grid w-full max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3'>
         {workData.map((work, index) => (
-          <motion.article
+          <Motion.article
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -65,10 +65,10 @@ const OurWork = () => {
                 {work.description}
               </p>
             </div>
-          </motion.article>
+          </Motion.article>
         ))}
       </div>
-    </motion.div>
+    </Motion.div>
   )
 }
 

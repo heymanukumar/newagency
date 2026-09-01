@@ -257,5 +257,4 @@ const LegalPage = ({ path }) => {
   )
 }
 
-export { legalPages }
 export default LegalPage

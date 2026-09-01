@@ -1,12 +1,12 @@
 import React from 'react'
 import assets from '../assets/assets'
-import { motion } from 'motion/react'
+import { motion as Motion } from 'motion/react'
 
 const NotFound = ({ theme }) => {
   return (
     <main className='min-h-screen overflow-hidden bg-white px-4 py-8 text-gray-900 sm:px-10 lg:px-24 xl:px-40 dark:bg-black dark:text-white'>
       <div className='mx-auto flex min-h-[calc(100vh-64px)] w-full max-w-6xl flex-col'>
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
@@ -25,10 +25,10 @@ const NotFound = ({ theme }) => {
           >
             Home
           </a>
-        </motion.div>
+        </Motion.div>
 
         <section className='grid flex-1 items-center gap-12 py-16 lg:grid-cols-[minmax(0,1fr)_360px] lg:py-10'>
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.1 }}
@@ -58,9 +58,9 @@ const NotFound = ({ theme }) => {
                 Contact Us
               </a>
             </div>
-          </motion.div>
+          </Motion.div>
 
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.55, delay: 0.2 }}
@@ -77,7 +77,7 @@ const NotFound = ({ theme }) => {
               alt='Amazonis'
               className='relative w-44 sm:w-56'
             />
-          </motion.div>
+          </Motion.div>
         </section>
       </div>
     </main>

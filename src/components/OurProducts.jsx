@@ -1,11 +1,11 @@
 import React from 'react'
 import assets from '../assets/assets'
 import Title from './Title'
-import { motion } from 'motion/react'
+import { motion as Motion } from 'motion/react'
 
 const ProductCard = ({ product, index }) => {
   const isComingSoon = product.status === 'coming-soon'
-  const Card = isComingSoon ? motion.div : motion.a
+  const Card = isComingSoon ? Motion.div : Motion.a
 
   return (
     <Card
@@ -129,7 +129,7 @@ const OurProducts = () => {
   ]
 
   return (
-    <motion.div
+    <Motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -144,7 +144,7 @@ const OurProducts = () => {
           <ProductCard key={product.title} product={product} index={index} />
         ))}
       </div>
-    </motion.div>
+    </Motion.div>
   )
 }
 

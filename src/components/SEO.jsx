@@ -51,6 +51,25 @@ const pageMeta = {
       },
     },
   },
+  '/services': {
+    title: 'Services | Amazonis IT Services Pvt. Ltd.',
+    description:
+      'Explore Amazonis IT services including website development, e-commerce, mobile apps, AI solutions, digital marketing, social media management, influencer marketing and hosting.',
+    path: '/services',
+    type: 'website',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: 'Amazonis IT Services',
+      provider: {
+        '@type': 'Organization',
+        name: 'Amazonis IT Services Pvt. Ltd.',
+        url: siteUrl,
+      },
+      areaServed: 'IN',
+      url: `${siteUrl}/services`,
+    },
+  },
   '/contact': {
     title: 'Contact Amazonis | Get in Touch',
     description:

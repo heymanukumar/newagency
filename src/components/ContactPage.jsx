@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'motion/react'
+import { motion as Motion } from 'motion/react'
 import toast from 'react-hot-toast'
 import assets from '../assets/assets'
 
@@ -67,7 +67,7 @@ const ContactPage = () => {
         <div className='absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-blue-50/80 to-transparent dark:from-primary/10' aria-hidden='true' />
 
         <div className='relative mx-auto max-w-6xl'>
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
@@ -83,10 +83,10 @@ const ContactPage = () => {
               Contact us using the information below. We will respond promptly to your inquiries
               and feedback.
             </p>
-          </motion.div>
+          </Motion.div>
 
           <div className='mt-12 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16'>
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
@@ -134,9 +134,9 @@ const ContactPage = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </Motion.div>
 
-            <motion.form
+            <Motion.form
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.55, delay: 0.18 }}
@@ -238,10 +238,10 @@ const ContactPage = () => {
                 Submit
                 <img src={assets.arrow_icon} alt='' className='w-4' />
               </button>
-            </motion.form>
+            </Motion.form>
           </div>
 
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15 }}
@@ -256,7 +256,7 @@ const ContactPage = () => {
               referrerPolicy='no-referrer-when-downgrade'
               allowFullScreen
             />
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
     </main>

@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { motion } from 'motion/react'
+import { motion as Motion } from 'motion/react'
 import assets from '../assets/assets'
 import ThemeToggleBtn from './ThemeToggleBtn'
-
-// Change the name, link or order here to update the main menu.
-const menuLinks = [
-  { name: 'Home', href: '/#hero' },
-  { name: 'Services', href: '/#services' },
-  { name: 'Work', href: '/#our-work' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-]
+import navigationLinks from '../data/navigationLinks'
 
 const Navbar = ({ theme, setTheme, currentPath }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -28,6 +20,11 @@ const Navbar = ({ theme, setTheme, currentPath }) => {
       return
     }
 
+    if (normalizedPath === '/services') {
+      setActiveHref('/services')
+      return
+    }
+
     if (normalizedPath === '/contact') {
       setActiveHref('/contact')
       return
@@ -38,7 +35,7 @@ const Navbar = ({ theme, setTheme, currentPath }) => {
       return
     }
 
-    const sectionLinks = menuLinks.filter((link) => link.href.startsWith('/#'))
+    const sectionLinks = navigationLinks.filter((link) => link.href.startsWith('/#'))
 
     const updateActiveSection = () => {
       const selectedLink = sectionLinks.reduce((activeLink, link) => {
@@ -64,7 +61,7 @@ const Navbar = ({ theme, setTheme, currentPath }) => {
   }, [currentPath])
 
   return (
-    <motion.header
+    <Motion.header
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -95,7 +92,7 @@ const Navbar = ({ theme, setTheme, currentPath }) => {
           <img src={assets.close_icon} alt='' className='w-5' />
         </button>
 
-        {menuLinks.map((link) => {
+        {navigationLinks.map((link) => {
           const isActive = activeHref === link.href
 
           return (
@@ -139,7 +136,7 @@ const Navbar = ({ theme, setTheme, currentPath }) => {
           <img src={assets.arrow_icon} width={14} alt='' />
         </a>
       </div>
-    </motion.header>
+    </Motion.header>
   )
 }
 

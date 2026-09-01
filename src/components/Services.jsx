@@ -1,67 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import assets from '../assets/assets'
 import Title from './Title'
 import ServiceCard from './ServiceCard'
-import { motion } from 'motion/react'
+import { motion as Motion } from 'motion/react'
+import servicesData from '../data/servicesData'
 
 const Services = () => {
-  const [showAllServices, setShowAllServices] = useState(false)
-
-  const servicesData = [
-    {
-      title: 'Website Development',
-      description: 'Build fast, SEO-friendly websites that engage visitors and grow your business.',
-      icon: assets.social_icon,
-      // link: '/services/website-development',
-    },
-    {
-      title: 'E-Commerce Development',
-      description: 'Launch secure online stores with seamless shopping and integrated payments.',
-      icon: assets.social_icon,
-      // link: '/services/ecommerce-development',
-    },
-    {
-      title: 'Mobile App Development',
-      description: 'Create modern Android and iOS apps with scalable performance and intuitive design.',
-      icon: assets.social_icon,
-      // link: '/services/mobile-app-development',
-    },
-    {
-      title: 'AI Solutions',
-      description: 'Automate workflows with AI agents and intelligent solutions that boost productivity.',
-      icon: assets.social_icon,
-      // link: '/services/ai-solutions',
-    },
-    {
-      title: 'Digital Marketing',
-      description: 'Grow your brand with SEO, Google Ads, social media, and performance marketing.',
-      icon: assets.social_icon,
-      // link: '/services/digital-marketing',
-    },
-    {
-      title: 'Social Media Management (Slour)',
-      description: 'Plan, schedule, and automate content with AI to grow across every social platform.',
-      icon: assets.social_icon,
-      link: 'https://slour.in/',
-      button: 'Explore Slour',
-    },
-    {
-      title: 'Influencer Marketing',
-      description: 'Partner with trusted creators to boost brand awareness and customer engagement.',
-      icon: assets.social_icon,
-      // link: '/services/influencer-marketing',
-    },
-    {
-      title: 'Hosting & Maintenance',
-      description: 'Reliable hosting, security, backups, and maintenance to keep your website online.',
-      icon: assets.social_icon,
-      // link: '/services/hosting-maintenance',
-    },
-  ]
-  const visibleServices = showAllServices ? servicesData : servicesData.slice(0, 4)
+  const visibleServices = servicesData.slice(0, 4)
 
   return (
-    <motion.div
+    <Motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -79,17 +27,14 @@ const Services = () => {
         ))}
       </div>
 
-      {!showAllServices && (
-        <button
-          type='button'
-          onClick={() => setShowAllServices(true)}
+      <a
+          href='/services'
           className='mt-2 rounded-full bg-primary px-7 py-3 text-sm font-medium text-white transition-transform hover:scale-105'
         >
           View All Services
-        </button>
-      )}
+        </a>
 
-    </motion.div>
+    </Motion.div>
   )
 }
 
