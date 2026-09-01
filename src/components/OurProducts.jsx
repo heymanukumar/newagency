@@ -5,9 +5,17 @@ import { motion } from 'motion/react'
 
 const ProductCard = ({ product, index }) => {
   const isComingSoon = product.status === 'coming-soon'
+  const Card = isComingSoon ? motion.div : motion.a
 
   return (
-    <motion.div
+    <Card
+      {...(!isComingSoon
+        ? {
+            href: product.href,
+            target: product.href.startsWith('http') ? '_blank' : '_self',
+            rel: product.href.startsWith('http') ? 'noopener noreferrer' : undefined,
+          }
+        : {})}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -54,15 +62,12 @@ const ProductCard = ({ product, index }) => {
               </p>
             </div>
 
-            <a
-              href={product.href}
-              target={product.href.startsWith('http') ? '_blank' : '_self'}
-              rel={product.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            <span
               className='mt-8 inline-flex w-max items-center gap-3 border-b-2 border-[#0b2148] pb-2 text-sm font-extrabold text-[#0b2148] transition-colors duration-300 group-hover:border-[var(--product-color)] group-hover:text-[var(--product-color)] dark:border-white dark:text-white'
             >
               Explore product
               <span aria-hidden='true'>→</span>
-            </a>
+            </span>
           </div>
 
           {isComingSoon && (
@@ -74,7 +79,7 @@ const ProductCard = ({ product, index }) => {
           )}
         </div>
       </div>
-    </motion.div>
+    </Card>
   )
 }
 
