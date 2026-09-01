@@ -153,7 +153,7 @@ const App = () => {
       {isSitemapPage && <SitemapPage />}
       {isNotFoundPage && <NotFound theme={theme} />}
 
-      {!isNotFoundPage && <Footer theme={theme} />}
+      {!isNotFoundPage && <Footer theme={theme} compact={isContactPage} />}
 
       <div
         ref={outlineRef}

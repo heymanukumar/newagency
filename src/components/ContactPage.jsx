@@ -51,7 +51,7 @@ const ContactPage = () => {
 
   return (
     <main className='bg-white text-gray-950 dark:bg-black dark:text-white'>
-      <section className='relative overflow-hidden px-4 py-16 sm:px-12 sm:py-24 lg:px-24 xl:px-40'>
+      <section className='relative overflow-hidden px-4 pt-14 pb-6 sm:px-12 sm:pt-20 sm:pb-10 lg:px-24 xl:px-40'>
         <div
           className='absolute inset-0 opacity-70 dark:opacity-20'
           style={{
@@ -82,7 +82,7 @@ const ContactPage = () => {
             </p>
           </motion.div>
 
-          <div className='mt-16 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16'>
+          <div className='mt-12 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16'>
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
@@ -92,7 +92,7 @@ const ContactPage = () => {
               <h2 className='text-3xl font-extrabold text-[#0b2148] sm:text-4xl dark:text-white'>
                 Amazonis Contact Form
               </h2>
-              <div className='mt-8 space-y-6 text-base leading-8 text-gray-600 dark:text-gray-300'>
+              <div className='mt-7 space-y-4 text-base leading-8 text-gray-600 dark:text-gray-300'>
                 <p>
                   If you have not found what you are looking for, please reach out and tell us what
                   you want to build.
@@ -107,7 +107,7 @@ const ContactPage = () => {
                 </p>
               </div>
 
-              <div className='mt-10 grid gap-4'>
+              <div className='mt-8 grid gap-3'>
                 {contactDetails.map((detail) => (
                   <div
                     key={detail.label}
