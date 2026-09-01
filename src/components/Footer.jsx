@@ -6,7 +6,7 @@ import { motion } from 'motion/react'
 const footerMenuLinks = [
   { name: 'Home', href: '/#hero' },
   { name: 'Services', href: '/#services' },
-  { name: 'Work', href: '/#our-work' },
+  { name: 'Our Product', href: '/about#our-work' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/#contact-us' },
 ]

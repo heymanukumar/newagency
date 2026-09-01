@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'motion/react'
+import OurWork from './OurWork'
 
 const About = () => {
   return (
@@ -101,6 +102,8 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <OurWork />
     </main>
   )
 }
