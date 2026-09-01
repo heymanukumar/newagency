@@ -1,5 +1,6 @@
 import React from 'react'
 import termsAndConditions from '../content/terms-and-conditions.md?raw'
+import refundPolicy from '../content/refund-policy.md?raw'
 
 const renderInline = (text) => {
   const parts = []
@@ -153,37 +154,11 @@ const legalPages = {
   '/refund-policy': {
     eyebrow: 'Legal',
     title: 'Refund Policy',
-    effectiveDate: '31 August 2026',
+    effectiveDate: '1 September 2026',
+    lastUpdated: '1 September 2026',
     intro:
       'This Refund Policy explains how refund requests are generally handled for Amazonis services.',
-    sections: [
-      {
-        title: '1. Project-based services',
-        body: [
-          'Most Amazonis services are custom, project-based, or time-based. Fees may cover planning, consultation, design, development, setup, third-party coordination, or reserved delivery capacity.',
-          'Refund eligibility depends on the project stage, work completed, third-party costs incurred, and the written proposal or agreement.',
-        ],
-      },
-      {
-        title: '2. Refunds',
-        body: [
-          'Approved refunds, if any, will be processed to the original payment method or another mutually agreed method, subject to payment provider timelines and deductions for applicable charges.',
-          'Setup fees, consultation fees, strategy work, completed milestones, custom deliverables, third-party expenses, and used subscription periods are generally non-refundable unless agreed otherwise in writing.',
-        ],
-      },
-      {
-        title: '3. Delays and dependencies',
-        body: [
-          'Refunds are not generally issued for delays caused by missing client inputs, late approvals, platform restrictions, third-party outages, account access issues, or changes requested after approval.',
-        ],
-      },
-      {
-        title: '4. Contact',
-        body: [
-          'For refund requests, email info@amazonis.in with your invoice number, project name, and reason for the request.',
-        ],
-      },
-    ],
+    markdown: refundPolicy,
   },
   '/cancellation-policy': {
     eyebrow: 'Legal',

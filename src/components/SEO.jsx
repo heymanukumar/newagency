@@ -114,6 +114,18 @@ const pageMeta = {
       'Review how Amazonis IT Services Pvt. Ltd. generally handles service refund requests.',
     path: '/refund-policy',
     type: 'article',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Refund Policy',
+      url: `${siteUrl}/refund-policy`,
+      dateModified: '2026-09-01',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: siteName,
+        url: siteUrl,
+      },
+    },
   },
   '/cancellation-policy': {
     title: 'Cancellation Policy | Amazonis IT Services Pvt. Ltd.',
