@@ -144,21 +144,7 @@ const ContactPage = () => {
                 Send us your message now!
               </h2>
 
-              <label className='mt-7 block text-sm font-semibold text-gray-900 dark:text-white'>
-                Select which service
-                <select
-                  name='service'
-                  className='mt-2 w-full rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
-                >
-                  <option>Website Development</option>
-                  <option>Mobile App Development</option>
-                  <option>AI Solutions</option>
-                  <option>Digital Marketing</option>
-                  <option>Other</option>
-                </select>
-              </label>
-
-              <div className='mt-6 grid gap-5 sm:grid-cols-2'>
+              <div className='mt-7 grid gap-5 sm:grid-cols-2'>
                 <label className='block text-sm font-semibold text-gray-900 dark:text-white'>
                   First Name
                   <input
@@ -211,6 +197,20 @@ const ContactPage = () => {
                   className='mt-2 w-full resize-none rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
                   required
                 />
+              </label>
+
+              <label className='mt-6 block text-sm font-semibold text-gray-900 dark:text-white'>
+                Select which service
+                <select
+                  name='service'
+                  className='mt-2 w-full rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
+                >
+                  <option>Website Development</option>
+                  <option>Mobile App Development</option>
+                  <option>AI Solutions</option>
+                  <option>Digital Marketing</option>
+                  <option>Other</option>
+                </select>
               </label>
 
               <label className='mt-5 flex items-start gap-3 text-sm leading-6 text-gray-600 dark:text-gray-300'>
