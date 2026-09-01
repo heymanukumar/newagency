@@ -1,36 +1,97 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import assets from '../assets/assets'
 import Title from './Title'
 import { motion } from 'motion/react'
+
+const ProductCard = ({ product, index }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [visible, setVisible] = useState(false)
+  const cardRef = useRef(null)
+
+  const handleMouseMove = (event) => {
+    const bounds = cardRef.current.getBoundingClientRect()
+    setPosition({
+      x: event.clientX - bounds.left,
+      y: event.clientY - bounds.top,
+    })
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.2 }}
+      viewport={{ once: true }}
+      className='group relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-2xl shadow-gray-100 dark:shadow-white/10'
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+      onMouseMove={handleMouseMove}
+      ref={cardRef}
+    >
+      <div
+        className='pointer-events-none absolute z-0 h-[300px] w-[300px] rounded-full blur-2xl transition-opacity duration-500 mix-blend-multiply dark:mix-blend-lighten'
+        style={{
+          top: position.y - 150,
+          left: position.x - 150,
+          backgroundColor: product.hoverColor,
+          opacity: visible ? 0.45 : 0,
+        }}
+      />
+
+      <div
+        className='relative z-10 flex items-center gap-10 rounded-[10px] bg-white p-8 transition-all hover:m-0.5 hover:p-7.5 dark:bg-gray-900'
+        style={{ '--product-color': product.hoverColor }}
+      >
+        <div className='grid h-24 w-24 shrink-0 place-items-center rounded-full bg-gray-100 p-4 transition-colors duration-300 group-hover:bg-[var(--product-color)] dark:bg-gray-700'>
+          <img
+            src={product.logo}
+            alt={`${product.title} logo`}
+            className='max-h-full max-w-full object-contain'
+          />
+        </div>
+
+        <div className='flex-1'>
+          <p
+            className='mb-2 text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-300'
+            style={{ color: visible ? product.hoverColor : undefined }}
+          >
+            Amazonis product
+          </p>
+          <h3 className='font-bold text-gray-900 dark:text-white'>{product.title}</h3>
+          <p className='mt-2 text-sm font-semibold text-gray-600 dark:text-gray-300'>
+            {product.tagline}
+          </p>
+          <p className='mt-2 text-sm text-gray-600 dark:text-gray-400'>
+            {product.description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
 const OurProducts = () => {
   const productData = [
     {
       title: 'Venuefy',
       tagline: 'Venue booking made simple',
-      description: 'A modern platform for discovering, managing and booking event venues with confidence.',
-      accent: 'from-blue-500 to-cyan-300',
-      glow: 'bg-blue-500/30',
-      mark: 'V',
+      description: 'Discover, manage and book event venues with confidence.',
       logo: assets.venuefy_logo,
+      hoverColor: '#162c53',
     },
     {
       title: 'Slour',
       tagline: 'Social scheduling with AI',
-      description: 'Plan, schedule and automate content across social platforms from one clean workspace.',
-      accent: 'from-violet-500 to-fuchsia-300',
-      glow: 'bg-violet-500/30',
-      mark: 'S',
+      description: 'Plan, schedule and automate content across social platforms.',
       logo: assets.slour_logo,
+      hoverColor: '#ef4444',
     },
     {
       title: 'Inphra',
       tagline: 'Infrastructure for digital growth',
-      description: 'Reliable hosting, maintenance and technical systems built to keep products moving.',
-      accent: 'from-emerald-400 to-lime-200',
-      glow: 'bg-emerald-400/25',
-      mark: 'I',
+      description: 'Reliable hosting, maintenance and systems for growing products.',
       logo: assets.inphra_logo,
+      hoverColor: '#0959ed',
     },
   ]
 
@@ -41,61 +102,13 @@ const OurProducts = () => {
       viewport={{ once: true }}
       transition={{ staggerChildren: 0.2 }}
       id='our-products'
-      className='flex flex-col items-center gap-9 px-4 sm:px-12 lg:px-24 xl:px-40 pt-30 text-gray-700 dark:text-white'
+      className='flex flex-col items-center gap-7 px-4 sm:px-12 lg:px-24 xl:px-40 pt-30 text-gray-700 dark:text-white'
     >
       <Title title='Our products' desc='Amazonis builds and operates digital products designed for real business growth.' />
 
-      <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl'>
+      <div className='flex flex-col md:grid grid-cols-2'>
         {productData.map((product, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            key={product.title}
-            className='group relative min-h-[480px] overflow-hidden rounded-[32px] bg-black p-8 text-white shadow-2xl shadow-black/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/20'
-          >
-            <div className={`absolute -top-24 -right-24 h-64 w-64 rounded-full blur-3xl ${product.glow}`} />
-            <div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.16),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.08),transparent_42%)]' />
-            <div className='absolute inset-x-8 top-8 flex items-center justify-between'>
-              <span className='text-xs font-semibold uppercase tracking-[0.22em] text-white/55'>
-                Amazonis product
-              </span>
-              <span className={`h-3 w-3 rounded-full bg-gradient-to-r ${product.accent}`} />
-            </div>
-
-            <div className='relative flex h-full min-h-[416px] flex-col justify-between'>
-              <div className='pt-16'>
-                <div className={`mx-auto grid h-28 w-28 place-items-center overflow-hidden rounded-[28px] bg-gradient-to-br ${product.accent} p-3 shadow-2xl shadow-white/10 transition-transform duration-500 group-hover:scale-110`}>
-                  <img
-                    src={product.logo}
-                    alt={`${product.title} logo`}
-                    className='max-h-full max-w-full object-contain'
-                  />
-                </div>
-                <h3 className='mt-10 text-center text-4xl font-extrabold'>{product.title}</h3>
-                <p className='mt-3 text-center text-base font-semibold text-white/80'>
-                  {product.tagline}
-                </p>
-              </div>
-
-              <div>
-                <p className='mx-auto max-w-xs text-center text-sm leading-7 text-white/60'>
-                  {product.description}
-                </p>
-                <div className='mt-8 flex items-center justify-center gap-2 text-2xl font-extrabold'>
-                  <span className={`grid h-9 w-9 place-items-center overflow-hidden rounded-lg bg-gradient-to-br ${product.accent} p-1.5`}>
-                    <img
-                      src={product.logo}
-                      alt=''
-                      className='max-h-full max-w-full object-contain'
-                    />
-                  </span>
-                  <span>{product.title}</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          <ProductCard key={product.title} product={product} index={index} />
         ))}
       </div>
     </motion.div>

@@ -34,7 +34,7 @@ import ai_icon from './Ai_Icon.svg'
 import mobile_icon from './mobile_icon.svg'
 import inphra_logo from './inphra_logo.svg'
 import slour_logo from './slour_logo.svg'
-import venuefy_logo from './venuefy_logo.jpg'
+import venuefy_logo from './venuefy_logo.svg'
 
 
 
