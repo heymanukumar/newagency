@@ -32,6 +32,9 @@ import moon_icon from './moon_icon.svg'
 import hosting_icon from './hosting_icon.svg'
 import ai_icon from './Ai_Icon.svg'
 import mobile_icon from './mobile_icon.svg'
+import inphra_logo from './inphra_logo.svg'
+import slour_logo from './slour_logo.svg'
+import venuefy_logo from './venuefy_logo.jpg'
 
 
 
@@ -70,7 +73,10 @@ const assets = {
   logo_dark,
   menu_icon_dark,
   sun_icon,
-  moon_icon
+  moon_icon,
+  inphra_logo,
+  slour_logo,
+  venuefy_logo
 }
 
 export default assets

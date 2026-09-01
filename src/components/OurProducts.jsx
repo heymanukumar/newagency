@@ -1,4 +1,5 @@
 import React from 'react'
+import assets from '../assets/assets'
 import Title from './Title'
 import { motion } from 'motion/react'
 
@@ -11,6 +12,7 @@ const OurProducts = () => {
       accent: 'from-blue-500 to-cyan-300',
       glow: 'bg-blue-500/30',
       mark: 'V',
+      logo: assets.venuefy_logo,
     },
     {
       title: 'Slour',
@@ -19,6 +21,7 @@ const OurProducts = () => {
       accent: 'from-violet-500 to-fuchsia-300',
       glow: 'bg-violet-500/30',
       mark: 'S',
+      logo: assets.slour_logo,
     },
     {
       title: 'Inphra',
@@ -27,6 +30,7 @@ const OurProducts = () => {
       accent: 'from-emerald-400 to-lime-200',
       glow: 'bg-emerald-400/25',
       mark: 'I',
+      logo: assets.inphra_logo,
     },
   ]
 
@@ -62,8 +66,12 @@ const OurProducts = () => {
 
             <div className='relative flex h-full min-h-[416px] flex-col justify-between'>
               <div className='pt-16'>
-                <div className={`mx-auto grid h-28 w-28 place-items-center rounded-[28px] bg-gradient-to-br ${product.accent} text-5xl font-black text-black shadow-2xl shadow-white/10 transition-transform duration-500 group-hover:scale-110`}>
-                  {product.mark}
+                <div className={`mx-auto grid h-28 w-28 place-items-center overflow-hidden rounded-[28px] bg-gradient-to-br ${product.accent} p-3 shadow-2xl shadow-white/10 transition-transform duration-500 group-hover:scale-110`}>
+                  <img
+                    src={product.logo}
+                    alt={`${product.title} logo`}
+                    className='max-h-full max-w-full object-contain'
+                  />
                 </div>
                 <h3 className='mt-10 text-center text-4xl font-extrabold'>{product.title}</h3>
                 <p className='mt-3 text-center text-base font-semibold text-white/80'>
@@ -76,8 +84,12 @@ const OurProducts = () => {
                   {product.description}
                 </p>
                 <div className='mt-8 flex items-center justify-center gap-2 text-2xl font-extrabold'>
-                  <span className={`grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br ${product.accent} text-lg text-black`}>
-                    {product.mark}
+                  <span className={`grid h-9 w-9 place-items-center overflow-hidden rounded-lg bg-gradient-to-br ${product.accent} p-1.5`}>
+                    <img
+                      src={product.logo}
+                      alt=''
+                      className='max-h-full max-w-full object-contain'
+                    />
                   </span>
                   <span>{product.title}</span>
                 </div>
