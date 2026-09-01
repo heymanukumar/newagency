@@ -15,6 +15,7 @@ import LegalPage from './components/LegalPage'
 import SitemapPage from './components/SitemapPage'
 import ContactPage from './components/ContactPage'
 import ServicesPage from './components/ServicesPage'
+import BackToTopButton from './components/BackToTopButton'
 
 const appRoutes = [
   '/',
@@ -162,6 +163,7 @@ const App = () => {
       {isNotFoundPage && <NotFound theme={theme} />}
 
       {!isNotFoundPage && <Footer theme={theme} compact={isContactPage} />}
+      {!isNotFoundPage && <BackToTopButton />}
 
       <div
         ref={outlineRef}
