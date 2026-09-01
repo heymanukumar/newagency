@@ -1,6 +1,9 @@
 import React from 'react'
 import termsAndConditions from '../content/terms-and-conditions.md?raw'
 import refundPolicy from '../content/refund-policy.md?raw'
+import cookiePolicy from '../content/cookie-policy.md?raw'
+import cancellationPolicy from '../content/cancellation-policy.md?raw'
+import disclaimerPolicy from '../content/disclaimer.md?raw'
 
 const renderInline = (text) => {
   const parts = []
@@ -111,45 +114,11 @@ const legalPages = {
   '/cookie-policy': {
     eyebrow: 'Privacy',
     title: 'Cookie Policy',
-    effectiveDate: '31 August 2026',
+    effectiveDate: '1 September 2026',
+    lastUpdated: '1 September 2026',
     intro:
       'This Cookie Policy explains how Amazonis may use cookies and similar technologies on amazonis.in.',
-    sections: [
-      {
-        title: '1. What cookies are',
-        body: [
-          'Cookies are small files stored on your device when you visit a website. They help websites remember preferences, improve performance, keep services secure, and understand how visitors interact with pages.',
-        ],
-      },
-      {
-        title: '2. Types of cookies we may use',
-        list: [
-          'Essential cookies for security, navigation, page loading, forms, and core website functionality.',
-          'Preference cookies to remember choices such as theme, language, or consent settings.',
-          'Analytics cookies to understand traffic, page performance, and visitor interactions.',
-          'Marketing cookies where permitted, to measure campaign performance or improve communications.',
-        ],
-      },
-      {
-        title: '3. Third-party technologies',
-        body: [
-          'Some cookies or similar technologies may be provided by third-party tools such as hosting, analytics, advertising, embedded media, forms, or security services.',
-          'Third-party providers may process information according to their own policies and settings.',
-        ],
-      },
-      {
-        title: '4. Managing cookies',
-        body: [
-          'You can manage cookies through browser settings or any consent controls provided on the website. Blocking cookies may affect website features, performance, or availability.',
-        ],
-      },
-      {
-        title: '5. Updates',
-        body: [
-          'We may update this Cookie Policy when our website, tools, or legal obligations change.',
-        ],
-      },
-    ],
+    markdown: cookiePolicy,
   },
   '/refund-policy': {
     eyebrow: 'Legal',
@@ -163,83 +132,20 @@ const legalPages = {
   '/cancellation-policy': {
     eyebrow: 'Legal',
     title: 'Cancellation Policy',
-    effectiveDate: '31 August 2026',
+    effectiveDate: '1 September 2026',
+    lastUpdated: '1 September 2026',
     intro:
       'This Cancellation Policy explains how project or service cancellation requests are handled by Amazonis.',
-    sections: [
-      {
-        title: '1. Cancellation requests',
-        body: [
-          'A cancellation request should be sent in writing to info@amazonis.in. Work may continue until the request is received and acknowledged.',
-          'Please include your invoice number, project name, reason for cancellation, and the requested cancellation date.',
-        ],
-      },
-      {
-        title: '2. Work already started',
-        body: [
-          'If a project is cancelled after work has started, Amazonis may charge for completed work, committed resources, licenses, subscriptions, payment gateway charges, and other non-recoverable expenses.',
-          'Completed milestones, approved deliverables, discovery work, strategy work, setup work, and reserved delivery capacity may remain payable.',
-        ],
-      },
-      {
-        title: '3. Subscriptions and ongoing services',
-        body: [
-          'For retainers, hosting, maintenance, marketing, support, or recurring services, cancellation terms may be described in the applicable proposal, invoice, or written agreement.',
-          'Access to ongoing services may continue until the end of the paid period unless otherwise agreed in writing.',
-        ],
-      },
-      {
-        title: '4. Client dependencies',
-        body: [
-          'Cancellation does not remove responsibility for charges caused by delayed approvals, missing inputs, third-party commitments, purchased assets, or services already delivered.',
-        ],
-      },
-      {
-        title: '5. Contact',
-        body: [
-          'For cancellation requests, email info@amazonis.in with the relevant project or invoice details.',
-        ],
-      },
-    ],
+    markdown: cancellationPolicy,
   },
   '/disclaimer': {
     eyebrow: 'Legal',
     title: 'Disclaimer',
-    effectiveDate: '31 August 2026',
+    effectiveDate: '1 September 2026',
+    lastUpdated: '1 September 2026',
     intro:
       'This Disclaimer explains important limitations about website information, service outcomes, and third-party dependencies.',
-    sections: [
-      {
-        title: '1. Website information',
-        body: [
-          'Information on amazonis.in is provided for general business and informational purposes. It should not be treated as legal, financial, tax, security, or professional advice for your specific situation.',
-        ],
-      },
-      {
-        title: '2. No guaranteed results',
-        body: [
-          'We work to deliver high-quality technology and growth services, but we do not guarantee specific revenue, ranking, traffic, conversion, funding, app approval, advertising, or business outcomes.',
-          'Results can depend on market conditions, budgets, content quality, competition, platform policies, approvals, implementation choices, and third-party systems.',
-        ],
-      },
-      {
-        title: '3. Third-party platforms',
-        body: [
-          'The website and services may reference or depend on third-party platforms, APIs, hosting, payment providers, analytics tools, social networks, app stores, AI providers, or advertising networks.',
-          'Amazonis does not control third-party availability, rules, pricing, data practices, moderation, approvals, or technical decisions.',
-        ],
-      },
-      {
-        title: '4. External links',
-        body: [
-          'External links are provided for convenience. We are not responsible for the content, policies, security, or availability of third-party websites.',
-        ],
-      },
-      {
-        title: '5. Contact',
-        body: ['For questions about this Disclaimer, contact Amazonis at info@amazonis.in.'],
-      },
-    ],
+    markdown: disclaimerPolicy,
   },
 }
 

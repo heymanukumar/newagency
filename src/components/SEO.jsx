@@ -107,6 +107,18 @@ const pageMeta = {
       'Learn how Amazonis IT Services Pvt. Ltd. may use cookies and similar technologies on amazonis.in.',
     path: '/cookie-policy',
     type: 'article',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Cookie Policy',
+      url: `${siteUrl}/cookie-policy`,
+      dateModified: '2026-09-01',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: siteName,
+        url: siteUrl,
+      },
+    },
   },
   '/refund-policy': {
     title: 'Refund Policy | Amazonis IT Services Pvt. Ltd.',
@@ -133,6 +145,18 @@ const pageMeta = {
       'Review how Amazonis IT Services Pvt. Ltd. handles project and service cancellation requests.',
     path: '/cancellation-policy',
     type: 'article',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Cancellation Policy',
+      url: `${siteUrl}/cancellation-policy`,
+      dateModified: '2026-09-01',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: siteName,
+        url: siteUrl,
+      },
+    },
   },
   '/disclaimer': {
     title: 'Disclaimer | Amazonis IT Services Pvt. Ltd.',
@@ -140,6 +164,18 @@ const pageMeta = {
       'Read important disclaimers about Amazonis website information, service outcomes, and third-party platforms.',
     path: '/disclaimer',
     type: 'article',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Disclaimer',
+      url: `${siteUrl}/disclaimer`,
+      dateModified: '2026-09-01',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: siteName,
+        url: siteUrl,
+      },
+    },
   },
   '/sitemap': {
     title: 'Sitemap | Amazonis IT Services',
