@@ -1,56 +1,26 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import assets from '../assets/assets'
 import Title from './Title'
 import { motion } from 'motion/react'
 
 const ProductCard = ({ product, index }) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [visible, setVisible] = useState(false)
-  const cardRef = useRef(null)
-
-  const handleMouseMove = (event) => {
-    const bounds = cardRef.current.getBoundingClientRect()
-    setPosition({
-      x: event.clientX - bounds.left,
-      y: event.clientY - bounds.top,
-    })
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
       viewport={{ once: true }}
-      className='group relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 bg-white shadow-2xl shadow-gray-100 transition-all duration-300 dark:border-gray-700 dark:bg-gray-900 dark:shadow-white/10'
-      style={{
-        borderColor: visible ? product.hoverColor : undefined,
-        boxShadow: visible ? `0 24px 70px ${product.hoverColor}26` : undefined,
-      }}
-      onMouseEnter={() => setVisible(true)}
-      onMouseLeave={() => setVisible(false)}
-      onMouseMove={handleMouseMove}
-      ref={cardRef}
+      className='group relative flex min-h-[430px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-7 shadow-2xl shadow-gray-100 transition-all duration-300 hover:-translate-y-1 dark:border-gray-700 dark:bg-gray-900 dark:shadow-white/10'
+      style={{ '--product-color': product.hoverColor }}
     >
-      <div
-        className='pointer-events-none absolute z-0 h-[300px] w-[300px] rounded-full blur-2xl transition-opacity duration-500 mix-blend-multiply dark:mix-blend-lighten'
-        style={{
-          top: position.y - 150,
-          left: position.x - 150,
-          backgroundColor: product.hoverColor,
-          opacity: visible ? 0.45 : 0,
-        }}
+      <span
+        className='absolute inset-x-0 top-0 h-1.5 bg-[var(--product-color)]'
+        aria-hidden='true'
       />
 
-      <div
-        className='relative z-10 flex min-h-[220px] items-center gap-8 rounded-[10px] bg-white p-8 transition-all hover:m-0.5 hover:p-7.5 dark:bg-gray-900 max-sm:flex-col max-sm:text-center sm:gap-10'
-        style={{ '--product-color': product.hoverColor }}
-      >
+      <div className='relative z-10 flex h-full flex-1 flex-col'>
         <div
-          className='relative grid h-28 w-28 shrink-0 place-items-center overflow-hidden rounded-full bg-gray-100 shadow-inner shadow-gray-200/70 transition-colors duration-300 dark:bg-gray-800 dark:shadow-black/30'
-          style={{
-            backgroundColor: visible ? `${product.hoverColor}14` : undefined,
-          }}
+          className='relative grid h-28 w-28 shrink-0 place-items-center overflow-hidden rounded-full bg-gray-100 shadow-inner shadow-gray-200/80 transition-colors duration-300 group-hover:bg-white dark:bg-gray-800 dark:shadow-black/30'
         >
           <img
             src={product.logo}
@@ -68,21 +38,27 @@ const ProductCard = ({ product, index }) => {
           )}
         </div>
 
-        <div className='flex-1'>
-          <p
-            className='mb-2 text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-300'
-            style={{ color: visible ? product.hoverColor : undefined }}
-          >
-            Amazonis product
+        <div className='mt-8 flex-1'>
+          <h3 className='text-3xl font-extrabold leading-tight text-[#0b2148] dark:text-white'>
+            {product.title}
+          </h3>
+          <p className='mt-5 inline-flex rounded-full bg-gray-100 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#0b2148] transition-colors duration-300 group-hover:bg-[var(--product-color)]/10 group-hover:text-[var(--product-color)] dark:bg-gray-800 dark:text-gray-200'>
+            {product.category}
           </p>
-          <h3 className='font-bold text-gray-900 dark:text-white'>{product.title}</h3>
-          <p className='mt-2 text-sm font-semibold text-gray-600 dark:text-gray-300'>
-            {product.tagline}
-          </p>
-          <p className='mt-2 text-sm text-gray-600 dark:text-gray-400'>
+          <p className='mt-6 text-base leading-8 text-gray-600 dark:text-gray-400'>
             {product.description}
           </p>
         </div>
+
+        <a
+          href={product.href}
+          target={product.href.startsWith('http') ? '_blank' : '_self'}
+          rel={product.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          className='mt-8 inline-flex w-max items-center gap-3 border-b-2 border-[#0b2148] pb-2 text-sm font-extrabold text-[#0b2148] transition-colors duration-300 group-hover:border-[var(--product-color)] group-hover:text-[var(--product-color)] dark:border-white dark:text-white'
+        >
+          Explore product
+          <span aria-hidden='true'>→</span>
+        </a>
       </div>
     </motion.div>
   )
@@ -94,25 +70,31 @@ const OurProducts = () => {
       title: 'Venuefy',
       tagline: 'Venue booking made simple',
       description: 'Discover, manage and book event venues with confidence.',
+      category: 'Venue Discovery & Booking',
       logo: assets.venuefy_logo,
       hoverLogo: assets.venuefy_logo_hover,
       hoverColor: '#162c53',
+      href: '#',
     },
     {
       title: 'Slour',
       tagline: 'Social scheduling with AI',
       description: 'Plan, schedule and automate content across social platforms.',
+      category: 'AI Social Media Workspace',
       logo: assets.slour_logo,
       hoverLogo: assets.slour_logo_hover,
       hoverColor: '#ef4444',
+      href: 'https://slour.in/',
     },
     {
       title: 'Inphra',
       tagline: 'Infrastructure for digital growth',
-      description: 'Reliable hosting, maintenance and systems for growing products.',
+      description: 'Manage projects, teams, materials and site operations in one place.',
+      category: 'Construction Management Platform',
       logo: assets.inphra_logo,
       hoverLogo: assets.inphra_logo_hover,
       hoverColor: '#0959ed',
+      href: '#',
     },
   ]
 
@@ -127,7 +109,7 @@ const OurProducts = () => {
     >
       <Title title='Our products' desc='Amazonis builds and operates digital products designed for real business growth.' />
 
-      <div className='grid w-full max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3'>
+      <div className='grid w-full max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3'>
         {productData.map((product, index) => (
           <ProductCard key={product.title} product={product} index={index} />
         ))}
