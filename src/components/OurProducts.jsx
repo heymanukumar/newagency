@@ -20,7 +20,7 @@ const ProductCard = ({ product, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
       viewport={{ once: true }}
-      className='group relative flex min-h-[430px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-7 shadow-[0_24px_80px_var(--product-glow)] transition-all duration-300 before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_50%_0%,var(--product-glow),transparent_54%)] before:opacity-70 before:transition-opacity before:duration-300 hover:-translate-y-1 hover:shadow-[0_30px_100px_var(--product-glow-strong)] hover:before:opacity-100 dark:border-gray-700 dark:bg-gray-900'
+      className='group relative flex min-h-[430px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-7 shadow-none transition-all duration-300 before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_50%_0%,var(--product-glow),transparent_54%)] before:opacity-0 before:transition-opacity before:duration-300 hover:-translate-y-1 hover:border-[var(--product-color)] hover:shadow-[0_28px_80px_var(--product-glow-strong)] hover:before:opacity-100 dark:border-gray-700 dark:bg-gray-900'
       style={{
         '--product-color': product.hoverColor,
         '--product-glow': product.glowColor,
@@ -34,7 +34,7 @@ const ProductCard = ({ product, index }) => {
 
       <div className='relative z-10 flex h-full flex-1 flex-col'>
         <div
-          className='relative grid h-28 w-28 shrink-0 place-items-center overflow-hidden rounded-full bg-gray-100 shadow-inner shadow-gray-200/80 transition-colors duration-300 group-hover:bg-white dark:bg-gray-800 dark:shadow-black/30'
+          className='relative grid h-28 w-28 shrink-0 place-items-center overflow-hidden rounded-full border border-gray-200 bg-gray-100 transition-all duration-300 group-hover:border-[var(--product-color)] group-hover:bg-white dark:border-gray-700 dark:bg-gray-800'
         >
           <img
             src={product.logo}
@@ -76,7 +76,7 @@ const ProductCard = ({ product, index }) => {
 
           {isComingSoon && (
             <div className='absolute inset-0 z-20 grid place-items-center rounded-xl bg-white/45 backdrop-blur-[1px] dark:bg-gray-900/45'>
-              <span className='rounded-full bg-[var(--product-color)] px-5 py-2 text-sm font-extrabold uppercase tracking-[0.18em] text-white shadow-lg'>
+              <span className='rounded-full bg-[var(--product-color)] px-5 py-2 text-sm font-extrabold uppercase tracking-[0.18em] text-white transition-shadow duration-300 group-hover:shadow-[0_18px_42px_var(--product-glow-strong)]'>
                 Coming soon
               </span>
             </div>
