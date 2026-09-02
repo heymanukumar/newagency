@@ -34,7 +34,7 @@ const PolicyTableOfContents = ({ sections }) => {
   }, [sections])
 
   return (
-    <aside className='h-fit rounded-lg border border-gray-200 bg-slate-50 p-6 lg:sticky lg:top-28 dark:border-gray-800 dark:bg-gray-900'>
+    <aside className='h-fit max-h-[calc(100vh-8rem)] overflow-y-auto rounded-lg border border-gray-200 bg-slate-50 p-6 lg:sticky lg:top-28 dark:border-gray-800 dark:bg-gray-900'>
       <p className='mb-4 text-xs font-extrabold uppercase tracking-widest text-gray-950 dark:text-white'>
         On this page
       </p>
