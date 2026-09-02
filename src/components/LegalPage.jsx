@@ -61,10 +61,7 @@ const renderInline = (text) => {
   return parts
 }
 
-const renderMarkdown = (markdown) => {
-  const lines = markdown
-    .split('\n')
-    .slice(markdown.split('\n').findIndex((line) => line.startsWith('## ')))
+const renderMarkdownLines = (lines, keyPrefix = 'md') => {
   const blocks = []
   let index = 0
 
@@ -78,8 +75,32 @@ const renderMarkdown = (markdown) => {
 
     if (line.startsWith('## ')) {
       const title = line.replace(/^##\s+/, '')
+      const isContactSection = /contact information/i.test(title)
+
+      if (isContactSection) {
+        const contactLines = []
+        index += 1
+
+        while (index < lines.length && !lines[index].trim().startsWith('## ')) {
+          contactLines.push(lines[index])
+          index += 1
+        }
+
+        blocks.push(
+          <React.Fragment key={`${keyPrefix}-contact-${index}`}>
+            <h2 id={getSectionId(title)} className='scroll-mt-28'>
+              {title}
+            </h2>
+            <div className='policy-contact-card mt-6 rounded-lg p-6 text-white'>
+              {renderMarkdownLines(contactLines, `${keyPrefix}-contact-card-${index}`)}
+            </div>
+          </React.Fragment>
+        )
+        continue
+      }
+
       blocks.push(
-        <h2 key={`h2-${index}`} id={getSectionId(title)} className='scroll-mt-28'>
+        <h2 key={`${keyPrefix}-h2-${index}`} id={getSectionId(title)} className='scroll-mt-28'>
           {title}
         </h2>
       )
@@ -88,7 +109,7 @@ const renderMarkdown = (markdown) => {
     }
 
     if (line.startsWith('### ')) {
-      blocks.push(<h3 key={`h3-${index}`}>{line.replace(/^###\s+/, '')}</h3>)
+      blocks.push(<h3 key={`${keyPrefix}-h3-${index}`}>{line.replace(/^###\s+/, '')}</h3>)
       index += 1
       continue
     }
@@ -97,10 +118,10 @@ const renderMarkdown = (markdown) => {
       const items = []
       while (index < lines.length && lines[index].trim().startsWith('* ')) {
         const item = lines[index].trim().replace(/^\*\s+/, '')
-        items.push(<li key={`li-${index}`}>{renderInline(item)}</li>)
+        items.push(<li key={`${keyPrefix}-li-${index}`}>{renderInline(item)}</li>)
         index += 1
       }
-      blocks.push(<ul key={`ul-${index}`}>{items}</ul>)
+      blocks.push(<ul key={`${keyPrefix}-ul-${index}`}>{items}</ul>)
       continue
     }
 
@@ -108,24 +129,32 @@ const renderMarkdown = (markdown) => {
       const items = []
       while (index < lines.length && /^\d+\.\s/.test(lines[index].trim())) {
         const item = lines[index].trim().replace(/^\d+\.\s+/, '')
-        items.push(<li key={`oli-${index}`}>{renderInline(item)}</li>)
+        items.push(<li key={`${keyPrefix}-oli-${index}`}>{renderInline(item)}</li>)
         index += 1
       }
-      blocks.push(<ol key={`ol-${index}`}>{items}</ol>)
+      blocks.push(<ol key={`${keyPrefix}-ol-${index}`}>{items}</ol>)
       continue
     }
 
     if (line.startsWith('> ')) {
-      blocks.push(<blockquote key={`quote-${index}`}>{renderInline(line.replace(/^>\s+/, ''))}</blockquote>)
+      blocks.push(<blockquote key={`${keyPrefix}-quote-${index}`}>{renderInline(line.replace(/^>\s+/, ''))}</blockquote>)
       index += 1
       continue
     }
 
-    blocks.push(<p key={`p-${index}`}>{renderInline(line)}</p>)
+    blocks.push(<p key={`${keyPrefix}-p-${index}`}>{renderInline(line)}</p>)
     index += 1
   }
 
   return blocks
+}
+
+const renderMarkdown = (markdown) => {
+  const markdownLines = markdown.split('\n')
+  const firstSectionIndex = markdownLines.findIndex((line) => line.startsWith('## '))
+  const lines = markdownLines.slice(firstSectionIndex)
+
+  return renderMarkdownLines(lines)
 }
 
 const legalPages = {
