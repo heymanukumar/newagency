@@ -22,18 +22,6 @@ const serviceImages = [
   assets.work_fitness_app,
 ]
 
-const serviceLayouts = [
-  'lg:col-span-4 lg:row-span-2',
-  'lg:col-span-4 lg:row-span-2',
-  'lg:col-span-4 lg:row-span-2',
-  'lg:col-span-3 lg:row-span-2',
-  'lg:col-span-5 lg:row-span-2',
-  'lg:col-span-4 lg:row-span-2',
-  'lg:col-span-4 lg:row-span-2',
-  'lg:col-span-4 lg:row-span-2',
-  'lg:col-span-4 lg:row-span-2',
-]
-
 const processSteps = [
   {
     title: 'Share',
@@ -79,11 +67,11 @@ const ServiceShowcaseCard = ({ service, index, onOpen }) => {
     <Motion.article
       {...fadeUp}
       transition={{ ...fadeUp.transition, delay: index * 0.035 }}
-      className={`group relative isolate min-h-[280px] overflow-hidden rounded-[18px] p-5 ring-1 transition duration-500 hover:z-10 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(0,64,193,0.14)] md:min-h-[300px] lg:min-h-0 ${
+      className={`group relative isolate flex min-h-[360px] overflow-hidden rounded-[18px] p-6 ring-1 transition duration-500 hover:z-10 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(0,64,193,0.14)] ${
         isBlue
           ? 'bg-primary text-white ring-primary/20'
           : 'bg-white text-gray-950 ring-gray-200 dark:bg-gray-950 dark:text-white dark:ring-gray-800'
-      } ${serviceLayouts[index % serviceLayouts.length]}`}
+      }`}
     >
       <img
         src={serviceImages[index % serviceImages.length]}
@@ -101,7 +89,7 @@ const ServiceShowcaseCard = ({ service, index, onOpen }) => {
       />
       <div className='absolute right-4 top-4 h-16 w-16 rounded-full bg-primary/10 blur-2xl transition duration-700 group-hover:scale-[2.2] group-hover:bg-primary/25' />
 
-      <div className='relative z-10 flex h-full min-h-[240px] flex-col md:min-h-[260px] lg:min-h-full'>
+      <div className='relative z-10 flex w-full flex-col'>
         <div className='flex items-start justify-between gap-4'>
           <span
             className={`inline-flex rounded-full px-4 py-2 text-xs font-extrabold tracking-[0.18em] ${
@@ -118,16 +106,16 @@ const ServiceShowcaseCard = ({ service, index, onOpen }) => {
           />
         </div>
 
-        <div className='pt-7 transition duration-500 group-hover:-translate-y-1 group-focus-within:-translate-y-1'>
-          <h3 className='max-w-xl text-[1.55rem] font-extrabold uppercase leading-[0.98] tracking-normal sm:text-[1.75rem] lg:text-[1.9rem]'>
+        <div className='pt-8 transition duration-500 group-hover:-translate-y-1 group-focus-within:-translate-y-1'>
+          <h3 className='max-w-xl text-[1.6rem] font-extrabold uppercase leading-[1.02] tracking-normal sm:text-[1.85rem]'>
             {service.title}
           </h3>
-          <p className={`mt-4 max-w-xl text-sm leading-6 ${isBlue ? 'text-white/80' : 'text-gray-600 dark:text-gray-300'}`}>
+          <p className={`mt-5 max-w-xl text-[15px] leading-7 ${isBlue ? 'text-white/82' : 'text-gray-600 dark:text-gray-300'}`}>
             {service.summary || service.description}
           </p>
 
           <div className='mt-4 flex flex-wrap gap-2'>
-            {service.features.slice(0, 3).map((feature) => (
+            {service.features.slice(0, 2).map((feature) => (
               <span
                 key={feature}
                 className={`rounded-full px-3 py-1 text-[11px] font-bold leading-5 ring-1 ${
@@ -145,7 +133,7 @@ const ServiceShowcaseCard = ({ service, index, onOpen }) => {
         <button
           type='button'
           onClick={() => onOpen(service)}
-          className={`mt-5 inline-flex w-max items-center gap-2 rounded-full px-5 py-2.5 text-xs font-extrabold transition hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+          className={`mt-auto inline-flex w-max items-center gap-2 rounded-full px-5 py-2.5 text-xs font-extrabold transition hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
             isBlue
               ? 'bg-white text-primary focus-visible:ring-white focus-visible:ring-offset-primary'
               : 'bg-primary text-white focus-visible:ring-primary dark:ring-offset-gray-950'
@@ -314,7 +302,7 @@ const ServicesPage = () => {
             </h2>
           </Motion.div>
 
-          <div className='mt-10 grid gap-3 md:grid-cols-2 lg:auto-rows-[132px] lg:grid-cols-12'>
+          <div className='mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3'>
             {servicesData.map((service, index) => (
               <ServiceShowcaseCard
                 key={service.title}
