@@ -177,6 +177,40 @@ const About = () => {
 
       <section className='bg-white px-4 pb-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
         <div className='mx-auto max-w-6xl'>
+          <Motion.div {...fadeUp} className='max-w-3xl'>
+            <p className={eyebrowClass}>Products Developed by Amazonis</p>
+            <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl'>
+              Digital products designed to solve practical business problems.
+            </h2>
+          </Motion.div>
+
+          <div className='mt-12 grid gap-5 lg:grid-cols-3'>
+            {products.map((product, index) => (
+              <Motion.a
+                key={product.name}
+                href={product.href}
+                target='_blank'
+                rel='noopener noreferrer'
+                {...fadeUp}
+                transition={{ ...fadeUp.transition, delay: index * 0.08 }}
+                className='group flex min-h-72 flex-col rounded-[16px] border border-gray-200 bg-[#f8f8f7] p-7 transition hover:-translate-y-1 hover:border-primary dark:border-gray-800 dark:bg-gray-900'
+              >
+                <span className='grid h-20 w-20 place-items-center rounded-full bg-white p-4 dark:bg-black'>
+                  <img src={product.mark} alt={`${product.name} logo`} className='max-h-full max-w-full object-contain' />
+                </span>
+                <h3 className='mt-8 text-3xl font-extrabold'>{product.name}</h3>
+                <p className='mt-4 flex-1 text-base leading-7 text-gray-600 dark:text-gray-400'>
+                  {product.text}
+                </p>
+                <span className='mt-8 text-sm font-extrabold text-primary'>Explore product →</span>
+              </Motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className='bg-white px-4 pb-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
+        <div className='mx-auto max-w-6xl'>
           <Motion.div {...fadeUp} className='max-w-4xl'>
             <p className={eyebrowClass}>Our Mission / Vision</p>
             <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl lg:text-6xl'>
@@ -274,40 +308,6 @@ const About = () => {
               <p className='rotate-180 text-5xl font-extrabold text-white'>Amazonis</p>
             </div>
           </Motion.div>
-        </div>
-      </section>
-
-      <section className='bg-white px-4 py-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
-        <div className='mx-auto max-w-6xl'>
-          <Motion.div {...fadeUp} className='max-w-3xl'>
-            <p className={eyebrowClass}>Products Developed by Amazonis</p>
-            <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl'>
-              Digital products designed to solve practical business problems.
-            </h2>
-          </Motion.div>
-
-          <div className='mt-12 grid gap-5 lg:grid-cols-3'>
-            {products.map((product, index) => (
-              <Motion.a
-                key={product.name}
-                href={product.href}
-                target='_blank'
-                rel='noopener noreferrer'
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: index * 0.08 }}
-                className='group flex min-h-72 flex-col rounded-[16px] border border-gray-200 bg-[#f8f8f7] p-7 transition hover:-translate-y-1 hover:border-primary dark:border-gray-800 dark:bg-gray-900'
-              >
-                <span className='grid h-20 w-20 place-items-center rounded-full bg-white p-4 dark:bg-black'>
-                  <img src={product.mark} alt={`${product.name} logo`} className='max-h-full max-w-full object-contain' />
-                </span>
-                <h3 className='mt-8 text-3xl font-extrabold'>{product.name}</h3>
-                <p className='mt-4 flex-1 text-base leading-7 text-gray-600 dark:text-gray-400'>
-                  {product.text}
-                </p>
-                <span className='mt-8 text-sm font-extrabold text-primary'>Explore product →</span>
-              </Motion.a>
-            ))}
-          </div>
         </div>
       </section>
 

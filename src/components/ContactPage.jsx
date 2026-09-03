@@ -3,6 +3,16 @@ import { motion as Motion } from 'motion/react'
 import toast from 'react-hot-toast'
 import assets from '../assets/assets'
 
+const fadeUp = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-80px' },
+  transition: { duration: 0.6, ease: 'easeOut' },
+}
+
+const eyebrowClass =
+  'inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-gray-900 dark:text-white before:h-2 before:w-2 before:rounded-full before:bg-primary'
+
 const contactDetails = [
   {
     label: 'Email',
@@ -10,21 +20,28 @@ const contactDetails = [
     href: 'mailto:info@amazonis.in',
   },
   {
-    label: 'Mobile',
-    value: '+91 9971228021',
+    label: 'Phone',
+    value: '+91 99712 28021',
     href: 'tel:+919971228021',
   },
   {
-    label: 'Address',
-    value: 'Fl 19, C-001/A2, Sector 16B, Noida, Uttar Pradesh 201301',
+    label: 'Business Address',
+    value: 'Flat 19, C-001/A2, Sector 16B, Noida, Uttar Pradesh - 201301, India',
   },
   {
     label: 'Registered Office',
-    value: '11/48 DSIDC, Pocket-II, Mayur Vihar Phase-l, East Delhi, Delhi-110091',
+    value: '11/48 DSIDC, Pocket-II, Mayur Vihar Phase-I, East Delhi, Delhi - 110091, India',
   },
 ]
 
-const officeAddress = 'Fl 19, C-001/A2, Sector 16B, Noida, Uttar Pradesh 201301'
+const supportItems = [
+  'Business enquiries',
+  'Customer support',
+  'Billing assistance',
+  'Transaction-related concerns',
+]
+
+const officeAddress = 'Flat 19, C-001/A2, Sector 16B, Noida, Uttar Pradesh 201301'
 const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(officeAddress)}&output=embed`
 
 const ContactPage = () => {
@@ -53,210 +70,218 @@ const ContactPage = () => {
   }
 
   return (
-    <main className='bg-white text-gray-950 dark:bg-black dark:text-white'>
-      <section className='relative overflow-hidden px-4 pt-14 pb-6 sm:px-12 sm:pt-20 sm:pb-10 lg:px-24 xl:px-40'>
-        <div
-          className='absolute inset-0 opacity-70 dark:opacity-20'
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(15, 76, 129, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 76, 129, 0.08) 1px, transparent 1px)',
-            backgroundSize: '88px 88px',
-          }}
-          aria-hidden='true'
-        />
-        <div className='absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-blue-50/80 to-transparent dark:from-primary/10' aria-hidden='true' />
-
-        <div className='relative mx-auto max-w-6xl'>
+    <main className='overflow-hidden bg-[#f4f4f2] text-gray-900 dark:bg-black dark:text-white'>
+      <section className='px-4 py-8 sm:px-8 lg:px-14'>
+        <div className='mx-auto max-w-7xl overflow-hidden rounded-[22px] bg-white px-5 pb-16 pt-20 sm:px-10 sm:pb-24 sm:pt-28 lg:px-16 lg:pt-36 dark:bg-gray-950'>
           <Motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-            className='mx-auto max-w-3xl text-center'
+            transition={{ duration: 0.5 }}
+            className='mx-auto max-w-5xl text-center'
           >
-            <p className='text-xs font-extrabold uppercase tracking-[0.2em] text-primary'>
+            <h1 className='text-6xl font-extrabold uppercase leading-none tracking-normal text-gray-950 sm:text-7xl lg:text-8xl dark:text-white'>
               Contact
-            </p>
-            <h1 className='mt-4 text-4xl font-extrabold tracking-tight text-[#0b2148] sm:text-6xl dark:text-white'>
-              Get in Touch
             </h1>
-            <p className='mx-auto mt-5 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300'>
-              Contact us using the information below. We will respond promptly to your inquiries
-              and feedback.
+            <p className='mx-auto mt-8 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base dark:text-gray-400'>
+              Tell us what you want to build, improve or manage. We will help you understand the
+              right scope, timeline and next step.
             </p>
           </Motion.div>
-
-          <div className='mt-12 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16'>
-            <Motion.div
-              initial={{ opacity: 0, x: -24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.55, delay: 0.1 }}
-              className='flex flex-col justify-center'
-            >
-              <h2 className='text-3xl font-extrabold text-[#0b2148] sm:text-4xl dark:text-white'>
-                Amazonis Contact Form
-              </h2>
-              <div className='mt-7 space-y-4 text-base leading-8 text-gray-600 dark:text-gray-300'>
-                <p>
-                  If you have not found what you are looking for, please reach out and tell us what
-                  you want to build.
-                </p>
-                <p>
-                  Got any questions or feedback? Feel free to contact us and we will guide you with
-                  the next steps.
-                </p>
-                <p>
-                  Before sending a message, add your project details, timeline and contact
-                  information so our team can respond clearly.
-                </p>
-              </div>
-
-              <div className='mt-8 grid gap-3'>
-                {contactDetails.map((detail) => (
-                  <div
-                    key={detail.label}
-                    className='rounded-lg border border-gray-200 bg-white/75 p-5 shadow-sm backdrop-blur dark:border-gray-700 dark:bg-gray-900/75'
-                  >
-                    <p className='text-xs font-extrabold uppercase tracking-[0.18em] text-primary'>
-                      {detail.label}
-                    </p>
-                    {detail.href ? (
-                      <a
-                        href={detail.href}
-                        className='mt-2 block text-base font-semibold leading-7 text-[#0b2148] transition-colors hover:text-primary dark:text-white'
-                      >
-                        {detail.value}
-                      </a>
-                    ) : (
-                      <p className='mt-2 text-base font-semibold leading-7 text-[#0b2148] dark:text-white'>
-                        {detail.value}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </Motion.div>
-
-            <Motion.form
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.55, delay: 0.18 }}
-              onSubmit={onSubmit}
-              className='rounded-xl border border-gray-200 bg-white/90 p-6 shadow-2xl shadow-gray-100 backdrop-blur sm:p-8 dark:border-gray-700 dark:bg-gray-900/90 dark:shadow-black/30'
-            >
-              <h2 className='text-2xl font-extrabold text-[#0b2148] dark:text-white'>
-                Send us your message now!
-              </h2>
-
-              <div className='mt-7 grid gap-5 sm:grid-cols-2'>
-                <label className='block text-sm font-semibold text-gray-900 dark:text-white'>
-                  First Name
-                  <input
-                    name='first_name'
-                    type='text'
-                    placeholder='First name'
-                    className='mt-2 w-full rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
-                    required
-                  />
-                </label>
-                <label className='block text-sm font-semibold text-gray-900 dark:text-white'>
-                  Last Name
-                  <input
-                    name='last_name'
-                    type='text'
-                    placeholder='Last name'
-                    className='mt-2 w-full rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
-                    required
-                  />
-                </label>
-              </div>
-
-              <label className='mt-6 block text-sm font-semibold text-gray-900 dark:text-white'>
-                Email
-                <input
-                  name='email'
-                  type='email'
-                  placeholder='you@company.com'
-                  className='mt-2 w-full rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
-                  required
-                />
-              </label>
-
-              <label className='mt-6 block text-sm font-semibold text-gray-900 dark:text-white'>
-                Phone
-                <input
-                  name='phone'
-                  type='tel'
-                  placeholder='+91 98765 43210'
-                  className='mt-2 w-full rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
-                />
-              </label>
-
-              <label className='mt-6 block text-sm font-semibold text-gray-900 dark:text-white'>
-                Message
-                <textarea
-                  name='message'
-                  rows={7}
-                  placeholder='Message title here'
-                  className='mt-2 w-full resize-none rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
-                  required
-                />
-              </label>
-
-              <label className='mt-6 block text-sm font-semibold text-gray-900 dark:text-white'>
-                Select which service
-                <select
-                  name='service'
-                  className='mt-2 w-full rounded-lg border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600 outline-none focus:border-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200'
-                >
-                  <option>Website Development</option>
-                  <option>Mobile App Development</option>
-                  <option>AI Solutions</option>
-                  <option>Digital Marketing</option>
-                  <option>Other</option>
-                </select>
-              </label>
-
-              <label className='mt-5 flex items-start gap-3 text-sm leading-6 text-gray-600 dark:text-gray-300'>
-                <input
-                  type='checkbox'
-                  className='mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
-                  required
-                />
-                <span>
-                  I accept the website{' '}
-                  <a href='/privacy-policy' className='font-semibold text-primary underline underline-offset-4'>
-                    privacy policy
-                  </a>
-                  .
-                </span>
-              </label>
-
-              <button
-                type='submit'
-                className='mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-bold text-white transition-all hover:scale-103'
-              >
-                Submit
-                <img src={assets.arrow_icon} alt='' className='w-4' />
-              </button>
-            </Motion.form>
-          </div>
 
           <Motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.15 }}
-            viewport={{ once: true }}
-            className='relative mt-12 overflow-hidden rounded-xl border border-gray-200 bg-slate-100 shadow-2xl shadow-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/30'
+            initial={{ opacity: 0, y: 36 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.12 }}
+            className='mt-20 grid gap-4 md:grid-cols-[1fr_0.72fr_1fr] lg:mt-28'
           >
-            <iframe
-              title='Amazonis office location map'
-              src={mapUrl}
-              className='h-[320px] w-full border-0 sm:h-[420px]'
-              loading='lazy'
-              referrerPolicy='no-referrer-when-downgrade'
-              allowFullScreen
-            />
+            <div className='overflow-hidden rounded-[16px] bg-gray-100 dark:bg-gray-900'>
+              <img src={assets.bgImage2} alt='Amazonis contact workspace' className='h-72 w-full object-cover' />
+            </div>
+            <div className='hidden rounded-[16px] bg-primary p-7 text-white md:flex md:flex-col md:justify-end'>
+              <p className='text-[11px] font-extrabold uppercase tracking-[0.18em] text-white/70'>
+                Response
+              </p>
+              <p className='mt-4 text-4xl font-extrabold uppercase leading-tight'>
+                Clear communication from day one.
+              </p>
+            </div>
+            <div className='hidden overflow-hidden rounded-[16px] bg-gray-100 md:block dark:bg-gray-900'>
+              <img src={assets.work_dashboard_management} alt='Amazonis project dashboard' className='h-72 w-full object-cover' />
+            </div>
           </Motion.div>
+        </div>
+      </section>
+
+      <section className='bg-white px-4 py-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
+        <div className='mx-auto grid max-w-6xl gap-14 lg:grid-cols-[0.9fr_1.1fr]'>
+          <Motion.div {...fadeUp}>
+            <p className={eyebrowClass}>Get in Touch</p>
+            <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl lg:text-6xl'>
+              Share your requirement with Amazonis.
+            </h2>
+            <p className='mt-8 max-w-xl text-base leading-8 text-gray-600 dark:text-gray-400'>
+              For business enquiries, customer support, billing assistance or transaction-related
+              concerns, contact us through our official email address or phone number.
+            </p>
+
+            <div className='mt-9 grid gap-3 sm:grid-cols-2'>
+              {supportItems.map((item) => (
+                <div
+                  key={item}
+                  className='rounded-[12px] border border-gray-200 bg-[#f8f8f7] px-5 py-4 text-sm font-bold text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300'
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </Motion.div>
+
+          <Motion.form
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.1 }}
+            onSubmit={onSubmit}
+            className='rounded-[18px] border border-gray-200 bg-[#f8f8f7] p-6 sm:p-8 dark:border-gray-800 dark:bg-gray-900'
+          >
+            <h2 className='text-3xl font-extrabold uppercase leading-tight text-gray-950 dark:text-white'>
+              Send us your message
+            </h2>
+
+            <div className='mt-7 grid gap-5 sm:grid-cols-2'>
+              <label className='block text-sm font-bold text-gray-900 dark:text-white'>
+                First Name
+                <input
+                  name='first_name'
+                  type='text'
+                  placeholder='First name'
+                  className='mt-2 w-full rounded-[10px] border border-gray-200 bg-white px-4 py-4 text-sm text-gray-700 outline-none transition focus:border-primary dark:border-gray-700 dark:bg-black dark:text-gray-200'
+                  required
+                />
+              </label>
+              <label className='block text-sm font-bold text-gray-900 dark:text-white'>
+                Last Name
+                <input
+                  name='last_name'
+                  type='text'
+                  placeholder='Last name'
+                  className='mt-2 w-full rounded-[10px] border border-gray-200 bg-white px-4 py-4 text-sm text-gray-700 outline-none transition focus:border-primary dark:border-gray-700 dark:bg-black dark:text-gray-200'
+                  required
+                />
+              </label>
+            </div>
+
+            <label className='mt-6 block text-sm font-bold text-gray-900 dark:text-white'>
+              Email
+              <input
+                name='email'
+                type='email'
+                placeholder='you@company.com'
+                className='mt-2 w-full rounded-[10px] border border-gray-200 bg-white px-4 py-4 text-sm text-gray-700 outline-none transition focus:border-primary dark:border-gray-700 dark:bg-black dark:text-gray-200'
+                required
+              />
+            </label>
+
+            <label className='mt-6 block text-sm font-bold text-gray-900 dark:text-white'>
+              Phone
+              <input
+                name='phone'
+                type='tel'
+                placeholder='+91 98765 43210'
+                className='mt-2 w-full rounded-[10px] border border-gray-200 bg-white px-4 py-4 text-sm text-gray-700 outline-none transition focus:border-primary dark:border-gray-700 dark:bg-black dark:text-gray-200'
+              />
+            </label>
+
+            <label className='mt-6 block text-sm font-bold text-gray-900 dark:text-white'>
+              Select which service
+              <select
+                name='service'
+                className='mt-2 w-full rounded-[10px] border border-gray-200 bg-white px-4 py-4 text-sm text-gray-700 outline-none transition focus:border-primary dark:border-gray-700 dark:bg-black dark:text-gray-200'
+              >
+                <option>Website Development</option>
+                <option>E-Commerce Development</option>
+                <option>Mobile App Development</option>
+                <option>AI Solutions</option>
+                <option>Digital Marketing</option>
+                <option>Hosting & Maintenance</option>
+                <option>Other</option>
+              </select>
+            </label>
+
+            <label className='mt-6 block text-sm font-bold text-gray-900 dark:text-white'>
+              Message
+              <textarea
+                name='message'
+                rows={7}
+                placeholder='Tell us about your project'
+                className='mt-2 w-full resize-none rounded-[10px] border border-gray-200 bg-white px-4 py-4 text-sm text-gray-700 outline-none transition focus:border-primary dark:border-gray-700 dark:bg-black dark:text-gray-200'
+                required
+              />
+            </label>
+
+            <label className='mt-5 flex items-start gap-3 text-sm leading-6 text-gray-600 dark:text-gray-300'>
+              <input
+                type='checkbox'
+                className='mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+                required
+              />
+              <span>
+                I accept the website{' '}
+                <a href='/privacy-policy' className='font-bold text-primary underline underline-offset-4'>
+                  privacy policy
+                </a>
+                .
+              </span>
+            </label>
+
+            <button
+              type='submit'
+              className='mt-7 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-3 text-sm font-extrabold text-white transition-all hover:scale-103'
+            >
+              Submit
+              <img src={assets.arrow_icon} alt='' className='w-4' />
+            </button>
+          </Motion.form>
+        </div>
+      </section>
+
+      <section className='bg-white px-4 pb-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
+        <div className='mx-auto grid max-w-6xl gap-5 md:grid-cols-2'>
+          {contactDetails.map((detail, index) => (
+            <Motion.div
+              key={detail.label}
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: index * 0.05 }}
+              className='rounded-[16px] border border-gray-200 bg-[#f8f8f7] p-7 dark:border-gray-800 dark:bg-gray-900'
+            >
+              <p className='text-xs font-extrabold uppercase tracking-[0.18em] text-primary'>
+                {detail.label}
+              </p>
+              {detail.href ? (
+                <a
+                  href={detail.href}
+                  className='mt-5 block text-2xl font-extrabold leading-tight text-gray-950 transition hover:text-primary dark:text-white'
+                >
+                  {detail.value}
+                </a>
+              ) : (
+                <p className='mt-5 text-2xl font-extrabold leading-tight text-gray-950 dark:text-white'>
+                  {detail.value}
+                </p>
+              )}
+            </Motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className='bg-[#f4f4f2] px-4 py-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-black'>
+        <div className='mx-auto max-w-6xl overflow-hidden rounded-[18px] bg-white p-3 dark:bg-gray-950'>
+          <iframe
+            title='Amazonis office location map'
+            src={mapUrl}
+            className='h-[360px] w-full rounded-[14px] border-0 sm:h-[460px]'
+            loading='lazy'
+            referrerPolicy='no-referrer-when-downgrade'
+            allowFullScreen
+          />
         </div>
       </section>
     </main>
