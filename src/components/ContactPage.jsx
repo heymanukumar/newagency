@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion as Motion } from 'motion/react'
 import toast from 'react-hot-toast'
 import assets from '../assets/assets'
+import servicesData from '../data/servicesData'
+import {
+  WEB3FORMS_ENDPOINT,
+  isWeb3FormsReady,
+  prepareWeb3FormsData,
+} from '../config/web3forms'
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -45,27 +51,43 @@ const officeAddress = 'Flat 19, C-001/A2, Sector 16B, Noida, Uttar Pradesh 20130
 const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(officeAddress)}&output=embed`
 
 const ContactPage = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const onSubmit = async (event) => {
     event.preventDefault()
 
-    const formData = new FormData(event.target)
-    formData.append('access_key', '--- Enter Web3Forms key ---')
+    if (!isWeb3FormsReady()) {
+      toast.error('Web3Forms access key is missing.')
+      return
+    }
+
+    setIsSubmitting(true)
+    const form = event.currentTarget
+    const formData = prepareWeb3FormsData(form, {
+      subject: 'New Amazonis contact enquiry',
+      source: 'Contact page',
+    })
+    const firstName = formData.get('first_name') || ''
+    const lastName = formData.get('last_name') || ''
+    formData.append('name', `${firstName} ${lastName}`.trim())
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
         body: formData,
       })
       const data = await response.json()
 
       if (data.success) {
-        toast.success('Thank you for your submission!')
-        event.target.reset()
+        toast.success('Message sent successfully.')
+        form.reset()
       } else {
-        toast.error(data.message)
+        toast.error(data.message || 'Unable to send message right now.')
       }
     } catch (error) {
       toast.error(error.message)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -142,6 +164,7 @@ const ContactPage = () => {
             onSubmit={onSubmit}
             className='rounded-[18px] border border-gray-200 bg-[#f8f8f7] p-6 sm:p-8 dark:border-gray-800 dark:bg-gray-900'
           >
+            <input type='checkbox' name='botcheck' className='hidden' tabIndex='-1' autoComplete='off' />
             <h2 className='text-3xl font-extrabold uppercase leading-tight text-gray-950 dark:text-white'>
               Send us your message
             </h2>
@@ -196,12 +219,9 @@ const ContactPage = () => {
                 name='service'
                 className='mt-2 w-full rounded-[10px] border border-gray-200 bg-white px-4 py-4 text-sm text-gray-700 outline-none transition focus:border-primary dark:border-gray-700 dark:bg-black dark:text-gray-200'
               >
-                <option>Website Development</option>
-                <option>E-Commerce Development</option>
-                <option>Mobile App Development</option>
-                <option>AI Solutions</option>
-                <option>Digital Marketing</option>
-                <option>Hosting & Maintenance</option>
+                {servicesData.map((service) => (
+                  <option key={service.title}>{service.title}</option>
+                ))}
                 <option>Other</option>
               </select>
             </label>
@@ -220,6 +240,8 @@ const ContactPage = () => {
             <label className='mt-5 flex items-start gap-3 text-sm leading-6 text-gray-600 dark:text-gray-300'>
               <input
                 type='checkbox'
+                name='privacy_policy'
+                value='Accepted'
                 className='mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
                 required
               />
@@ -234,9 +256,10 @@ const ContactPage = () => {
 
             <button
               type='submit'
-              className='mt-7 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-3 text-sm font-extrabold text-white transition-all hover:scale-103'
+              disabled={isSubmitting}
+              className='mt-7 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-3 text-sm font-extrabold text-white transition-all hover:scale-103 disabled:cursor-not-allowed disabled:opacity-60'
             >
-              Submit
+              {isSubmitting ? 'Sending...' : 'Submit'}
               <img src={assets.arrow_icon} alt='' className='w-4' />
             </button>
           </Motion.form>
