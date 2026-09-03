@@ -18,6 +18,20 @@ const serviceImages = [
   assets.hero_img,
   assets.work_mobile_app,
   assets.bgImage2,
+  assets.bgImage1,
+  assets.work_fitness_app,
+]
+
+const serviceLayouts = [
+  'lg:col-span-4 lg:row-span-2',
+  'lg:col-span-5 lg:row-span-2',
+  'lg:col-span-3 lg:row-span-3',
+  'lg:col-span-3 lg:row-span-2',
+  'lg:col-span-3 lg:row-span-3',
+  'lg:col-span-3 lg:row-span-2',
+  'lg:col-span-3 lg:row-span-2',
+  'lg:col-span-5 lg:row-span-2',
+  'lg:col-span-4 lg:row-span-2',
 ]
 
 const processSteps = [
@@ -57,6 +71,65 @@ const expectations = [
   'Hosting and post-launch maintenance',
   'Long-term technical assistance',
 ]
+
+const ServiceShowcaseCard = ({ service, index }) => (
+  <Motion.article
+    {...fadeUp}
+    transition={{ ...fadeUp.transition, delay: index * 0.04 }}
+    tabIndex={0}
+    className={`group relative isolate min-h-[500px] overflow-hidden rounded-[22px] bg-gray-950 p-5 text-white outline-none ring-1 ring-white/10 transition duration-500 hover:z-10 hover:scale-[1.015] hover:ring-primary/70 hover:shadow-[0_30px_90px_rgba(0,64,193,0.34)] focus-visible:ring-2 focus-visible:ring-primary md:min-h-[430px] lg:min-h-0 ${serviceLayouts[index % serviceLayouts.length]}`}
+  >
+    <img
+      src={serviceImages[index % serviceImages.length]}
+      alt=''
+      className='absolute inset-0 h-full w-full object-cover opacity-68 grayscale transition duration-700 group-hover:scale-110 group-hover:opacity-28 group-hover:grayscale-0 group-focus-within:scale-110 group-focus-within:opacity-28 group-focus-within:grayscale-0'
+    />
+    <div className='absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10' />
+    <div className='absolute inset-0 bg-primary/0 mix-blend-screen transition duration-700 group-hover:bg-primary/25 group-focus-within:bg-primary/25' />
+
+    <div className='relative z-10 flex h-full min-h-[460px] flex-col justify-end md:min-h-[390px] lg:min-h-full'>
+      <div className='transition duration-500 group-hover:-translate-y-2 group-focus-within:-translate-y-2'>
+        <span className='inline-flex rounded-full bg-white/12 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-white/80 backdrop-blur'>
+          0{index + 1}
+        </span>
+        <h3 className='mt-4 text-3xl font-extrabold uppercase leading-none tracking-normal sm:text-4xl'>
+          {service.title}
+        </h3>
+        <p className='mt-4 max-w-xl text-sm leading-6 text-white/76'>
+          {service.summary || service.description}
+        </p>
+      </div>
+
+      <div className='mt-5 max-h-[32rem] overflow-hidden opacity-100 transition-all duration-700 md:max-h-0 md:opacity-0 md:group-hover:max-h-[36rem] md:group-hover:opacity-100 md:group-focus-within:max-h-[36rem] md:group-focus-within:opacity-100'>
+        <div className='max-h-72 overflow-y-auto rounded-[16px] border border-white/12 bg-black/48 p-4 backdrop-blur-md md:max-h-80'>
+          <p className='text-sm leading-6 text-white/86'>{service.description}</p>
+          <p className='mt-3 text-sm leading-6 text-white/62'>{service.detail}</p>
+
+          <div className='mt-4 flex flex-wrap gap-2'>
+            {service.features.map((feature) => (
+              <span
+                key={feature}
+                className='rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-bold leading-5 text-white/82 ring-1 ring-white/10'
+              >
+                {feature}
+              </span>
+            ))}
+          </div>
+
+          <a
+            href={service.link || '/contact'}
+            target={service.link ? '_blank' : undefined}
+            rel={service.link ? 'noopener noreferrer' : undefined}
+            className='mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-extrabold text-primary transition hover:scale-105'
+          >
+            {service.cta}
+            <img src={assets.arrow_icon} alt='' className='w-3 invert' />
+          </a>
+        </div>
+      </div>
+    </div>
+  </Motion.article>
+)
 
 const ServicesPage = () => {
   return (
@@ -131,7 +204,7 @@ const ServicesPage = () => {
       </section>
 
       <section className='bg-white px-4 py-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
-        <div className='mx-auto max-w-6xl'>
+        <div className='mx-auto max-w-7xl'>
           <Motion.div {...fadeUp} className='max-w-4xl'>
             <p className={eyebrowClass}>Our Services</p>
             <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl lg:text-6xl'>
@@ -139,55 +212,12 @@ const ServicesPage = () => {
             </h2>
           </Motion.div>
 
-          <div className='mt-12 grid gap-5'>
+          <div className='mt-12 rounded-[28px] bg-black p-3 shadow-[0_40px_120px_rgba(0,0,0,0.18)] sm:p-5 lg:p-7'>
+            <div className='grid gap-4 md:grid-cols-2 lg:auto-rows-[170px] lg:grid-cols-12'>
             {servicesData.map((service, index) => (
-              <Motion.article
-                key={service.title}
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: index * 0.04 }}
-                className='group grid gap-6 rounded-[16px] border border-gray-200 bg-[#f8f8f7] p-6 transition hover:-translate-y-1 hover:border-primary lg:grid-cols-[13rem_1fr] dark:border-gray-800 dark:bg-gray-900'
-              >
-                <div className='overflow-hidden rounded-[12px] bg-white dark:bg-black'>
-                  <img
-                    src={serviceImages[index % serviceImages.length]}
-                    alt=''
-                    className='h-44 w-full object-cover lg:h-full'
-                  />
-                </div>
-                <div>
-                  <span className='text-xs font-extrabold uppercase tracking-[0.18em] text-primary'>
-                    0{index + 1}
-                  </span>
-                  <h3 className='mt-4 text-2xl font-extrabold leading-tight text-gray-950 dark:text-white'>
-                    {service.title}
-                  </h3>
-                  <p className='mt-4 text-base leading-7 text-gray-600 dark:text-gray-400'>
-                    {service.description}
-                  </p>
-                  <p className='mt-4 text-base leading-7 text-gray-600 dark:text-gray-400'>
-                    {service.detail}
-                  </p>
-                  <div className='mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
-                    {service.features.map((feature) => (
-                      <div
-                        key={feature}
-                        className='rounded-[10px] bg-white px-4 py-3 text-sm font-bold leading-6 text-gray-700 dark:bg-black dark:text-gray-300'
-                      >
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-                  <a
-                    href={service.link || '/contact'}
-                    target={service.link ? '_blank' : undefined}
-                    rel={service.link ? 'noopener noreferrer' : undefined}
-                    className='mt-7 inline-flex text-sm font-extrabold text-primary'
-                  >
-                    {service.cta} →
-                  </a>
-                </div>
-              </Motion.article>
+              <ServiceShowcaseCard key={service.title} service={service} index={index} />
             ))}
+            </div>
           </div>
         </div>
       </section>
