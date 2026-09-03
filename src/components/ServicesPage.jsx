@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion as Motion } from 'motion/react'
 import assets from '../assets/assets'
 import servicesData from '../data/servicesData'
@@ -72,15 +72,14 @@ const expectations = [
   'Long-term technical assistance',
 ]
 
-const ServiceShowcaseCard = ({ service, index }) => {
+const ServiceShowcaseCard = ({ service, index, onOpen }) => {
   const isBlue = index === 1 || index === 5 || index === 8
 
   return (
     <Motion.article
       {...fadeUp}
       transition={{ ...fadeUp.transition, delay: index * 0.035 }}
-      tabIndex={0}
-      className={`group relative isolate min-h-[330px] overflow-hidden rounded-[22px] p-5 outline-none ring-1 transition duration-500 hover:z-10 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_24px_70px_rgba(0,64,193,0.16)] focus-visible:ring-2 focus-visible:ring-primary md:min-h-[340px] lg:min-h-0 ${
+      className={`group relative isolate min-h-[250px] overflow-hidden rounded-[18px] p-5 ring-1 transition duration-500 hover:z-10 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(0,64,193,0.14)] md:min-h-[270px] lg:min-h-0 ${
         isBlue
           ? 'bg-primary text-white ring-primary/20'
           : 'bg-white text-gray-950 ring-gray-200 dark:bg-gray-950 dark:text-white dark:ring-gray-800'
@@ -90,19 +89,19 @@ const ServiceShowcaseCard = ({ service, index }) => {
         src={serviceImages[index % serviceImages.length]}
         alt=''
         className={`absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-20 group-focus-within:scale-110 group-focus-within:opacity-20 ${
-          isBlue ? 'opacity-24 mix-blend-screen' : 'opacity-18 grayscale group-hover:grayscale-0'
+          isBlue ? 'opacity-22 mix-blend-screen' : 'opacity-10 grayscale group-hover:grayscale-0'
         }`}
       />
       <div
         className={`absolute inset-0 ${
           isBlue
-            ? 'bg-gradient-to-t from-primary via-primary/88 to-primary/48'
-            : 'bg-gradient-to-t from-white via-white/92 to-white/66 dark:from-gray-950 dark:via-gray-950/88 dark:to-gray-950/52'
+            ? 'bg-gradient-to-t from-primary via-primary/92 to-primary/62'
+            : 'bg-gradient-to-t from-white via-white/95 to-white/74 dark:from-gray-950 dark:via-gray-950/92 dark:to-gray-950/68'
         }`}
       />
       <div className='absolute right-4 top-4 h-16 w-16 rounded-full bg-primary/10 blur-2xl transition duration-700 group-hover:scale-[2.2] group-hover:bg-primary/25' />
 
-      <div className='relative z-10 flex h-full min-h-[290px] flex-col justify-between md:min-h-[300px] lg:min-h-full'>
+      <div className='relative z-10 flex h-full min-h-[210px] flex-col justify-between md:min-h-[230px] lg:min-h-full'>
         <div className='flex items-start justify-between gap-4'>
           <span
             className={`inline-flex rounded-full px-4 py-2 text-xs font-extrabold tracking-[0.18em] ${
@@ -119,48 +118,120 @@ const ServiceShowcaseCard = ({ service, index }) => {
           />
         </div>
 
-        <div className='pt-10 transition duration-500 group-hover:-translate-y-2 group-focus-within:-translate-y-2'>
-          <h3 className='max-w-xl text-3xl font-extrabold uppercase leading-none tracking-normal sm:text-4xl'>
+        <div className='pt-8 transition duration-500 group-hover:-translate-y-1 group-focus-within:-translate-y-1'>
+          <h3 className='max-w-xl text-[1.7rem] font-extrabold uppercase leading-none tracking-normal sm:text-3xl lg:text-[2.15rem]'>
             {service.title}
           </h3>
-          <p className={`mt-5 max-w-xl text-base leading-7 ${isBlue ? 'text-white/78' : 'text-gray-600 dark:text-gray-300'}`}>
+          <p className={`mt-4 max-w-xl text-sm leading-6 ${isBlue ? 'text-white/80' : 'text-gray-600 dark:text-gray-300'}`}>
             {service.summary || service.description}
           </p>
-        </div>
-      </div>
-
-      <div className='absolute inset-x-3 bottom-3 z-20 translate-y-5 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 max-md:relative max-md:inset-auto max-md:mt-5 max-md:translate-y-0 max-md:opacity-100'>
-        <div className='max-h-76 overflow-y-auto rounded-[18px] border border-gray-200 bg-white/94 p-4 shadow-[0_18px_56px_rgba(15,23,42,0.14)] backdrop-blur-md dark:border-white/10 dark:bg-black/60'>
-          <p className='text-sm leading-6 text-gray-800 dark:text-white/86'>{service.description}</p>
-          <p className='mt-3 text-sm leading-6 text-gray-500 dark:text-white/62'>{service.detail}</p>
 
           <div className='mt-4 flex flex-wrap gap-2'>
-            {service.features.slice(0, 8).map((feature) => (
+            {service.features.slice(0, 3).map((feature) => (
               <span
                 key={feature}
-                className='rounded-full bg-primary/8 px-3 py-1.5 text-[11px] font-bold leading-5 text-gray-700 ring-1 ring-primary/10 dark:bg-white/10 dark:text-white/82 dark:ring-white/10'
+                className={`rounded-full px-3 py-1 text-[11px] font-bold leading-5 ring-1 ${
+                  isBlue
+                    ? 'bg-white/12 text-white ring-white/18'
+                    : 'bg-primary/7 text-gray-700 ring-primary/10 dark:bg-white/8 dark:text-white/78 dark:ring-white/10'
+                }`}
               >
                 {feature}
               </span>
             ))}
           </div>
-
-          <a
-            href={service.link || '/contact'}
-            target={service.link ? '_blank' : undefined}
-            rel={service.link ? 'noopener noreferrer' : undefined}
-            className='mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs font-extrabold text-white transition hover:scale-105'
-          >
-            {service.cta}
-            <img src={assets.arrow_icon} alt='' className='w-3' />
-          </a>
         </div>
+
+        <button
+          type='button'
+          onClick={() => onOpen(service)}
+          className={`mt-5 inline-flex w-max items-center gap-2 rounded-full px-5 py-2.5 text-xs font-extrabold transition hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+            isBlue
+              ? 'bg-white text-primary focus-visible:ring-white focus-visible:ring-offset-primary'
+              : 'bg-primary text-white focus-visible:ring-primary dark:ring-offset-gray-950'
+          }`}
+        >
+          View Details
+          <img src={assets.arrow_icon} alt='' className={`w-3 ${isBlue ? 'invert' : ''}`} />
+        </button>
       </div>
     </Motion.article>
   )
 }
 
+const ServiceDetailsModal = ({ service, onClose }) => {
+  if (!service) return null
+
+  return (
+    <div className='fixed inset-0 z-[80] flex items-center justify-center bg-gray-950/55 px-4 py-6 backdrop-blur-sm'>
+      <Motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
+        className='max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-[22px] bg-white p-6 shadow-[0_30px_100px_rgba(0,0,0,0.28)] sm:p-8 dark:bg-gray-950'
+        role='dialog'
+        aria-modal='true'
+        aria-labelledby='service-detail-title'
+      >
+        <div className='flex items-start justify-between gap-6'>
+          <div>
+            <p className={eyebrowClass}>Service Detail</p>
+            <h3
+              id='service-detail-title'
+              className='mt-4 text-4xl font-extrabold uppercase leading-none tracking-normal text-gray-950 sm:text-5xl dark:text-white'
+            >
+              {service.title}
+            </h3>
+          </div>
+          <button
+            type='button'
+            onClick={onClose}
+            className='shrink-0 rounded-full border border-gray-200 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-gray-700 transition hover:border-primary hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-gray-800 dark:text-gray-300'
+          >
+            Close
+          </button>
+        </div>
+
+        <div className='mt-8 grid gap-7 lg:grid-cols-[0.95fr_1.05fr]'>
+          <div className='overflow-hidden rounded-[16px] bg-primary/8'>
+            <img
+              src={serviceImages[servicesData.findIndex((item) => item.title === service.title) % serviceImages.length]}
+              alt=''
+              className='h-full min-h-[280px] w-full object-cover'
+            />
+          </div>
+          <div>
+            <p className='text-lg leading-8 text-gray-800 dark:text-gray-200'>{service.description}</p>
+            <p className='mt-4 text-base leading-8 text-gray-600 dark:text-gray-400'>{service.detail}</p>
+            <div className='mt-6 grid gap-2 sm:grid-cols-2'>
+              {service.features.map((feature) => (
+                <span
+                  key={feature}
+                  className='rounded-[10px] bg-primary/8 px-4 py-3 text-sm font-bold text-gray-700 ring-1 ring-primary/10 dark:bg-white/8 dark:text-white/78 dark:ring-white/10'
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
+            <a
+              href={service.link || '/contact'}
+              target={service.link ? '_blank' : undefined}
+              rel={service.link ? 'noopener noreferrer' : undefined}
+              className='mt-7 inline-flex items-center gap-3 rounded-full bg-primary px-7 py-3 text-sm font-extrabold text-white transition hover:scale-105'
+            >
+              {service.cta}
+              <img src={assets.arrow_icon} alt='' className='w-4' />
+            </a>
+          </div>
+        </div>
+      </Motion.div>
+    </div>
+  )
+}
+
 const ServicesPage = () => {
+  const [activeService, setActiveService] = useState(null)
+
   return (
     <main className='overflow-hidden bg-[#f4f4f2] text-gray-900 dark:bg-black dark:text-white'>
       <section className='px-4 py-8 sm:px-8 lg:px-14'>
@@ -241,10 +312,15 @@ const ServicesPage = () => {
             </h2>
           </Motion.div>
 
-          <div className='mt-10 rounded-[28px] border border-gray-200 bg-[#f8f8f7] p-2 shadow-[0_24px_80px_rgba(0,0,0,0.07)] sm:p-4 lg:p-5 dark:border-gray-800 dark:bg-gray-900'>
-            <div className='grid gap-3 md:grid-cols-2 lg:auto-rows-[122px] lg:grid-cols-12'>
+          <div className='mt-10 rounded-[24px] border border-gray-200 bg-[#f8f8f7] p-2 shadow-[0_24px_80px_rgba(0,0,0,0.07)] sm:p-3 lg:p-4 dark:border-gray-800 dark:bg-gray-900'>
+            <div className='grid gap-3 md:grid-cols-2 lg:auto-rows-[104px] lg:grid-cols-12'>
             {servicesData.map((service, index) => (
-              <ServiceShowcaseCard key={service.title} service={service} index={index} />
+              <ServiceShowcaseCard
+                key={service.title}
+                service={service}
+                index={index}
+                onOpen={setActiveService}
+              />
             ))}
             </div>
           </div>
@@ -252,23 +328,29 @@ const ServicesPage = () => {
       </section>
 
       <section className='bg-[#f4f4f2] px-4 py-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-black'>
-        <div className='mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]'>
-          <Motion.div {...fadeUp}>
+        <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr]'>
+          <Motion.div {...fadeUp} className='lg:sticky lg:top-28 lg:h-max'>
             <p className={eyebrowClass}>How We Work</p>
             <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl'>
               A simple path from idea to launch.
             </h2>
+            <p className='mt-6 max-w-md text-base leading-8 text-gray-600 dark:text-gray-400'>
+              Each stage keeps the project clear, focused and easy to follow from first discussion
+              to final launch.
+            </p>
           </Motion.div>
 
           <div className='grid gap-4'>
             {processSteps.map((step, index) => (
               <Motion.article
                 key={step.title}
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: index * 0.06 }}
-                className='grid gap-4 rounded-[16px] bg-white p-6 sm:grid-cols-[6rem_1fr] dark:bg-gray-950'
+                initial={{ opacity: 0, y: 48, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.65 }}
+                transition={{ duration: 0.55, ease: 'easeOut' }}
+                className='grid gap-4 rounded-[16px] bg-white p-6 shadow-[0_20px_70px_rgba(0,0,0,0.04)] ring-1 ring-gray-200 sm:grid-cols-[5rem_1fr] dark:bg-gray-950 dark:ring-gray-800'
               >
-                <p className='text-4xl font-extrabold text-gray-300 dark:text-gray-700'>
+                <p className='text-3xl font-extrabold text-primary/35'>
                   0{index + 1}
                 </p>
                 <div>
@@ -338,6 +420,7 @@ const ServicesPage = () => {
           </Motion.a>
         </div>
       </section>
+      <ServiceDetailsModal service={activeService} onClose={() => setActiveService(null)} />
     </main>
   )
 }
