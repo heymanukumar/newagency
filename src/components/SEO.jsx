@@ -6,7 +6,7 @@ const defaultImage = `${siteUrl}/web-app-manifest-512x512.png`
 
 const pageMeta = {
   '/': {
-    title: 'Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Amazonis IT Services Pvt. Ltd. builds websites, AI solutions, mobile apps, e-commerce platforms, SEO campaigns and digital growth systems for modern businesses.',
     path: '/',
@@ -34,7 +34,7 @@ const pageMeta = {
     },
   },
   '/about': {
-    title: 'About | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Learn about Amazonis IT Services Pvt. Ltd., a technology company building digital solutions and owned products including Venuefy, Slour and Inphra.',
     path: '/about',
@@ -52,7 +52,7 @@ const pageMeta = {
     },
   },
   '/services': {
-    title: 'Services | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Explore Amazonis IT services including website development, e-commerce, mobile apps, AI solutions, digital marketing, social media management, influencer marketing and hosting.',
     path: '/services',
@@ -71,7 +71,7 @@ const pageMeta = {
     },
   },
   '/contact': {
-    title: 'Contact | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Contact Amazonis IT Services Pvt. Ltd. for websites, apps, AI solutions, digital marketing, hosting, maintenance and technology support.',
     path: '/contact',
@@ -89,7 +89,7 @@ const pageMeta = {
     },
   },
   '/privacy-policy': {
-    title: 'Privacy | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Read how Amazonis IT Services Pvt. Ltd. collects, uses, stores, protects and shares personal information when you use amazonis.in or contact us.',
     path: '/privacy-policy',
@@ -114,14 +114,14 @@ const pageMeta = {
     },
   },
   '/terms-and-conditions': {
-    title: 'Terms | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Read the Terms & Conditions for using amazonis.in and working with Amazonis IT Services Pvt. Ltd.',
     path: '/terms-and-conditions',
     type: 'article',
   },
   '/cookie-policy': {
-    title: 'Cookies | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Learn how Amazonis IT Services Pvt. Ltd. may use cookies and similar technologies on amazonis.in.',
     path: '/cookie-policy',
@@ -140,7 +140,7 @@ const pageMeta = {
     },
   },
   '/refund-policy': {
-    title: 'Refunds | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Review how Amazonis IT Services Pvt. Ltd. generally handles service refund requests.',
     path: '/refund-policy',
@@ -159,7 +159,7 @@ const pageMeta = {
     },
   },
   '/cancellation-policy': {
-    title: 'Cancellations | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Review how Amazonis IT Services Pvt. Ltd. handles project and service cancellation requests.',
     path: '/cancellation-policy',
@@ -178,7 +178,7 @@ const pageMeta = {
     },
   },
   '/disclaimer': {
-    title: 'Disclaimer | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Read important disclaimers about Amazonis website information, service outcomes, and third-party platforms.',
     path: '/disclaimer',
@@ -197,7 +197,7 @@ const pageMeta = {
     },
   },
   '/acceptable-use-policy': {
-    title: 'Use Policy | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Read the Acceptable Use Policy for Amazonis websites, services, products, platforms and digital systems.',
     path: '/acceptable-use-policy',
@@ -216,7 +216,7 @@ const pageMeta = {
     },
   },
   '/service-delivery-fulfilment-policy': {
-    title: 'Delivery | Amazonis',
+    title: 'Amazonis | Technologies',
     description:
       'Read how Amazonis handles service delivery, fulfilment, timelines, customer responsibilities and completion.',
     path: '/service-delivery-fulfilment-policy',
@@ -235,7 +235,7 @@ const pageMeta = {
     },
   },
   '/sitemap': {
-    title: 'Sitemap | Amazonis',
+    title: 'Amazonis | Technologies',
     description: 'Browse all public pages, legal policies, and sitemap resources from Amazonis.',
     path: '/sitemap',
     type: 'website',
@@ -270,7 +270,7 @@ const upsertLink = (rel, href) => {
 const SEO = ({ path }) => {
   useEffect(() => {
     const meta = pageMeta[path] || {
-      title: '404 | Amazonis',
+      title: 'Amazonis | Technologies',
       description: 'The page you are looking for could not be found on Amazonis IT Services.',
       path,
       robots: 'noindex, follow',
