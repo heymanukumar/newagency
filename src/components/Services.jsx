@@ -6,7 +6,10 @@ import { motion as Motion } from 'motion/react'
 import servicesData from '../data/servicesData'
 
 const Services = () => {
-  const visibleServices = servicesData.slice(0, 4)
+  const visibleServices = servicesData.slice(0, 4).map((service) => ({
+    ...service,
+    description: service.summary || service.description,
+  }))
 
   return (
     <Motion.div

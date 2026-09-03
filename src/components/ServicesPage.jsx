@@ -22,21 +22,40 @@ const serviceImages = [
 
 const processSteps = [
   {
-    title: 'Understand',
-    text: 'We begin with your business requirement, users, goals, scope and expected outcome.',
+    title: 'Share',
+    text: 'Share your idea, existing problem or business goal. You do not need to prepare a technical document.',
   },
   {
-    title: 'Plan',
-    text: 'We define deliverables, timeline, pricing, project responsibilities and execution flow.',
+    title: 'Discuss',
+    text: 'We discuss the features, audience, technology, budget, deliverables and expected timeline.',
   },
   {
-    title: 'Build',
-    text: 'Our team designs, develops, reviews and improves the solution with structured feedback.',
+    title: 'Design',
+    text: 'Our team prepares a clean and easy-to-use design aligned with your brand and users.',
   },
   {
-    title: 'Support',
-    text: 'After delivery, we help with hosting, maintenance, updates and ongoing technical support.',
+    title: 'Develop',
+    text: 'After approval, we begin development and keep you informed about the project’s progress.',
   },
+  {
+    title: 'Test',
+    text: 'We test the design, features, speed, responsiveness, security and overall user experience.',
+  },
+  {
+    title: 'Deploy',
+    text: 'Once the project is approved, we deploy it and provide the agreed maintenance and technical support.',
+  },
+]
+
+const expectations = [
+  'Solutions built around your requirements',
+  'Clear project scope and communication',
+  'Modern and responsive design',
+  'Secure and scalable development',
+  'Transparent timelines and deliverables',
+  'Support throughout the project',
+  'Hosting and post-launch maintenance',
+  'Long-term technical assistance',
 ]
 
 const ServicesPage = () => {
@@ -54,8 +73,8 @@ const ServicesPage = () => {
               Services
             </h1>
             <p className='mx-auto mt-8 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base dark:text-gray-400'>
-              Strategy, design, development, automation, hosting and digital growth support for
-              businesses that need reliable technology execution.
+              At Amazonis IT Services, we help businesses use technology in a simple and practical
+              way, from planning to launch and beyond.
             </p>
           </Motion.div>
 
@@ -86,19 +105,26 @@ const ServicesPage = () => {
 
             <Motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.1 }}>
               <p className='max-w-2xl text-2xl leading-snug text-gray-700 sm:text-3xl dark:text-gray-300'>
-                Every project starts with clarity,
-                <span className='text-gray-300 dark:text-gray-600'> then moves into focused execution.</span>
+                You do not need to understand every technical detail.
+                <span className='text-gray-300 dark:text-gray-600'> Tell us what you want to achieve.</span>
               </p>
               <div className='mt-9 space-y-5 text-base leading-8 text-gray-600 dark:text-gray-400'>
                 <p>
-                  We design and develop websites, e-commerce platforms, custom software, SaaS
-                  products and AI-powered business solutions.
+                  Whether you need a professional website, a SaaS platform, reliable hosting, a
+                  mobile app or support with digital marketing, our team can help.
                 </p>
                 <p>
-                  We also provide hosting, maintenance, technical support and digital management
-                  services based on each customer’s requirement.
+                  We listen to your requirement, explain the options clearly and build according to
+                  what your business actually needs.
                 </p>
               </div>
+              <a
+                href='/contact'
+                className='mt-9 inline-flex items-center gap-3 rounded-full bg-primary px-7 py-3 text-sm font-extrabold text-white transition hover:scale-105'
+              >
+                Discuss Your Project
+                <img src={assets.arrow_icon} alt='' className='w-4' />
+              </a>
             </Motion.div>
           </div>
         </div>
@@ -113,19 +139,19 @@ const ServicesPage = () => {
             </h2>
           </Motion.div>
 
-          <div className='mt-12 grid gap-5 md:grid-cols-2'>
+          <div className='mt-12 grid gap-5'>
             {servicesData.map((service, index) => (
               <Motion.article
                 key={service.title}
                 {...fadeUp}
                 transition={{ ...fadeUp.transition, delay: index * 0.04 }}
-                className='group grid min-h-60 gap-6 rounded-[16px] border border-gray-200 bg-[#f8f8f7] p-6 transition hover:-translate-y-1 hover:border-primary sm:grid-cols-[7rem_1fr] dark:border-gray-800 dark:bg-gray-900'
+                className='group grid gap-6 rounded-[16px] border border-gray-200 bg-[#f8f8f7] p-6 transition hover:-translate-y-1 hover:border-primary lg:grid-cols-[13rem_1fr] dark:border-gray-800 dark:bg-gray-900'
               >
                 <div className='overflow-hidden rounded-[12px] bg-white dark:bg-black'>
                   <img
                     src={serviceImages[index % serviceImages.length]}
                     alt=''
-                    className='h-28 w-full object-cover sm:h-full'
+                    className='h-44 w-full object-cover lg:h-full'
                   />
                 </div>
                 <div>
@@ -138,16 +164,27 @@ const ServicesPage = () => {
                   <p className='mt-4 text-base leading-7 text-gray-600 dark:text-gray-400'>
                     {service.description}
                   </p>
-                  {service.link && (
-                    <a
-                      href={service.link}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='mt-6 inline-flex text-sm font-extrabold text-primary'
-                    >
-                      Explore platform →
-                    </a>
-                  )}
+                  <p className='mt-4 text-base leading-7 text-gray-600 dark:text-gray-400'>
+                    {service.detail}
+                  </p>
+                  <div className='mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+                    {service.features.map((feature) => (
+                      <div
+                        key={feature}
+                        className='rounded-[10px] bg-white px-4 py-3 text-sm font-bold leading-6 text-gray-700 dark:bg-black dark:text-gray-300'
+                      >
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+                  <a
+                    href={service.link || '/contact'}
+                    target={service.link ? '_blank' : undefined}
+                    rel={service.link ? 'noopener noreferrer' : undefined}
+                    className='mt-7 inline-flex text-sm font-extrabold text-primary'
+                  >
+                    {service.cta} →
+                  </a>
                 </div>
               </Motion.article>
             ))}
@@ -160,7 +197,7 @@ const ServicesPage = () => {
           <Motion.div {...fadeUp}>
             <p className={eyebrowClass}>How We Work</p>
             <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl'>
-              A clear process from idea to delivery.
+              A simple path from idea to launch.
             </h2>
           </Motion.div>
 
@@ -188,17 +225,47 @@ const ServicesPage = () => {
       </section>
 
       <section className='bg-white px-4 py-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
+        <div className='mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr]'>
+          <Motion.div {...fadeUp}>
+            <p className={eyebrowClass}>What You Can Expect</p>
+            <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl'>
+              Technology and marketing as one connected system.
+            </h2>
+            <p className='mt-7 text-base leading-8 text-gray-600 dark:text-gray-400'>
+              You should not have to work with a different company for your website, hosting,
+              application and digital marketing.
+            </p>
+          </Motion.div>
+
+          <Motion.div
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.1 }}
+            className='grid gap-3 sm:grid-cols-2'
+          >
+            {expectations.map((item) => (
+              <div
+                key={item}
+                className='rounded-[12px] border border-gray-200 bg-[#f8f8f7] px-5 py-4 text-sm font-bold text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300'
+              >
+                {item}
+              </div>
+            ))}
+          </Motion.div>
+        </div>
+      </section>
+
+      <section className='bg-white px-4 py-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
         <div className='mx-auto grid max-w-6xl gap-8 rounded-[18px] bg-primary p-7 text-white sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center'>
           <Motion.div {...fadeUp}>
             <p className='text-[11px] font-extrabold uppercase tracking-[0.18em] text-white/70'>
               Start a Project
             </p>
             <h2 className='mt-5 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl'>
-              Need a dependable technology partner?
+              Tell us what you are trying to achieve.
             </h2>
             <p className='mt-5 max-w-2xl text-base leading-8 text-white/75'>
-              Share your requirement and we will help you define the right scope, timeline and next
-              steps.
+              We will understand your requirements and suggest a solution that fits your business
+              without making the process unnecessarily complicated.
             </p>
           </Motion.div>
           <Motion.a
@@ -207,7 +274,7 @@ const ServicesPage = () => {
             href='/contact'
             className='inline-flex w-max items-center gap-3 rounded-full bg-white px-8 py-3 text-sm font-extrabold text-primary transition hover:scale-105'
           >
-            Contact Us
+            Contact Our Team
             <img src={assets.arrow_icon} alt='' className='w-4 invert' />
           </Motion.a>
         </div>
