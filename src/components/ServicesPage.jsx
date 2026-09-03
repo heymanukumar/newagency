@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { motion as Motion } from 'motion/react'
+import { AnimatePresence, motion as Motion } from 'motion/react'
 import assets from '../assets/assets'
 import servicesData from '../data/servicesData'
 
@@ -25,9 +25,9 @@ const serviceImages = [
 const serviceLayouts = [
   'lg:col-span-4 lg:row-span-2',
   'lg:col-span-4 lg:row-span-2',
-  'lg:col-span-4 lg:row-span-3',
+  'lg:col-span-4 lg:row-span-2',
   'lg:col-span-3 lg:row-span-2',
-  'lg:col-span-5 lg:row-span-3',
+  'lg:col-span-5 lg:row-span-2',
   'lg:col-span-4 lg:row-span-2',
   'lg:col-span-4 lg:row-span-2',
   'lg:col-span-4 lg:row-span-2',
@@ -79,7 +79,7 @@ const ServiceShowcaseCard = ({ service, index, onOpen }) => {
     <Motion.article
       {...fadeUp}
       transition={{ ...fadeUp.transition, delay: index * 0.035 }}
-      className={`group relative isolate min-h-[250px] overflow-hidden rounded-[18px] p-5 ring-1 transition duration-500 hover:z-10 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(0,64,193,0.14)] md:min-h-[270px] lg:min-h-0 ${
+      className={`group relative isolate min-h-[280px] overflow-hidden rounded-[18px] p-5 ring-1 transition duration-500 hover:z-10 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(0,64,193,0.14)] md:min-h-[300px] lg:min-h-0 ${
         isBlue
           ? 'bg-primary text-white ring-primary/20'
           : 'bg-white text-gray-950 ring-gray-200 dark:bg-gray-950 dark:text-white dark:ring-gray-800'
@@ -101,7 +101,7 @@ const ServiceShowcaseCard = ({ service, index, onOpen }) => {
       />
       <div className='absolute right-4 top-4 h-16 w-16 rounded-full bg-primary/10 blur-2xl transition duration-700 group-hover:scale-[2.2] group-hover:bg-primary/25' />
 
-      <div className='relative z-10 flex h-full min-h-[210px] flex-col justify-between md:min-h-[230px] lg:min-h-full'>
+      <div className='relative z-10 flex h-full min-h-[240px] flex-col md:min-h-[260px] lg:min-h-full'>
         <div className='flex items-start justify-between gap-4'>
           <span
             className={`inline-flex rounded-full px-4 py-2 text-xs font-extrabold tracking-[0.18em] ${
@@ -118,8 +118,8 @@ const ServiceShowcaseCard = ({ service, index, onOpen }) => {
           />
         </div>
 
-        <div className='pt-8 transition duration-500 group-hover:-translate-y-1 group-focus-within:-translate-y-1'>
-          <h3 className='max-w-xl text-[1.7rem] font-extrabold uppercase leading-none tracking-normal sm:text-3xl lg:text-[2.15rem]'>
+        <div className='pt-7 transition duration-500 group-hover:-translate-y-1 group-focus-within:-translate-y-1'>
+          <h3 className='max-w-xl text-[1.55rem] font-extrabold uppercase leading-[0.98] tracking-normal sm:text-[1.75rem] lg:text-[1.9rem]'>
             {service.title}
           </h3>
           <p className={`mt-4 max-w-xl text-sm leading-6 ${isBlue ? 'text-white/80' : 'text-gray-600 dark:text-gray-300'}`}>
@@ -231,6 +231,8 @@ const ServiceDetailsModal = ({ service, onClose }) => {
 
 const ServicesPage = () => {
   const [activeService, setActiveService] = useState(null)
+  const [activeProcess, setActiveProcess] = useState(0)
+  const currentProcess = processSteps[activeProcess]
 
   return (
     <main className='overflow-hidden bg-[#f4f4f2] text-gray-900 dark:bg-black dark:text-white'>
@@ -312,8 +314,7 @@ const ServicesPage = () => {
             </h2>
           </Motion.div>
 
-          <div className='mt-10 rounded-[24px] border border-gray-200 bg-[#f8f8f7] p-2 shadow-[0_24px_80px_rgba(0,0,0,0.07)] sm:p-3 lg:p-4 dark:border-gray-800 dark:bg-gray-900'>
-            <div className='grid gap-3 md:grid-cols-2 lg:auto-rows-[104px] lg:grid-cols-12'>
+          <div className='mt-10 grid gap-3 md:grid-cols-2 lg:auto-rows-[132px] lg:grid-cols-12'>
             {servicesData.map((service, index) => (
               <ServiceShowcaseCard
                 key={service.title}
@@ -322,7 +323,6 @@ const ServicesPage = () => {
                 onOpen={setActiveService}
               />
             ))}
-            </div>
           </div>
         </div>
       </section>
@@ -334,10 +334,25 @@ const ServicesPage = () => {
             <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl'>
               A simple path from idea to launch.
             </h2>
-            <p className='mt-6 max-w-md text-base leading-8 text-gray-600 dark:text-gray-400'>
-              Each stage keeps the project clear, focused and easy to follow from first discussion
-              to final launch.
-            </p>
+            <div className='mt-8 min-h-[220px] overflow-hidden rounded-[18px] bg-white p-6 shadow-[0_24px_70px_rgba(0,0,0,0.05)] ring-1 ring-gray-200 dark:bg-gray-950 dark:ring-gray-800'>
+              <AnimatePresence mode='wait'>
+                <Motion.div
+                  key={currentProcess.title}
+                  initial={{ opacity: 0, x: -28 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 28 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                >
+                  <p className='text-sm font-extrabold text-primary/70'>0{activeProcess + 1}</p>
+                  <h3 className='mt-5 text-3xl font-extrabold uppercase leading-none tracking-normal text-gray-950 dark:text-white'>
+                    {currentProcess.title}
+                  </h3>
+                  <p className='mt-5 text-base leading-8 text-gray-600 dark:text-gray-400'>
+                    {currentProcess.text}
+                  </p>
+                </Motion.div>
+              </AnimatePresence>
+            </div>
           </Motion.div>
 
           <div className='grid gap-4'>
@@ -346,11 +361,16 @@ const ServicesPage = () => {
                 key={step.title}
                 initial={{ opacity: 0, y: 48, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: false, amount: 0.65 }}
+                onViewportEnter={() => setActiveProcess(index)}
+                viewport={{ once: false, amount: 0.75 }}
                 transition={{ duration: 0.55, ease: 'easeOut' }}
-                className='grid gap-4 rounded-[16px] bg-white p-6 shadow-[0_20px_70px_rgba(0,0,0,0.04)] ring-1 ring-gray-200 sm:grid-cols-[5rem_1fr] dark:bg-gray-950 dark:ring-gray-800'
+                className={`grid gap-4 rounded-[16px] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.04)] ring-1 transition duration-300 sm:grid-cols-[5rem_1fr] ${
+                  activeProcess === index
+                    ? 'bg-white text-gray-950 ring-primary/25 dark:bg-gray-950 dark:text-white'
+                    : 'bg-white/58 text-gray-500 ring-gray-200 dark:bg-gray-950/50 dark:text-gray-500 dark:ring-gray-800'
+                }`}
               >
-                <p className='text-3xl font-extrabold text-primary/35'>
+                <p className={`text-3xl font-extrabold ${activeProcess === index ? 'text-primary/70' : 'text-primary/25'}`}>
                   0{index + 1}
                 </p>
                 <div>
@@ -366,10 +386,10 @@ const ServicesPage = () => {
       </section>
 
       <section className='bg-white px-4 py-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
-        <div className='mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr]'>
+        <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start'>
           <Motion.div {...fadeUp}>
             <p className={eyebrowClass}>What You Can Expect</p>
-            <h2 className='mt-7 text-4xl font-extrabold uppercase leading-tight tracking-normal sm:text-5xl'>
+            <h2 className='mt-7 max-w-lg text-3xl font-extrabold uppercase leading-tight tracking-normal sm:text-4xl lg:text-[2.7rem]'>
               Technology and marketing as one connected system.
             </h2>
             <p className='mt-7 text-base leading-8 text-gray-600 dark:text-gray-400'>
