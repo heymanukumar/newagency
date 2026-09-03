@@ -77,39 +77,39 @@ const ServiceShowcaseCard = ({ service, index }) => (
     {...fadeUp}
     transition={{ ...fadeUp.transition, delay: index * 0.04 }}
     tabIndex={0}
-    className={`group relative isolate min-h-[500px] overflow-hidden rounded-[22px] bg-gray-950 p-5 text-white outline-none ring-1 ring-white/10 transition duration-500 hover:z-10 hover:scale-[1.015] hover:ring-primary/70 hover:shadow-[0_30px_90px_rgba(0,64,193,0.34)] focus-visible:ring-2 focus-visible:ring-primary md:min-h-[430px] lg:min-h-0 ${serviceLayouts[index % serviceLayouts.length]}`}
+    className={`group relative isolate min-h-[500px] overflow-hidden rounded-[22px] bg-white p-5 text-gray-950 outline-none ring-1 ring-gray-200 transition duration-500 hover:z-10 hover:scale-[1.015] hover:ring-primary/40 hover:shadow-[0_30px_90px_rgba(0,64,193,0.18)] focus-visible:ring-2 focus-visible:ring-primary md:min-h-[430px] lg:min-h-0 dark:bg-gray-950 dark:text-white dark:ring-gray-800 ${serviceLayouts[index % serviceLayouts.length]}`}
   >
     <img
       src={serviceImages[index % serviceImages.length]}
       alt=''
-      className='absolute inset-0 h-full w-full object-cover opacity-68 grayscale transition duration-700 group-hover:scale-110 group-hover:opacity-28 group-hover:grayscale-0 group-focus-within:scale-110 group-focus-within:opacity-28 group-focus-within:grayscale-0'
+      className='absolute inset-0 h-full w-full object-cover opacity-40 grayscale transition duration-700 group-hover:scale-110 group-hover:opacity-22 group-hover:grayscale-0 group-focus-within:scale-110 group-focus-within:opacity-22 group-focus-within:grayscale-0 dark:opacity-42'
     />
-    <div className='absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10' />
-    <div className='absolute inset-0 bg-primary/0 mix-blend-screen transition duration-700 group-hover:bg-primary/25 group-focus-within:bg-primary/25' />
+    <div className='absolute inset-0 bg-gradient-to-t from-white via-white/88 to-white/58 dark:from-gray-950 dark:via-gray-950/86 dark:to-gray-950/50' />
+    <div className='absolute inset-0 bg-primary/0 transition duration-700 group-hover:bg-primary/8 group-focus-within:bg-primary/8' />
 
     <div className='relative z-10 flex h-full min-h-[460px] flex-col justify-end md:min-h-[390px] lg:min-h-full'>
       <div className='transition duration-500 group-hover:-translate-y-2 group-focus-within:-translate-y-2'>
-        <span className='inline-flex rounded-full bg-white/12 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-white/80 backdrop-blur'>
+        <span className='inline-flex rounded-full bg-primary/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary backdrop-blur'>
           0{index + 1}
         </span>
         <h3 className='mt-4 text-3xl font-extrabold uppercase leading-none tracking-normal sm:text-4xl'>
           {service.title}
         </h3>
-        <p className='mt-4 max-w-xl text-sm leading-6 text-white/76'>
+        <p className='mt-4 max-w-xl text-sm leading-6 text-gray-600 dark:text-gray-300'>
           {service.summary || service.description}
         </p>
       </div>
 
       <div className='mt-5 max-h-[32rem] overflow-hidden opacity-100 transition-all duration-700 md:max-h-0 md:opacity-0 md:group-hover:max-h-[36rem] md:group-hover:opacity-100 md:group-focus-within:max-h-[36rem] md:group-focus-within:opacity-100'>
-        <div className='max-h-72 overflow-y-auto rounded-[16px] border border-white/12 bg-black/48 p-4 backdrop-blur-md md:max-h-80'>
-          <p className='text-sm leading-6 text-white/86'>{service.description}</p>
-          <p className='mt-3 text-sm leading-6 text-white/62'>{service.detail}</p>
+        <div className='max-h-72 overflow-y-auto rounded-[16px] border border-gray-200 bg-white/86 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-md md:max-h-80 dark:border-white/10 dark:bg-black/42'>
+          <p className='text-sm leading-6 text-gray-800 dark:text-white/86'>{service.description}</p>
+          <p className='mt-3 text-sm leading-6 text-gray-500 dark:text-white/62'>{service.detail}</p>
 
           <div className='mt-4 flex flex-wrap gap-2'>
             {service.features.map((feature) => (
               <span
                 key={feature}
-                className='rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-bold leading-5 text-white/82 ring-1 ring-white/10'
+                className='rounded-full bg-primary/8 px-3 py-1.5 text-[11px] font-bold leading-5 text-gray-700 ring-1 ring-primary/10 dark:bg-white/10 dark:text-white/82 dark:ring-white/10'
               >
                 {feature}
               </span>
@@ -120,10 +120,10 @@ const ServiceShowcaseCard = ({ service, index }) => (
             href={service.link || '/contact'}
             target={service.link ? '_blank' : undefined}
             rel={service.link ? 'noopener noreferrer' : undefined}
-            className='mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-extrabold text-primary transition hover:scale-105'
+            className='mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs font-extrabold text-white transition hover:scale-105'
           >
             {service.cta}
-            <img src={assets.arrow_icon} alt='' className='w-3 invert' />
+            <img src={assets.arrow_icon} alt='' className='w-3' />
           </a>
         </div>
       </div>
@@ -212,7 +212,7 @@ const ServicesPage = () => {
             </h2>
           </Motion.div>
 
-          <div className='mt-12 rounded-[28px] bg-black p-3 shadow-[0_40px_120px_rgba(0,0,0,0.18)] sm:p-5 lg:p-7'>
+          <div className='mt-12 rounded-[28px] border border-gray-200 bg-[#f8f8f7] p-3 shadow-[0_40px_120px_rgba(0,0,0,0.08)] sm:p-5 lg:p-7 dark:border-gray-800 dark:bg-gray-900'>
             <div className='grid gap-4 md:grid-cols-2 lg:auto-rows-[170px] lg:grid-cols-12'>
             {servicesData.map((service, index) => (
               <ServiceShowcaseCard key={service.title} service={service} index={index} />
