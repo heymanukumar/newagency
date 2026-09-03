@@ -24,13 +24,13 @@ const serviceImages = [
 
 const serviceLayouts = [
   'lg:col-span-4 lg:row-span-2',
-  'lg:col-span-5 lg:row-span-2',
-  'lg:col-span-3 lg:row-span-3',
+  'lg:col-span-4 lg:row-span-2',
+  'lg:col-span-4 lg:row-span-3',
   'lg:col-span-3 lg:row-span-2',
-  'lg:col-span-3 lg:row-span-3',
-  'lg:col-span-3 lg:row-span-2',
-  'lg:col-span-3 lg:row-span-2',
-  'lg:col-span-5 lg:row-span-2',
+  'lg:col-span-5 lg:row-span-3',
+  'lg:col-span-4 lg:row-span-2',
+  'lg:col-span-4 lg:row-span-2',
+  'lg:col-span-4 lg:row-span-2',
   'lg:col-span-4 lg:row-span-2',
 ]
 
@@ -72,41 +72,70 @@ const expectations = [
   'Long-term technical assistance',
 ]
 
-const ServiceShowcaseCard = ({ service, index }) => (
-  <Motion.article
-    {...fadeUp}
-    transition={{ ...fadeUp.transition, delay: index * 0.04 }}
-    tabIndex={0}
-    className={`group relative isolate min-h-[500px] overflow-hidden rounded-[22px] bg-white p-5 text-gray-950 outline-none ring-1 ring-gray-200 transition duration-500 hover:z-10 hover:scale-[1.015] hover:ring-primary/40 hover:shadow-[0_30px_90px_rgba(0,64,193,0.18)] focus-visible:ring-2 focus-visible:ring-primary md:min-h-[430px] lg:min-h-0 dark:bg-gray-950 dark:text-white dark:ring-gray-800 ${serviceLayouts[index % serviceLayouts.length]}`}
-  >
-    <img
-      src={serviceImages[index % serviceImages.length]}
-      alt=''
-      className='absolute inset-0 h-full w-full object-cover opacity-40 grayscale transition duration-700 group-hover:scale-110 group-hover:opacity-22 group-hover:grayscale-0 group-focus-within:scale-110 group-focus-within:opacity-22 group-focus-within:grayscale-0 dark:opacity-42'
-    />
-    <div className='absolute inset-0 bg-gradient-to-t from-white via-white/88 to-white/58 dark:from-gray-950 dark:via-gray-950/86 dark:to-gray-950/50' />
-    <div className='absolute inset-0 bg-primary/0 transition duration-700 group-hover:bg-primary/8 group-focus-within:bg-primary/8' />
+const ServiceShowcaseCard = ({ service, index }) => {
+  const isBlue = index === 1 || index === 5 || index === 8
 
-    <div className='relative z-10 flex h-full min-h-[460px] flex-col justify-end md:min-h-[390px] lg:min-h-full'>
-      <div className='transition duration-500 group-hover:-translate-y-2 group-focus-within:-translate-y-2'>
-        <span className='inline-flex rounded-full bg-primary/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary backdrop-blur'>
-          0{index + 1}
-        </span>
-        <h3 className='mt-4 text-3xl font-extrabold uppercase leading-none tracking-normal sm:text-4xl'>
-          {service.title}
-        </h3>
-        <p className='mt-4 max-w-xl text-sm leading-6 text-gray-600 dark:text-gray-300'>
-          {service.summary || service.description}
-        </p>
+  return (
+    <Motion.article
+      {...fadeUp}
+      transition={{ ...fadeUp.transition, delay: index * 0.035 }}
+      tabIndex={0}
+      className={`group relative isolate min-h-[330px] overflow-hidden rounded-[22px] p-5 outline-none ring-1 transition duration-500 hover:z-10 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_24px_70px_rgba(0,64,193,0.16)] focus-visible:ring-2 focus-visible:ring-primary md:min-h-[340px] lg:min-h-0 ${
+        isBlue
+          ? 'bg-primary text-white ring-primary/20'
+          : 'bg-white text-gray-950 ring-gray-200 dark:bg-gray-950 dark:text-white dark:ring-gray-800'
+      } ${serviceLayouts[index % serviceLayouts.length]}`}
+    >
+      <img
+        src={serviceImages[index % serviceImages.length]}
+        alt=''
+        className={`absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-20 group-focus-within:scale-110 group-focus-within:opacity-20 ${
+          isBlue ? 'opacity-24 mix-blend-screen' : 'opacity-18 grayscale group-hover:grayscale-0'
+        }`}
+      />
+      <div
+        className={`absolute inset-0 ${
+          isBlue
+            ? 'bg-gradient-to-t from-primary via-primary/88 to-primary/48'
+            : 'bg-gradient-to-t from-white via-white/92 to-white/66 dark:from-gray-950 dark:via-gray-950/88 dark:to-gray-950/52'
+        }`}
+      />
+      <div className='absolute right-4 top-4 h-16 w-16 rounded-full bg-primary/10 blur-2xl transition duration-700 group-hover:scale-[2.2] group-hover:bg-primary/25' />
+
+      <div className='relative z-10 flex h-full min-h-[290px] flex-col justify-between md:min-h-[300px] lg:min-h-full'>
+        <div className='flex items-start justify-between gap-4'>
+          <span
+            className={`inline-flex rounded-full px-4 py-2 text-xs font-extrabold tracking-[0.18em] ${
+              isBlue ? 'bg-white text-primary' : 'bg-primary/10 text-primary'
+            }`}
+          >
+            0{index + 1}
+          </span>
+          <span
+            className={`h-3 w-3 rounded-full ${
+              isBlue ? 'bg-white' : 'bg-primary'
+            } shadow-[0_0_24px_currentColor]`}
+            aria-hidden='true'
+          />
+        </div>
+
+        <div className='pt-10 transition duration-500 group-hover:-translate-y-2 group-focus-within:-translate-y-2'>
+          <h3 className='max-w-xl text-3xl font-extrabold uppercase leading-none tracking-normal sm:text-4xl'>
+            {service.title}
+          </h3>
+          <p className={`mt-5 max-w-xl text-base leading-7 ${isBlue ? 'text-white/78' : 'text-gray-600 dark:text-gray-300'}`}>
+            {service.summary || service.description}
+          </p>
+        </div>
       </div>
 
-      <div className='mt-5 max-h-[32rem] overflow-hidden opacity-100 transition-all duration-700 md:max-h-0 md:opacity-0 md:group-hover:max-h-[36rem] md:group-hover:opacity-100 md:group-focus-within:max-h-[36rem] md:group-focus-within:opacity-100'>
-        <div className='max-h-72 overflow-y-auto rounded-[16px] border border-gray-200 bg-white/86 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-md md:max-h-80 dark:border-white/10 dark:bg-black/42'>
+      <div className='absolute inset-x-3 bottom-3 z-20 translate-y-5 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 max-md:relative max-md:inset-auto max-md:mt-5 max-md:translate-y-0 max-md:opacity-100'>
+        <div className='max-h-76 overflow-y-auto rounded-[18px] border border-gray-200 bg-white/94 p-4 shadow-[0_18px_56px_rgba(15,23,42,0.14)] backdrop-blur-md dark:border-white/10 dark:bg-black/60'>
           <p className='text-sm leading-6 text-gray-800 dark:text-white/86'>{service.description}</p>
           <p className='mt-3 text-sm leading-6 text-gray-500 dark:text-white/62'>{service.detail}</p>
 
           <div className='mt-4 flex flex-wrap gap-2'>
-            {service.features.map((feature) => (
+            {service.features.slice(0, 8).map((feature) => (
               <span
                 key={feature}
                 className='rounded-full bg-primary/8 px-3 py-1.5 text-[11px] font-bold leading-5 text-gray-700 ring-1 ring-primary/10 dark:bg-white/10 dark:text-white/82 dark:ring-white/10'
@@ -127,9 +156,9 @@ const ServiceShowcaseCard = ({ service, index }) => (
           </a>
         </div>
       </div>
-    </div>
-  </Motion.article>
-)
+    </Motion.article>
+  )
+}
 
 const ServicesPage = () => {
   return (
@@ -203,7 +232,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      <section className='bg-white px-4 py-20 sm:px-12 lg:px-24 xl:px-40 dark:bg-gray-950'>
+      <section className='bg-white px-4 py-14 sm:px-12 lg:px-24 lg:py-18 xl:px-40 dark:bg-gray-950'>
         <div className='mx-auto max-w-7xl'>
           <Motion.div {...fadeUp} className='max-w-4xl'>
             <p className={eyebrowClass}>Our Services</p>
@@ -212,8 +241,8 @@ const ServicesPage = () => {
             </h2>
           </Motion.div>
 
-          <div className='mt-12 rounded-[28px] border border-gray-200 bg-[#f8f8f7] p-3 shadow-[0_40px_120px_rgba(0,0,0,0.08)] sm:p-5 lg:p-7 dark:border-gray-800 dark:bg-gray-900'>
-            <div className='grid gap-4 md:grid-cols-2 lg:auto-rows-[170px] lg:grid-cols-12'>
+          <div className='mt-10 rounded-[28px] border border-gray-200 bg-[#f8f8f7] p-2 shadow-[0_24px_80px_rgba(0,0,0,0.07)] sm:p-4 lg:p-5 dark:border-gray-800 dark:bg-gray-900'>
+            <div className='grid gap-3 md:grid-cols-2 lg:auto-rows-[122px] lg:grid-cols-12'>
             {servicesData.map((service, index) => (
               <ServiceShowcaseCard key={service.title} service={service} index={index} />
             ))}
